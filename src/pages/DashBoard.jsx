@@ -1,11 +1,12 @@
-import React from 'react'
-import Item from '../component/Item'
+import Item from '../components/Item';
+
 function DashBoard() {
   return (
-    <div>DashBoard
-     <Item/>
+    <div>
+      DashBoard
+      <Item />
     </div>
-  )
+  );
 }
 
-export default DashBoard
+export default DashBoard;

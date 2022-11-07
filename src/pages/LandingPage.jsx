@@ -1,10 +1,10 @@
-import React from 'react';
-
 function LandingPage() {
   return (
     <div>
-      LandingPage
-   
+      <div>LandingPage</div>
+
+      {/* Content */}
+      <div>Content</div>
     </div>
   );
 }
