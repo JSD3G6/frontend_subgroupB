@@ -24,7 +24,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 --purple: hsla(266, 99%, 56%, 1);
 --yellow: hsla(36, 96%, 71%, 1);
 --black: hsla(0, 0%, 8%, 1);
---grey: hsla(240, 5%, 16%);
+--grey: hsla(240, 5%, 16%, 1);
 --white: hsla(0, 0%, 100%, 1);
 }
 ```
