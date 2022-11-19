@@ -28,3 +28,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 --white: hsla(0, 0%, 100%, 1);
 }
 ```
+## NOTE: css NO border radius 
+<button>
+<input>
+  
