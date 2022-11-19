@@ -29,6 +29,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 }
 ```
 ## NOTE: css NO border radius 
-<button>
-<input>
+- <button>
+- <input>
   
