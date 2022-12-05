@@ -31,4 +31,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 ## NOTE: css NO border radius 
 - button
 - input
+
+## ESLINT error
+```js
+/* eslint-disable linebreak-style */
+```
+
   
