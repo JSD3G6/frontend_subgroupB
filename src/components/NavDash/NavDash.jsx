@@ -60,9 +60,9 @@ export default function NavDash() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                <MenuItem onClick={handleClose}>Edit Profile</MenuItem>
                 <Link to="/login">
-                  <MenuItem onClick={handleClose}>LogOut</MenuItem>
+                  <MenuItem onClick={handleClose}>SingOut</MenuItem>
                 </Link>
               </Menu>
             </div>
