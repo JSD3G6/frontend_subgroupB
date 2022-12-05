@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 function LandingPage() {
   return (
     <div>
