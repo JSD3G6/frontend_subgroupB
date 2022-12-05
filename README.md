@@ -2,11 +2,11 @@
 
 # Team members
 
-- Kanthamas
+- Kanthamas [origin/1000]
 - Nattawong
 - Pavit
-- Sorawit
-- Sitichai
+- Sorawit [origin/4000]
+- Sitichai [origin/5000]
 
 ## Install react bootstrap
 1.สร้างโปรเจค
@@ -31,4 +31,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 ## NOTE: css NO border radius 
 - button
 - input
+
+## ESLINT error
+```js
+/* eslint-disable linebreak-style */
+```
+
   
