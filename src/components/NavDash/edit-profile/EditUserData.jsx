@@ -1,4 +1,16 @@
-import React from "react";
+/* eslint-disable linebreak-style */
+/* eslint-disable arrow-body-style */
+/* eslint-disable react/function-component-definition */
+/* eslint-disable object-curly-newline */
+/* eslint-disable indent */
+/* eslint-disable no-tabs */
+/* eslint-disable react/jsx-indent-props */
+/* eslint-disable jsx-quotes */
+/* eslint-disable react/jsx-curly-brace-presence */
+/* eslint-disable react/jsx-indent */
+/* eslint-disable import/no-unresolved */
+/* eslint-disable quotes */
+
 import "./EditUserData.css";
 import { Container, Row, Col, Form } from "react-bootstrap";
 import ButtonPurple from "../buttons/ButtonPurple";
