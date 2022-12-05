@@ -2,11 +2,11 @@
 
 # Team members
 
-- Kanthamas
+- Kanthamas [origin/1000]
 - Nattawong
 - Pavit
-- Sorawit
-- Sitichai
+- Sorawit [origin/4000]
+- Sitichai [origin/5000]
 
 ## Install react bootstrap
 1.สร้างโปรเจค
