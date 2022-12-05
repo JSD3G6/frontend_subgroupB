@@ -1,5 +1,5 @@
 /* eslint-disable linebreak-style */
-import Item from '../components/Item';
+import Item from '../../components/Item';
 
 function DashBoard() {
   return (

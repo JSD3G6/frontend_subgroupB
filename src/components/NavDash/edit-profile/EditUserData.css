@@ -1,0 +1,17 @@
+body {
+    background-color: var(--black);
+    max-height: 100vh;
+}
+
+#firstNameInput, #lastNameInput,
+#bioInput, #birthDateInput,
+#genderInput, #heightInput,
+#weightInput, #weeklyGoalInput,
+#caloriesInput
+{
+    border-radius: 0;
+}
+
+.btn-update-profile {
+    scale: 1.2;
+}
