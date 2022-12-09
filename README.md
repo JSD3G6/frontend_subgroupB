@@ -52,4 +52,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
       <ButtonPurple text={`Edit Photo`} onClick={handleOnClick} />
 
     ```
-  
+    ![image](https://user-images.githubusercontent.com/114124443/206630530-61a39b9d-857c-4ee2-8095-655a6759f17f.png)
+    ![image](https://user-images.githubusercontent.com/114124443/206630635-ae7e5c9b-6f2d-4aa1-a05c-8104adce05a3.png)
+
