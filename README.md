@@ -36,5 +36,22 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 ```js
 /* eslint-disable linebreak-style */
 ```
+## วิธีใช้ปุ่ม 
+1. ให้เข้าไปที่ src/buttons
+2. มีให้เลือก 2 ปุ่ม คือปุ่มม่วง (ButtonPurple.jsx) กับ ปุ่มเหลือง (ButtonYellow.jsx)
+3. import ไปใช้ได้เลย  
+4. กำหนดชื่อให้ปุ่ม และกำหนดฟังก์ชั่น onClick 
+    ```js
+      import ButtonPurple from "../buttons/ButtonPurple";
 
-  
+      const handleOnClick = () => {
+            widgetRef.current.open();
+
+      };
+
+      <ButtonPurple text={`Edit Photo`} onClick={handleOnClick} />
+
+    ```
+    ![image](https://user-images.githubusercontent.com/114124443/206630530-61a39b9d-857c-4ee2-8095-655a6759f17f.png)
+    ![image](https://user-images.githubusercontent.com/114124443/206630635-ae7e5c9b-6f2d-4aa1-a05c-8104adce05a3.png)
+
