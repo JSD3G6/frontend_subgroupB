@@ -5,9 +5,11 @@
 
 import React, { useState } from 'react';
 
-function ButtonPurple({ text }) {
+function ButtonPurple({ text, onClick }) {
   const [isHover, setIsHover] = useState(false);
-
+  const handleOnClick = () => {
+    onClick();
+  };
   const handleMouseEnter = () => {
     setIsHover(true);
   };
@@ -42,6 +44,7 @@ function ButtonPurple({ text }) {
       style={styles}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onClick={handleOnClick}
     >
       {text}
     </button>

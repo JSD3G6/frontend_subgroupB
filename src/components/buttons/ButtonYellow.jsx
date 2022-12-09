@@ -9,9 +9,11 @@
 
 import React, { useState } from "react";
 
-function ButtonYellow({ text }) {
+function ButtonYellow({ text, onClick }) {
   const [isHover, setIsHover] = useState(false);
-
+  const handleOnClick = () => {
+    onClick();
+  };
   const handleMouseEnter = () => {
     setIsHover(true);
   };
@@ -45,7 +47,8 @@ function ButtonYellow({ text }) {
 		<button
 			style={styles}
 			onMouseEnter={handleMouseEnter}
-			onMouseLeave={handleMouseLeave}
+      onMouseLeave={handleMouseLeave}
+      onClick={handleOnClick}
 		>
 			{text}
 		</button>
