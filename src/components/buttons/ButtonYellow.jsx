@@ -37,7 +37,7 @@ function ButtonYellow({ text, onClick }) {
     fontSize: "1rem",
     fontWeight: "400",
     letterSpacing: "0.5px",
-    curcer: "pointer",
+    cursor: "pointer",
     scale: isHover ? "0.95" : "1",
     background: isHover ? gradient : yellow,
     color: isHover ? white : black,
