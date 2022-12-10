@@ -1,15 +1,20 @@
 /* eslint-disable linebreak-style */
-/* eslint-disable react/prop-types */
 /* eslint-disable react/button-has-type */
+/* eslint-disable react/jsx-indent-props */
+/* eslint-disable semi */
+/* eslint-disable no-tabs */
+/* eslint-disable indent */
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-
 import React, { useState } from 'react';
 
-function ButtonPurple({ text, onClick }) {
+// eslint-disable-next-line react/function-component-definition
+const ButtonPurple = ({ text, onClick }) => {
   const [isHover, setIsHover] = useState(false);
   const handleOnClick = () => {
     onClick();
   };
+
   const handleMouseEnter = () => {
     setIsHover(true);
   };
@@ -33,7 +38,7 @@ function ButtonPurple({ text, onClick }) {
     fontSize: '1rem',
     fontWeight: '400',
     letterSpacing: '0.5px',
-    cursor: 'pointer',
+    curser: 'pointer',
     scale: isHover ? '0.95' : '1',
     background: isHover ? gradient : purple,
     color: isHover ? white : white,
@@ -49,6 +54,6 @@ function ButtonPurple({ text, onClick }) {
       {text}
     </button>
   );
-}
+};
 
 export default ButtonPurple;
