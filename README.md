@@ -38,7 +38,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 ```
 ## วิธีใช้ปุ่ม 
 1. ให้เข้าไปที่ src/buttons
-2. มีให้เลือก 3 ปุ่ม คือปุ่มม่วง (ButtonPurple.jsx) ปุ่มเหลือง (ButtonYellow.jsx) ปุ่มม่วงแบบโปร่ง (ButtonPurpleoutline.jsx)
+2. มีให้เลือก 3 ปุ่ม คือปุ่มม่วง (ButtonPurple.jsx) ปุ่มเหลือง (ButtonYellow.jsx) ปุ่มม่วงแบบโปร่ง (ButtonPurpleOutline.jsx)
 3. import ไปใช้ได้เลย  
 4. กำหนดชื่อให้ปุ่ม และกำหนดฟังก์ชั่น onClick 
     ```js
