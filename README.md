@@ -56,3 +56,41 @@ import 'bootstrap/dist/css/bootstrap.min.css';
     ![image](https://user-images.githubusercontent.com/114124443/206630635-ae7e5c9b-6f2d-4aa1-a05c-8104adce05a3.png)
 
 ## UploadPhoto == Cloudinary Widget
+
+
+## ActivitySchema
+```JS
+const mongoose = require('mongoose')
+
+const ActivitySchema = new mongoose.Schema({  
+  type: {
+    type: String,
+    enum: ['bicycling', 'running', 'hiking', 'walking', 'swiming'],
+    required: true
+  },
+  durationMin: {
+    type: Number,
+    required: true
+  },
+  dateTime: {
+    type: Date,
+    required: true
+  },
+  distanceKM: {
+    type: Number
+  },
+  title: {
+    type: String
+  },
+  details: {
+    type: String
+  },
+  photo: {
+    type: String
+  }
+})
+
+const ActivityModel = mongoose.model('Activity', ActivitySchema)
+
+module.exports = ActivityModel
+```
