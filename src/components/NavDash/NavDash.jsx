@@ -61,7 +61,7 @@ export default function NavDash() {
                 onClose={handleClose}
               >
                 <MenuItem onClick={handleClose}>Edit Profile</MenuItem>
-                <Link to="/login">
+                <Link to="/login" className="text-dark">
                   <MenuItem onClick={handleClose}>SingOut</MenuItem>
                 </Link>
               </Menu>

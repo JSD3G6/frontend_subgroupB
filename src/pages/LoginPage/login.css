@@ -23,6 +23,11 @@
   padding: 10px;
 }
 
+.btn-sign:hover {
+  background: #8322FE;
+  opacity: 50%;
+}
+
 .img-user{
   width: 132px;
   height: 131px;
@@ -34,7 +39,6 @@
 .form-control {
   border-radius: 0;
   background-color: #A2A2A2;
-  width: 75%;
 }
 
 .btn-primary {
