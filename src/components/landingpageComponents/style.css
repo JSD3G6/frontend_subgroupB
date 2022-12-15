@@ -1,89 +1,100 @@
 @import "react-alice-carousel/lib/alice-carousel.css";
 
-.alice-carousel__prev-btn-wrapper{
+.alice-carousel__prev-btn-wrapper {
   display: none;
 }
-.alice-carousel__next-btn-wrapper{
+
+.alice-carousel__next-btn-wrapper {
   display: none;
 }
 
 /*start nav*/
-.navbar{
-  background-color: #151515;
+.navbar {
+  background-color: var(--black);
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .navbar-toggler {
-  background-color: rgba(255, 255, 255,0.4);
+  background-color: rgba(255, 255, 255, 0.4);
 }
 
-.link{
+.link {
   color: white;
   text-decoration: none;
   display: flex;
   font-size: 18px;
   margin: 5px;
 }
-.link:hover{
+
+.link:hover {
   color: orange !important;
 }
+
 /*end nav*/
 
-
-
 /*Hero section*/
-.left_hero{
+.left_hero {
   display: flex;
 }
-.img-hero{
+
+.img-hero {
   width: 755px;
-  height:450px;
+  height: 450px;
 }
-#text_hero{
+
+#text_hero {
   color: white;
 }
-.title_hero{
+
+.title_hero {
   color: orange;
 }
 
-.btn-group{
+.btn-group {
   display: flex;
   gap: 40px;
 }
-.btn-start{
-  background-color: hsla(39, 100%, 50%,1);
+
+.btn-start {
+  background-color: hsla(39, 100%, 50%, 1);
   border: none;
   outline: none;
   padding: 10px;
   width: 140px;
   color: black;
 }
-.btn-login{
-  background-color: hsla(0, 0%, 100%,1);
+
+.btn-login {
+  background-color: hsla(0, 0%, 100%, 1);
   border: none;
   outline: none;
   padding: 10px;
   width: 140px;
   color: black;
 }
-.btn-login:hover{
-  background-color: rgba(255, 255, 255,0.5);
+
+.btn-login:hover {
+  background-color: rgba(255, 255, 255, 0.5);
 }
-.btn-start:hover{
+
+.btn-start:hover {
   background-color: rgb(189, 123, 2);
 }
-.span_hero{
+
+.span_hero {
   font-size: 18px;
 }
 
 @media screen and (max-width:768px) {
-  .img-hero{
+  .img-hero {
     width: 600px;
-    height:250px;
+    height: 250px;
   }
-  .span_hero{
+
+  .span_hero {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -93,12 +104,13 @@
 /*end Hero section*/
 
 /*bmi section*/
-.bmi_img{
+.bmi_img {
   width: 755px;
-  height:450px;
+  height: 450px;
 
 }
-#text_bmi{
+
+#text_bmi {
   color: white;
 }
 
@@ -108,75 +120,81 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-#result_bmi{
-  border: 1px solid rgba(255, 255, 255,0.4);
+#result_bmi {
+  border: 1px solid rgba(255, 255, 255, 0.4);
   background-color: white;
   color: black;
   padding: 15px;
 }
 
 @media screen and (max-width:768px) {
-  .bmi_img{
+  .bmi_img {
     width: 600px;
-    height:250px;
+    height: 250px;
   }
-  #result_bmi{
+
+  #result_bmi {
     padding: 10px;
     margin-bottom: 20px;
   }
 }
+
 /*end*/
 
 /*about section*/
-#text_about{
+#text_about {
   color: white;
 }
-hr{
+
+hr {
   border: 1px solid orange;
 }
 
-.about_span{
+.about_span {
   font-size: 18px;
   width: 50%;
 }
-.about_span_1{
+
+.about_span_1 {
   color: orange;
   width: 50%;
 }
-.read_more{
+
+.read_more {
   color: orange;
 }
 
-.img_train{
+.img_train {
   width: 500px;
   height: 350px;
 }
 
-.img_small{
+.img_small {
   width: 160px;
   height: 80px;
   cursor: pointer;
-
 }
 
 @media screen and (max-width:768px) {
-  .img_train{
+  .img_train {
     width: 500px;
-    height:250px;
+    height: 250px;
   }
+
   .about_span,
-  .about_span_1{
-    padding: 0 10px;   
+  .about_span_1 {
+    padding: 0 10px;
     font-size: 18px;
     width: 100%;
     margin-bottom: 10px;
   }
 }
 
-@media screen and (max-width:576px) { 
+@media screen and (max-width:576px) {
+
   .about_span,
-  .about_span_1{
-    padding: 0 10px;   
+  .about_span_1 {
+    padding: 0 10px;
     font-size: 18px;
     width: 100%;
     margin-bottom: 10px;
@@ -186,36 +204,36 @@ hr{
 /*end*/
 
 /*Our team*/
-#text_team{
+#text_team {
   color: white;
 }
 
-.img_container{
+.img_container {
   width: 100%;
   height: 300px;
   padding-right: 20px;
 }
 
-.img_arrow{
+.img_arrow {
   width: 1.5rem;
   cursor: pointer;
   margin-right: -15px;
 }
 
-.img_arrow_left{
+.img_arrow_left {
   width: 1.5rem;
   margin-right: 20px;
   cursor: pointer;
 }
 
-.img_team{
+.img_team {
   width: 100%;
 }
 
 
 
-@media screen and (max-width:468px) { 
-  .img-fluid{
+@media screen and (max-width:468px) {
+  .img-fluid {
     padding: 0;
   }
 }
@@ -224,48 +242,54 @@ hr{
 
 
 /*Contact*/
-#box_call{
+#box_call {
   background-color: #1a1a1a;
 }
-#text_contact{
+
+#text_contact {
   color: white;
 }
-.text_call{
+
+.text_call {
   width: 50%;
 }
 
-.head_call{
+.head_call {
   padding: 20px 0;
   color: orange;
 }
 
-@media screen and (max-width:576px) { 
-  .text_call{
+@media screen and (max-width:576px) {
+  .text_call {
     width: 100%;
   }
 }
-@media screen and (max-width:768px) { 
-  .text_call{
+
+@media screen and (max-width:768px) {
+  .text_call {
     width: 100%;
   }
 }
+
 /*End*/
 
 
 /*Footer*/
-.title_footer{
-  width: 70%;  
-}
-.contact_info{
-  line-height: 2rem;
-}
-.contact_info > li{
- display: flex;
- align-items: center;
- gap: 10px;
+.title_footer {
+  width: 70%;
 }
 
-.tab{
+.contact_info {
+  line-height: 2rem;
+}
+
+.contact_info>li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tab {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -273,20 +297,22 @@ hr{
   width: 100%;
   margin-top: 50px;
 }
-.tab-info{
+
+.tab-info {
   display: flex;
   gap: 50px;
-  margin-top: 15px;  
-}
- li{
-  list-style-type: none;  
+  margin-top: 15px;
 }
 
-.tab > ul > li > a:hover{
+li {
+  list-style-type: none;
+}
+
+.tab>ul>li>a:hover {
   color: white;
 }
 
-a{
+a {
   text-decoration: none;
   color: black;
   font-size: 18px;

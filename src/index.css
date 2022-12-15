@@ -1,10 +1,21 @@
+:root {
+  --purple: hsla(266, 99%, 56%, 1);
+  --yellow: hsla(36, 96%, 71%, 1);
+  --black: hsla(0, 0%, 8%, 1);
+  --black-a: hsla(0, 0%, 10%, 0.9);
+  --grey: hsla(240, 5%, 16%);
+  --white: hsla(0, 0%, 100%, 1);
+}
+  
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-body{
+
+body {
   background-color: #292929;
+  color: var(--white);
 }
 
