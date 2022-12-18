@@ -1,6 +1,5 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable react/prop-types */
-
 import { useEffect, useRef } from 'react';
 import ButtonPurple from '../buttons/ButtonPurple';
 

@@ -1,10 +1,10 @@
-/* eslint-disable linebreak-style */
 import Item from '../../components/Item';
+import NavDash from '../../components/NavDash/NavDash';
 
 function DashBoard() {
   return (
     <div>
-      DashBoard
+      <NavDash />
       <Item />
     </div>
   );

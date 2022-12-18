@@ -1,6 +1,7 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable no-unused-vars */
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './EditUserData.css';
 import {
   Container, Row, Col, Form,
@@ -12,7 +13,7 @@ function EditUserData() {
   return (
     <Container>
       <Form className="user-data">
-        <h2>Public Profile</h2>
+        <h2>Edit Profile</h2>
         <Row className="row my-3">
           <Col className="col-lg-6 col-12">
             <Form.Label>First Name</Form.Label>
@@ -26,11 +27,7 @@ function EditUserData() {
         <Row className="row my-3">
           <Col>
             <Form.Label>Bio</Form.Label>
-            <Form.Control
-              id="bioInput"
-              type="text"
-              placeholder="say something about yourself"
-            />
+            <Form.Control id="bioInput" type="text" placeholder="say something about yourself" />
           </Col>
         </Row>
 
@@ -68,8 +65,13 @@ function EditUserData() {
             <Form.Control id="caloriesInput" type="number" placeholder="2,000" />
           </Col>
           <Col className="col-lg-3 col-12 mt-3 pt-3 text-center">
-            <ButtonPurpleOutline className="btn-cancel-profile " text="Cancel" style={{ background: 'var(--black)' }} />
-
+            <Link to="/dashboard" className="">
+              <ButtonPurpleOutline
+                className="btn-cancel-profile "
+                text="Cancel"
+                style={{ background: 'var(--black)' }}
+              />
+            </Link>
           </Col>
           <Col className="col-lg-3 col-12 mt-3 pt-3">
             <ButtonPurple className="btn-update-profile " text="Update Profile" />

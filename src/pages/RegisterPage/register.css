@@ -1,0 +1,24 @@
+.register {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    background-image: url("../../images/bg.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.form-select {
+    border-radius: 0;
+    background-color: #A2A2A2;
+}
+.form-select:focus {
+    border-color: black !important;
+    box-shadow: none;
+}
+.form-control::placeholder {
+    color: white;
+    opacity: 2; 
+}

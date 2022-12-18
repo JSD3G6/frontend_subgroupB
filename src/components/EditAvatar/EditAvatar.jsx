@@ -17,11 +17,7 @@ function EditAvatar() {
 
   return (
     <div className="edit-avatar-container">
-      <img
-        className="avatar"
-        src={imageSrc || defaultAvatar}
-        alt={imageAlt}
-      />
+      <img className="avatar" src={imageSrc || defaultAvatar} alt={imageAlt} />
       <UploadPhoto userID="123" getData={getData} />
     </div>
   );

@@ -4,14 +4,14 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import EditAvatar from '../EditAvatar/EditAvatar';
-import EditUserData from '../EdifUserData/EditUserData';
+import EditUserData from '../EditUserData/EditUserData';
 import './EditProfile.css';
 
 function EditProfile() {
   return (
-    <Container>
-      <Container className="edit-profile">
-        <h2 className="mt-5 mb-3 ms-5 ps-3">Edit Profile</h2>
+    <Container className="edit-profile">
+      <Container>
+        {/* <h2 className="mt-5 mb-3 ms-5 ps-3">Edit Profile</h2> */}
         <Container className="mx-auto edit-profile-card">
           <Row>
             <Col className="col-lg-3 p-3 col-12 mt-5">
