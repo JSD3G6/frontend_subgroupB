@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import DashBoardPage from '../pages/DashBoard/DashBoard';
 import LandingPage from '../pages/LandingPage/LandingPage';
 import ProfilePage from '../pages/ProfilePage/ProfilePage';
+import ProfileSummaryPage from '../pages/ProfilePage/ProfileSummaryPage';
 // import LoginPage from '../pages/LoginPage/LoginPage';
 // import RegisterPage from '../pages/RegisterPage/RegisterPage';
 
@@ -16,6 +17,7 @@ function Router() {
         {/* <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} /> */}
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/profileSummary" element={<ProfileSummaryPage />} />
       </Routes>
     </BrowserRouter>
   );
