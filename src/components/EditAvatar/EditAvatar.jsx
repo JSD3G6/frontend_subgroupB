@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default-member */
 /* eslint-disable linebreak-style */
 /* eslint-disable no-unused-vars */
 import { useState } from 'react';
