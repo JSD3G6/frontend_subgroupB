@@ -2,6 +2,7 @@
 /* eslint-disable no-unused-vars */
 
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import ProgressBar from './ProgressBar';
 import './ProfileSummary.css';
 
@@ -19,9 +20,9 @@ function ProfileSummary() {
   return (
     <div className="profile-summary-container">
       <div className="edit-avatar-container">
-        <div className="link-edit-profile">
+        <Link className="link-edit-profile" to="/profile">
           <img className="avatar" src={imageSrc || defaultAvatar} alt={imageAlt} />
-        </div>
+        </Link>
       </div>
       <div className="profile-box">
         <div className="profile-info">
