@@ -4,8 +4,8 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import DashBoardPage from '../pages/DashBoard/DashBoard';
 import LandingPage from '../pages/LandingPage/LandingPage';
-import LoginPage from '../pages/LoginPage/LoginPage';
-import RegisterPage from '../pages/RegisterPage/RegisterPage';
+import LoginPage from '../pages/LoginPage/LoginPage_11';
+import RegisterPage from '../pages/RegisterPage/RegisterPage_28';
 import ProfilePage from '../pages/ProfilePage/ProfilePage';
 
 function Router() {
