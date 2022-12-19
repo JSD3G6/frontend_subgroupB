@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
@@ -10,8 +11,10 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import './nav.css';
+import { AuthContext } from '../../contexts/authContext';
 
 export default function NavDash() {
+  const AUTH = useContext(AuthContext);
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -21,6 +24,11 @@ export default function NavDash() {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const onClickSignOut = () => {
+    console.log('SIGN OUT');
+    AUTH.logout();
   };
 
   return (
@@ -63,9 +71,8 @@ export default function NavDash() {
                 <Link to="/profile" className="text-dark">
                   <MenuItem onClick={handleClose}>Edit Profile</MenuItem>
                 </Link>
-                <Link to="/login" className="text-dark">
-                  <MenuItem onClick={handleClose}>SingOut</MenuItem>
-                </Link>
+
+                <MenuItem onClick={onClickSignOut}>SignOut</MenuItem>
               </Menu>
             </div>
           )}

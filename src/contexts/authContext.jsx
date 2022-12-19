@@ -6,7 +6,7 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as AuthAPI from '../api/authApi'; // {login: (data)=> {}, register: (data)=>}
 import * as ProfileAPI from '../api/profileApi';
-import { setAccessToken, getAccessToken } from '../services/localStorage';
+import { setAccessToken, getAccessToken, removeAccessToken } from '../services/localStorage';
 
 // ### Named Context ใช้ 2 ที่
 const AuthContext = createContext();
@@ -67,7 +67,14 @@ function AuthContextProvider({ children }) {
       console.log(error);
     }
   };
-  const logout = async (data) => {};
+  const logout = async () => {
+    removeAccessToken();
+    setUser(null);
+    navigate('/');
+    // removeToken
+    // navigate --> landing page ('/')
+    // setUser = null
+  };
   const register = async (data) => {};
   // # PROFILE
   const getUserProfile = async () => {};
