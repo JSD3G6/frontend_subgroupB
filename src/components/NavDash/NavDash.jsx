@@ -10,17 +10,20 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import './nav.css';
+import { useMyContext } from '../../Context/Context';
 
 export default function NavDash() {
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
-
+  const { user } = useMyContext();
+  console.log(user);
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
   const handleClose = () => {
     setAnchorEl(null);
+    localStorage.clear();
   };
 
   return (
@@ -31,7 +34,7 @@ export default function NavDash() {
             Web Brand
           </Typography>
           <Typography variant="h6" component="div" sx={{ flexGrow: 0 }}>
-            Firstname Lastname
+            {`${user.firstName} ${user.lastName}`}
           </Typography>
           {auth && (
             <div>

@@ -38,7 +38,7 @@ function RegisterPage() {
         weight,
         height,
       });
-      res.data && window.location.replace('/dashboard');
+      res.data && window.location.replace('/login');
     } catch (error) {
       console.log(error);
     }

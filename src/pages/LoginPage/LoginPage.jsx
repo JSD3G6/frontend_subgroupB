@@ -4,11 +4,12 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './login.css';
 import logoImg from '../../images/Logo.png';
+import { useMyContext } from '../../Context/Context';
 
 function LoginPage() {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
-
+  const { setAuth } = useMyContext();
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -17,6 +18,7 @@ function LoginPage() {
         email,
       });
       res.data && window.location.replace('/dashboard');
+      setAuth(res.data);
     } catch (error) {
       console.log(error);
     }

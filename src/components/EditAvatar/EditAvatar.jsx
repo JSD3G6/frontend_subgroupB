@@ -22,7 +22,7 @@ function EditAvatar() {
         src={imageSrc || defaultAvatar}
         alt={imageAlt}
       />
-      {/* <UploadPhoto userID="123" getData={getData} /> */}
+      <UploadPhoto userID="123" getData={getData} />
     </div>
   );
 }

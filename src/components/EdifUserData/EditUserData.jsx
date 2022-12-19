@@ -10,9 +10,12 @@ import ButtonPurple from '../buttons/ButtonPurple';
 import ButtonPurpleOutline from '../buttons/ButtonPurpleOutline';
 
 function EditUserData() {
+  const handleSubmitForm = (e) => {
+    e.preventDefault();
+  };
   return (
     <Container>
-      <Form className="user-data">
+      <Form className="user-data" onSubmit={handleSubmitForm}>
         <h2>Edit Profile</h2>
         <Row className="row my-3">
           <Col className="col-lg-6 col-12">
@@ -73,8 +76,8 @@ function EditUserData() {
               <ButtonPurpleOutline className="btn-cancel-profile " text="Cancel" style={{ background: 'var(--black)' }} />
             </Link>
           </Col>
-          <Col className="col-lg-3 col-12 mt-3 pt-3">
-            <ButtonPurple className="btn-update-profile " text="Update Profile" />
+          <Col className="col-lg-3 col-12 mt-3 pt-3 d-flex align-items-center justify-content-center">
+            <ButtonPurple className="btn-update-profile" text="Update Profile" />
           </Col>
         </Row>
       </Form>
