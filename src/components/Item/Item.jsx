@@ -1,4 +1,6 @@
 import LineChart from '../LineChart/LineChart';
+import ProfileSummary from '../ProfileSummary/ProfileSummary';
+import ActivityAllSummary from '../ActivityAllSummary/ActivityAllSummary';
 import './item.css';
 
 function Item() {
@@ -6,7 +8,7 @@ function Item() {
     <div className="container-fluid mt-4">
       <div className="row">
         <div className="d-flex flex-column align-items-center col-xl-3 col-md-6 col-12 order-1 order-md-1 order-xl-1">
-          <h1>UserInformation</h1>
+          <ProfileSummary />
         </div>
         <div className="d-flex flex-column align-items-center col-xl-5 col-md-12 col-12 order-3 order-md-3 order-xl-2">
           <h1>Create Activity</h1>
@@ -41,7 +43,9 @@ function Item() {
             </div>
           </div>
           <LineChart />
-          <h1>Type</h1>
+          <div className="activity-all-summary">
+            <ActivityAllSummary />
+          </div>
         </div>
       </div>
     </div>
