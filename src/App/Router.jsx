@@ -7,15 +7,24 @@ import LandingPage from '../pages/LandingPage/LandingPage';
 import LoginPage from '../pages/LoginPage/LoginPage_11';
 import RegisterPage from '../pages/RegisterPage/RegisterPage_28';
 import ProfilePage from '../pages/ProfilePage/ProfilePage';
+import { useAuth } from '../contexts/authContext';
 
 function Router() {
+  const { user } = useAuth();
+
+  if (!user) {
+    return (
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+      </Routes>
+    );
+  }
   return (
     <Routes>
-      <Route path="/" element={<LandingPage />} />
-      <Route path="/dashboard" element={<DashBoardPage />} />
+      <Route path="/" element={<DashBoardPage />} />
       <Route path="/profile" element={<ProfilePage />} />
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/register" element={<RegisterPage />} />
     </Routes>
   );
 }
