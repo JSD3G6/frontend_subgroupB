@@ -21,7 +21,7 @@ function ProfileSummary() {
     <div className="profile-summary-container">
       <div className="edit-avatar-container">
         <Link className="link-edit-profile" to="/profile">
-          <img className="avatar" src={imageSrc || defaultAvatar} alt={imageAlt} />
+          <img className="avatar-photo" src={imageSrc || defaultAvatar} alt={imageAlt} />
         </Link>
       </div>
       <div className="profile-box">
@@ -52,7 +52,13 @@ function ProfileSummary() {
           <span className="cal">2,000/4,000</span>
         </div>
 
-        <ProgressBar className="progress-bar" percent={90} />
+        <ProgressBar
+          className="progress-bar"
+          percent={50}
+          barColor="var(--purple)"
+          barWidth="18rem"
+          barHeight="0.75rem"
+        />
       </div>
     </div>
   );

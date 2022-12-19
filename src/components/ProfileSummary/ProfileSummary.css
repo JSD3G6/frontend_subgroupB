@@ -16,7 +16,7 @@
   align-items: center;
 } */
 
-.avatar {
+.avatar-photo {
   width: 7rem;
   aspect-ratio: 1/1;
   object-fit: cover;
