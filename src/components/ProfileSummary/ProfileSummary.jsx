@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ProgressBar from '../ProgressBar/ProgressBar';
 import ActivityAllSummary from '../ActivityAllSummary/ActivityAllSummary';
-// import Motivation from '../Motivation/Motivation';
+import Motivation from '../Motivation/Motivation';
 import './ProfileSummary.css';
 
 function ProfileSummary() {
@@ -67,8 +67,8 @@ function ProfileSummary() {
       {/* <div className="activity-all-summary">
         <ActivityAllSummary />
       </div> */}
-      <div className="motivation-box-container">
-        {/* <Motivation className="motivation-quotes" /> */}
+      <div className="motivation-box-container mb-4">
+        <Motivation className="motivation-quotes" />
       </div>
     </div>
   );
