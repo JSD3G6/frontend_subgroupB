@@ -3,7 +3,8 @@
 
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import ProgressBar from './ProgressBar';
+import ProgressBar from '../ProgressBar/ProgressBar';
+import ActivityAllSummary from '../ActivityAllSummary/ActivityAllSummary';
 import './ProfileSummary.css';
 
 function ProfileSummary() {
@@ -18,47 +19,52 @@ function ProfileSummary() {
   };
 
   return (
-    <div className="profile-summary-container">
-      <div className="edit-avatar-container">
-        <Link className="link-edit-profile" to="/profile">
-          <img className="avatar-photo" src={imageSrc || defaultAvatar} alt={imageAlt} />
-        </Link>
-      </div>
-      <div className="profile-box">
-        <div className="profile-info">
-          <h1>
-            <span>firstName</span>
-            <span>lastName</span>
-          </h1>
-          <div className="profile-details">
-            <div className="box weight-box">
-              <p>80 kg</p>
-              <p className="box-title">Weight</p>
-            </div>
-            <div className="box height-box">
-              <p>170 cm</p>
-              <p className="box-title">Height</p>
-            </div>
-            <div className="box age-box">
-              <p>25 yrs</p>
-              <p className="box-title">Age</p>
+    <div className="card-holder">
+      <div className="profile-summary-container">
+        <div className="edit-avatar-container">
+          <Link className="link-edit-profile" to="/profile">
+            <img className="avatar-photo" src={imageSrc || defaultAvatar} alt={imageAlt} />
+          </Link>
+        </div>
+        <div className="profile-box">
+          <div className="profile-info">
+            <h1>
+              <span>firstName</span>
+              <span>lastName</span>
+            </h1>
+            <div className="profile-details">
+              <div className="box weight-box">
+                <p>80 kg</p>
+                <p className="box-title">Weight</p>
+              </div>
+              <div className="box height-box">
+                <p>170 cm</p>
+                <p className="box-title">Height</p>
+              </div>
+              <div className="box age-box">
+                <p>25 yrs</p>
+                <p className="box-title">Age</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div className="weekly-goal">
-        <div className="goal-text">
-          <span>Weekly Goal (Cal)</span>
-          <span className="cal">2,000/4,000</span>
-        </div>
+        <div className="weekly-goal">
+          <div className="goal-text">
+            <span>Weekly Goal (Cal)</span>
+            <span className="cal">2,000/4,000</span>
+          </div>
 
-        <ProgressBar
-          className="progress-bar"
-          percent={50}
-          barColor="var(--purple)"
-          barWidth="18rem"
-          barHeight="0.75rem"
-        />
+          <ProgressBar
+            className="progress-bar"
+            percent={50}
+            barColor="var(--yellow)"
+            barWidth="18rem"
+            barHeight="0.75rem"
+          />
+        </div>
+      </div>
+      <div className="activity-all-summary">
+        <ActivityAllSummary />
       </div>
     </div>
   );

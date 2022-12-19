@@ -93,3 +93,8 @@ span:last-child {
 .progress-bar {
   width: 90%;
 }
+
+/* move to ActivityAllSummary */
+.activity-all-summary {
+  margin-top: 3rem;
+}
