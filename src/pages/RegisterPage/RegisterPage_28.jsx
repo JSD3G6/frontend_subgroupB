@@ -37,7 +37,7 @@ function RegisterPage() {
   const handleInputChange = (event) => {
     const fieldName = event.target.name;
     const newInfo = { ...formInfo };
-    newInfo[fieldName] = event.target.value;
+    newInfo[fieldName] = event.target.value; // {newInfo["email"] = "test7@gmail.com"}
     setFormInfo(newInfo);
     setErrorFormInfo(initialInfo);
   };
@@ -54,6 +54,8 @@ function RegisterPage() {
       setErrorFormInfo(errorObject);
       return;
     }
+
+    // AUTH.register(value)
     console.log(value);
   };
   return (

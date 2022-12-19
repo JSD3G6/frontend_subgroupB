@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import BackgroundImage from '../../assets/bg-1.png';
 import LoginLogo from '../../assets/login-logo.png';
 import GmailLogo from '../../assets/gmail.png';
@@ -7,21 +7,23 @@ import { AuthContext } from '../../contexts/authContext';
 
 function LoginPage() {
   const AUTH = useContext(AuthContext);
-  // AUTH =  shared = {
-  //   user,
-  //   initialLoading,
-  //   login,
-  //   logout,
-  //   register,
-  //   getUserProfile,
-  //   updateUserProfile,
-  // };
-  console.log(AUTH);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const submitLogin = async (event) => {
     event.preventDefault(); // กัน Default Action Form
     // console.log('TRY TO SUBMIT');
-    AUTH.login({ email: 'test7@gmail.com', password: 'qwerty' });
+    // Validate FrontEnd
+
+    AUTH.login({ email, password });
+  };
+
+  const onChangeEmail = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const onChangePassword = (event) => {
+    setPassword(event.target.value);
   };
   const backgroundStyle = {
     backgroundImage: `url(${BackgroundImage})`,
@@ -50,8 +52,17 @@ function LoginPage() {
             placeholder="Enter your Email"
             name="Email"
             className="input-primary"
+            value={email}
+            onChange={onChangeEmail}
           />
-          <input type="password" placeholder="Password" name="Password" className="input-primary" />
+          <input
+            type="password"
+            placeholder="Password"
+            name="Password"
+            className="input-primary"
+            value={password}
+            onChange={onChangePassword}
+          />
           <button type="submit" className="btn-primary self-center ">
             Login
           </button>
