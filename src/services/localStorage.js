@@ -1,5 +1,5 @@
 /* eslint-disable quotes */
-const ACCESS_TOKEN = "ACCESS_TOKEN";
+const ACCESS_TOKEN = 'ACCESS_TOKEN';
 
 export const getAccessToken = () => localStorage.getItem(ACCESS_TOKEN);
 

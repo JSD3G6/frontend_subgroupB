@@ -1,9 +1,28 @@
+import { useContext } from 'react';
 import BackgroundImage from '../../assets/bg-1.png';
 import LoginLogo from '../../assets/login-logo.png';
 import GmailLogo from '../../assets/gmail.png';
 import FacebookLogo from '../../assets/facebook.png';
+import { AuthContext } from '../../contexts/authContext';
 
 function LoginPage() {
+  const AUTH = useContext(AuthContext);
+  // AUTH =  shared = {
+  //   user,
+  //   initialLoading,
+  //   login,
+  //   logout,
+  //   register,
+  //   getUserProfile,
+  //   updateUserProfile,
+  // };
+  console.log(AUTH);
+
+  const submitLogin = async (event) => {
+    event.preventDefault(); // กัน Default Action Form
+    // console.log('TRY TO SUBMIT');
+    AUTH.login({ email: 'test7@gmail.com', password: 'qwerty' });
+  };
   const backgroundStyle = {
     backgroundImage: `url(${BackgroundImage})`,
     width: '100vw',
@@ -22,7 +41,10 @@ function LoginPage() {
           <h3 className="font-thin text-[40px] text-white">Make yourself Fit</h3>
         </div>
         {/* Desktop : Email & Password */}
-        <form className="h-full py-8 semi-lg:py-4 flex flex-col justify-around ">
+        <form
+          className="h-full py-8 semi-lg:py-4 flex flex-col justify-around "
+          onSubmit={submitLogin}
+        >
           <input
             type="text"
             placeholder="Enter your Email"
