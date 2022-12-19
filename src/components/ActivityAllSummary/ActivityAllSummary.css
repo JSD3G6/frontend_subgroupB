@@ -6,13 +6,13 @@
   width: 20rem;
   height: 25rem;
   background: var(--black);
-  box-shadow: 0 0 1px var(--yellow);
+  /* box-shadow: 0 0 1px var(--yellow); */
 }
 
 .summary-container {
   width: 100%;
-  padding: 1rem;
-  background: red;
+  padding: 0.5rem 1rem;
+  /* background: red; */
 }
 
 .activity-icon {
