@@ -1,8 +1,9 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable no-unused-vars */
-import { BiCycling, BiSwim } from 'react-icons/bi';
-import { FaRunning, FaWalking } from 'react-icons/fa';
+import {
+  BiCycling, BiSwim, BiRun, BiWalk,
+} from 'react-icons/bi';
 import { GiHiking } from 'react-icons/gi';
 import ProgressBar from '../ProgressBar/ProgressBar';
 import './ActivityAllSummary.css';
@@ -44,7 +45,7 @@ function ActivityAllSummary() {
         </div>
       </div>
       <div className="summary-container running">
-        <FaRunning className="activity-icon" />
+        <BiRun className="activity-icon" />
         <span>{`Total: ${count} times`}</span>
         <span className="total-duration-span">{`${totalDurationMin} hours`}</span>
         <div className="acitivity-bar">
@@ -74,7 +75,7 @@ function ActivityAllSummary() {
         </div>
       </div>
       <div className="summary-container walking">
-        <FaWalking className="activity-icon" />
+        <BiWalk className="activity-icon" />
         <span>{`Total: ${count} times`}</span>
         <span className="total-duration-span">{`${totalDurationMin} hours`}</span>
         <div className="acitivity-bar">
