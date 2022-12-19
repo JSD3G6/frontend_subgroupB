@@ -8,6 +8,9 @@ import LoginPage from '../pages/LoginPage/LoginPage_11';
 import RegisterPage from '../pages/RegisterPage/RegisterPage_28';
 import ProfilePage from '../pages/ProfilePage/ProfilePage';
 import { useAuth } from '../contexts/authContext';
+import ProfileSummaryPage from '../pages/ProfilePage/ProfileSummaryPage';
+// import LoginPage from '../pages/LoginPage/LoginPage';
+// import RegisterPage from '../pages/RegisterPage/RegisterPage';
 
 function Router() {
   const { user } = useAuth();
@@ -18,6 +21,11 @@ function Router() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/dashboard" element={<DashBoardPage />} />
+        {/* <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} /> */}
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/profile/profileSummary" element={<ProfileSummaryPage />} />
       </Routes>
     );
   }
