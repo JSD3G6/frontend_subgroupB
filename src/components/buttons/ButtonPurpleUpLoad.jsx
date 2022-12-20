@@ -12,18 +12,10 @@ import React, { useState } from 'react';
 import ButtonPurple from './ButtonPurple';
 
 // eslint-disable-next-line react/function-component-definition
-const ButtonPurpleUpLoad = ({ text, onClick, file }) => {
+const ButtonPurpleUpLoad = ({
+ text, file, onChangeFile, onSaveFile, onCanCelFile,
+}) => {
   const [isHover, setIsHover] = useState(false);
-  const handleOnClick = () => {
-    onClick();
-  };
-
-  const handleMouseEnter = () => {
-    setIsHover(true);
-  };
-  const handleMouseLeave = () => {
-    setIsHover(false);
-  };
 
   const purple = 'hsla(266, 99%, 56%, 1)';
   const yellow = 'hsla(36, 96%, 71%, 1)';
@@ -51,13 +43,13 @@ const ButtonPurpleUpLoad = ({ text, onClick, file }) => {
     <>
       {!file ? (
         <label style={styles}>
-          <input type="file" />
+          <input type="file" onChange={onChangeFile} />
           {text}
         </label>
       ) : (
         <div className="flex gap-3">
-          <ButtonPurple text="Save" onClick={() => {}} />
-          <ButtonPurple text="Cancel" onClick={() => {}} />
+          <ButtonPurple text="Save" onClick={onSaveFile} />
+          <ButtonPurple text="Cancel" onClick={onCanCelFile} />
         </div>
       )}
     </>
