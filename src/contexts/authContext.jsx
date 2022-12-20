@@ -78,7 +78,9 @@ function AuthContextProvider({ children }) {
   const register = async (data) => {};
   // # PROFILE
   const getUserProfile = async () => {};
-  const updateUserProfile = async (data) => {};
+  const updateUserProfile = async (data) => {
+    setUser(data);
+  };
 
   // # Bundle Shared Value,Logic in Object
   const shared = {
