@@ -20,11 +20,14 @@ function ContextProvider({ children }) {
   };
   const getUserById = async () => {
     const res = await axios.get(`http://localhost:8000/profile/${auth.userId}`, config);
-    setUser(res.data.profile);
+    const data = res.data.profile;
+    setUser(data);
   };
 
   useEffect(() => {
-    getUserById();
+    if (auth.token) {
+      getUserById();
+    }
   }, []);
 
   useEffect(() => {

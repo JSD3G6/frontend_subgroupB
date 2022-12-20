@@ -28,7 +28,7 @@ function Item() {
               <h6>0 cal</h6>
             </div>
             <div className="d-flex flex-column align-items-center mb-2">
-              <select>
+              <select className="bg-button">
                 <option value="bicycling">bicycling</option>
                 <option value="hiking">hiking</option>
                 <option value="running">running</option>
@@ -36,9 +36,9 @@ function Item() {
                 <option value="swimming">swimming</option>
               </select>
               <div className="d-flex w-100">
-                <button type="button" className="w-100">W</button>
-                <button type="button" className="w-100">M</button>
-                <button type="button" className="w-100">Y</button>
+                <button type="button" className="w-100 bg-button">W</button>
+                <button type="button" className="w-100 bg-button">M</button>
+                <button type="button" className="w-100 bg-button">Y</button>
               </div>
             </div>
           </div>

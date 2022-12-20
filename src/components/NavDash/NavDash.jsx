@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -15,14 +15,19 @@ import { useMyContext } from '../../Context/Context';
 export default function NavDash() {
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const navigate = useNavigate();
   const { user } = useMyContext();
-  console.log(user);
+  // console.log(user);
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const signOut = () => {
+    navigate('/');
     localStorage.clear();
   };
 
@@ -66,9 +71,7 @@ export default function NavDash() {
                 <Link to="/profile" className="text-dark">
                   <MenuItem onClick={handleClose}>Edit Profile</MenuItem>
                 </Link>
-                <Link to="/login" className="text-dark">
-                  <MenuItem onClick={handleClose}>SingOut</MenuItem>
-                </Link>
+                <MenuItem onClick={signOut}>Sign out</MenuItem>
               </Menu>
             </div>
           )}
