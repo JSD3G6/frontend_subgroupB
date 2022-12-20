@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState } from 'react';
 import LineChart from '../LineChart/LineChart';
 import ProfileSummary from '../ProfileSummary/ProfileSummary';
@@ -6,7 +7,8 @@ import './item.css';
 
 function Item() {
   const [active, setActive] = useState('');
-
+  const [type, setType] = useState('');
+  console.log(type);
   const handleClick = (event) => {
     setActive(event.target.id);
   };
@@ -38,7 +40,8 @@ function Item() {
               <h6>0 cal</h6>
             </div>
             <div className="d-flex flex-column align-items-center mb-2">
-              <select className="bg-button">
+              <select className="bg-button" onChange={(e) => setType(e.target.value)} defaultValue="Select Type">
+                <option value="select" hidden>Select Type</option>
                 <option value="bicycling">bicycling</option>
                 <option value="hiking">hiking</option>
                 <option value="running">running</option>

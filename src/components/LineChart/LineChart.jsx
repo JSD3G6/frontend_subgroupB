@@ -30,7 +30,7 @@ ChartJS.register(
 function LineChart({ active }) {
   const handleOnChaneLabal = (props) => {
     if (props === 'w') {
-      return ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+      return ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     } else if (props === 'm') {
       return ['', 'Dec', ''];
     } else if (props === 'y') {
