@@ -10,6 +10,10 @@ function Item() {
   const handleClick = (event) => {
     setActive(event.target.id);
   };
+
+  // const handleData = (e) => {
+  //   console.log(e.target.id);
+  // };
   return (
     <div className="container-fluid mt-4">
       <div className="row">
@@ -42,13 +46,13 @@ function Item() {
                 <option value="swimming">swimming</option>
               </select>
               <div className="d-flex w-100">
-                <button type="button" className={active === '1' ? 'active' : 'w-100 bg-button'} onClick={handleClick} id="1">W</button>
-                <button type="button" className={active === '2' ? 'active' : 'w-100 bg-button'} onClick={handleClick} id="2">M</button>
-                <button type="button" className={active === '3' ? 'active' : 'w-100 bg-button'} onClick={handleClick} id="3">Y</button>
+                <button type="button" className={active === 'w' ? 'active' : 'w-100 bg-button'} onClick={handleClick} id="w">W</button>
+                <button type="button" className={active === 'm' ? 'active' : 'w-100 bg-button'} onClick={handleClick} id="m">M</button>
+                <button type="button" className={active === 'y' ? 'active' : 'w-100 bg-button'} onClick={handleClick} id="y">Y</button>
               </div>
             </div>
           </div>
-          <LineChart />
+          <LineChart active={active} />
           <div className="activity-all-summary">
             <ActivityAllSummary />
           </div>

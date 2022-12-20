@@ -1,7 +1,9 @@
+/* eslint-disable import/order */
 /* eslint-disable linebreak-style */
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useMyContext } from '../../Context/Context';
 import './EditUserData.css';
 import {
   Container, Row, Col, Form,
@@ -10,6 +12,8 @@ import ButtonPurple from '../buttons/ButtonPurple';
 import ButtonPurpleOutline from '../buttons/ButtonPurpleOutline';
 
 function EditUserData() {
+  // const { user } = useMyContext();
+  // console.log(user);
   const handleSubmitForm = (e) => {
     e.preventDefault();
   };

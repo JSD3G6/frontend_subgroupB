@@ -3,6 +3,7 @@
 
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useMyContext } from '../../Context/Context';
 import ProgressBar from '../ProgressBar/ProgressBar';
 import ActivityAllSummary from '../ActivityAllSummary/ActivityAllSummary';
 import Motivation from '../Motivation/Motivation';
@@ -13,7 +14,7 @@ function ProfileSummary() {
 
   const [imageSrc, setImageSrc] = useState(defaultAvatar);
   const [imageAlt, setImageAlt] = useState('profile');
-
+  const { user } = useMyContext();
   const getData = (src, alt) => {
     setImageSrc(src);
     setImageAlt(alt);
@@ -24,7 +25,7 @@ function ProfileSummary() {
       <div className="profile-summary-container">
         <div className="edit-avatar-container">
           <Link className="link-edit-profile" to="/profile">
-            <img className="avatar-photo" src={imageSrc || defaultAvatar} alt={imageAlt} />
+            <img className="avatar-photo" src={user.profilePhoto ? user.profilePhoto : defaultAvatar} alt={imageAlt} />
           </Link>
         </div>
         <div className="profile-box">

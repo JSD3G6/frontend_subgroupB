@@ -2,3 +2,9 @@
   background-color: #151515 !important;
 }
 
+.img-nav {
+  height: 40px;
+  width: 100%;
+  border-radius: 50%;
+}
+
