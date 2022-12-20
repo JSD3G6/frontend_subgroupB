@@ -1,24 +1,42 @@
+/* eslint-disable no-alert */
+/* eslint-disable no-undef */
 /* eslint-disable linebreak-style */
 /* eslint-disable no-unused-vars */
 
 import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
-import './EditUserData.css';
+import Joi from 'joi';
 import {
   Container, Row, Col, Form,
 } from 'react-bootstrap';
 import ButtonPurple from '../buttons/ButtonPurple';
 import ButtonPurpleOutline from '../buttons/ButtonPurpleOutline';
+import './EditUserData.css';
+
+const formSchema = Joi.object({
+  firstName: Joi.string().alphanum().min(6).max(20)
+    .label('First Name')
+    .required(),
+  lastName: Joi.string().alphanum().min(6).max(20)
+    .label('Last Name')
+    .required(),
+  bio: Joi.optional(),
+  birthDate: Joi.date().iso().label('Birthdate').required(),
+  gender: Joi.string().valid('female', 'male', 'not-specified').label('Gender'),
+  height: Joi.number().integer().required().label('Height'),
+  weight: Joi.number().integer().required().label('Weight'),
+  weeklyGoalCal: Joi.optional(),
+});
 
 const defaultUserData = {
-  firstName: null,
-  lastName: null,
-  bio: null,
-  birthDate: null,
+  firstName: '',
+  lastName: '',
+  bio: '',
+  birthDate: '',
   gender: 'default',
-  height: null,
-  weight: null,
-  weeklyGoalCal: null,
+  height: '',
+  weight: '',
+  weeklyGoalCal: '',
 };
 
 function EditUserData() {
@@ -26,10 +44,24 @@ function EditUserData() {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
+    console.log('update data');
+    const { value, error } = formSchema.validate(userData);
+    if (error) {
+      const fieldError = error.details.map((item) => alert(item.message));
+    }
+    console.log(value);
+  };
+
+  const handleOnClick = () => {
+    console.log('update profile');
   };
 
   const handleInputChange = (event) => {
-    console.log(event.target.name);
+    const formInputName = event.target.name;
+    const formInputValue = event.target.value;
+    const newUserData = { ...userData };
+    newUserData[formInputName] = formInputValue;
+    setUserData(newUserData);
   };
   return (
     <Container>
@@ -92,12 +124,12 @@ function EditUserData() {
               value={userData.gender}
               onChange={handleInputChange}
             >
-              <option value="defualt" disabled hidden>
+              <option value={defaultUserData.gender} disabled selected>
                 Select a gender
               </option>
               <option value="female">Female</option>
               <option value="male">Male</option>
-              <option value="notSpecified">Not-specified</option>
+              <option value="not-specified">Not-specified</option>
             </Form.Select>
           </Col>
         </Row>
@@ -147,7 +179,12 @@ function EditUserData() {
             </Link>
           </Col>
           <Col className="col-lg-3 col-12 mt-3 pt-3">
-            <ButtonPurple className="btn-update-profile " text="Update Profile" />
+            <ButtonPurple
+              className="btn-update-profile"
+              onClick={handleOnClick}
+              text="Update Profile"
+              type="submit"
+            />
           </Col>
         </Row>
       </Form>
