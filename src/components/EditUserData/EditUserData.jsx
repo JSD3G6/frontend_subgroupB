@@ -9,16 +9,15 @@ import Joi from 'joi';
 import {
   Container, Row, Col, Form,
 } from 'react-bootstrap';
+import { useAuth } from '../../contexts/authContext';
 import ButtonPurple from '../buttons/ButtonPurple';
 import ButtonPurpleOutline from '../buttons/ButtonPurpleOutline';
 import './EditUserData.css';
 
 const formSchema = Joi.object({
-  firstName: Joi.string().alphanum().min(6).max(20)
-    .label('First Name')
+  firstName: Joi.string().min(6).max(20).label('First Name')
     .required(),
-  lastName: Joi.string().alphanum().min(6).max(20)
-    .label('Last Name')
+  lastName: Joi.string().min(6).max(20).label('Last Name')
     .required(),
   bio: Joi.optional(),
   birthDate: Joi.date().iso().label('Birthdate').required(),
@@ -42,6 +41,21 @@ const defaultUserData = {
 function EditUserData() {
   const [userData, setUserData] = useState(defaultUserData);
 
+  // try api
+  const AUTH = useAuth();
+
+  const updateUserData = async () => {
+    // Send Request
+    try {
+      const formData = new FormData();
+      formData.set(newUserData);
+      /// ///////////////here////////
+      await AUTH.updateUserProfile(newUserData);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const handleFormSubmit = (event) => {
     event.preventDefault();
     console.log('update data');
@@ -49,11 +63,11 @@ function EditUserData() {
     if (error) {
       const fieldError = error.details.map((item) => alert(item.message));
     }
-    console.log(value);
+    console.log('validated data: ', value);
   };
 
   const handleOnClick = () => {
-    console.log('update profile');
+    updateUserData();
   };
 
   const handleInputChange = (event) => {
@@ -63,6 +77,8 @@ function EditUserData() {
     newUserData[formInputName] = formInputValue;
     setUserData(newUserData);
   };
+
+  // render
   return (
     <Container>
       <Form className="user-data" onSubmit={handleFormSubmit}>
@@ -124,7 +140,7 @@ function EditUserData() {
               value={userData.gender}
               onChange={handleInputChange}
             >
-              <option value={defaultUserData.gender} disabled selected>
+              <option value={defaultUserData.gender} disabled>
                 Select a gender
               </option>
               <option value="female">Female</option>
