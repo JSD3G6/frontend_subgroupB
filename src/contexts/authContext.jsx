@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable react/jsx-no-constructed-context-values */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
@@ -78,8 +79,15 @@ function AuthContextProvider({ children }) {
   const register = async (data) => {};
   // # PROFILE
   const getUserProfile = async () => {};
-  const updateUserProfile = async (data) => {
-    setUser(data);
+  const updateUserProfile = async (formData) => {
+    try {
+      const res = await ProfileAPI.updateProfile(user._id, formData);
+      const newProfile = res.data.profile;
+      console.log('NEW PROFILE');
+      setUser(newProfile);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   // # Bundle Shared Value,Logic in Object

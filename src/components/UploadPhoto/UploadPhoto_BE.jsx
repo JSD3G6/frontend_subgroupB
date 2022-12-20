@@ -19,13 +19,12 @@ function UploadPhoto({
     try {
       const formData = new FormData();
       formData.append('profilePhoto', file);
-      const res = await axios.patch(`/profile/${userID}`, formData);
-      const newProfile = res.data.profile;
-      AUTH.updateUserProfile(newProfile);
+      await AUTH.updateUserProfile(formData);
     } catch (error) {
       console.log(error);
+    } finally {
+      setFile(null);
     }
-    setFile(null);
   };
   const onCanCelFile = () => {
     setFile(null);
