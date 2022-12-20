@@ -4,8 +4,7 @@
 import { useState } from 'react';
 import ButtonPurpleUpLoad from '../buttons/ButtonPurpleUpLoad';
 
-function UploadPhoto() {
-  const [file, setFile] = useState(null);
+function UploadPhoto({ file, setFile }) {
   const onChangeFile = (event) => {
     if (event.target.files[0]) {
       setFile(event.target.files[0]);
