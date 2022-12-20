@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-no-useless-fragment */
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable linebreak-style */
 /* eslint-disable react/button-has-type */
 /* eslint-disable react/jsx-indent-props */
@@ -9,7 +11,7 @@
 import React, { useState } from 'react';
 
 // eslint-disable-next-line react/function-component-definition
-const ButtonPurple = ({ text, onClick }) => {
+const ButtonPurple = ({ text, onClick, type }) => {
   const [isHover, setIsHover] = useState(false);
   const handleOnClick = () => {
     onClick();
@@ -45,14 +47,23 @@ const ButtonPurple = ({ text, onClick }) => {
   };
 
   return (
-    <button
-      style={styles}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      onClick={handleOnClick}
-    >
-      {text}
-    </button>
+    <>
+      {type !== 'file' ? (
+        <button
+          style={styles}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          onClick={handleOnClick}
+        >
+          {text}
+        </button>
+      ) : (
+        <label style={styles}>
+          <input type="file" />
+          {text}
+        </label>
+      )}
+    </>
   );
 };
 

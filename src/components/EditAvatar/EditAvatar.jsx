@@ -2,7 +2,7 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable no-unused-vars */
 import { useState } from 'react';
-import UploadPhoto from '../UploadPhoto/UploadPhoto';
+import UploadPhoto from '../UploadPhoto/UploadPhoto_BE';
 import './EditAvatar.css';
 
 function EditAvatar() {
