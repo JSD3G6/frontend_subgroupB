@@ -32,6 +32,7 @@ function LineChart() {
     plugins: {
       legend: {
         position: 'top',
+        display: false,
       },
     },
   };

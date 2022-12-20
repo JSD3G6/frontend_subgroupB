@@ -1,9 +1,15 @@
+import { useState } from 'react';
 import LineChart from '../LineChart/LineChart';
 import ProfileSummary from '../ProfileSummary/ProfileSummary';
 import ActivityAllSummary from '../ActivityAllSummary/ActivityAllSummary';
 import './item.css';
 
 function Item() {
+  const [active, setActive] = useState('');
+
+  const handleClick = (event) => {
+    setActive(event.target.id);
+  };
   return (
     <div className="container-fluid mt-4">
       <div className="row">
@@ -36,9 +42,9 @@ function Item() {
                 <option value="swimming">swimming</option>
               </select>
               <div className="d-flex w-100">
-                <button type="button" className="w-100 bg-button">W</button>
-                <button type="button" className="w-100 bg-button">M</button>
-                <button type="button" className="w-100 bg-button">Y</button>
+                <button type="button" className={active === '1' ? 'active' : 'w-100 bg-button'} onClick={handleClick} id="1">W</button>
+                <button type="button" className={active === '2' ? 'active' : 'w-100 bg-button'} onClick={handleClick} id="2">M</button>
+                <button type="button" className={active === '3' ? 'active' : 'w-100 bg-button'} onClick={handleClick} id="3">Y</button>
               </div>
             </div>
           </div>
