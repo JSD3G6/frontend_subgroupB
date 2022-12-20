@@ -9,9 +9,10 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
+import ButtonPurple from './ButtonPurple';
 
 // eslint-disable-next-line react/function-component-definition
-const ButtonPurple = ({ text, onClick }) => {
+const ButtonPurpleUpLoad = ({ text, onClick, file }) => {
   const [isHover, setIsHover] = useState(false);
   const handleOnClick = () => {
     onClick();
@@ -47,15 +48,20 @@ const ButtonPurple = ({ text, onClick }) => {
   };
 
   return (
-    <button
-      style={styles}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      onClick={handleOnClick}
-    >
-      {text}
-    </button>
+    <>
+      {!file ? (
+        <label style={styles}>
+          <input type="file" />
+          {text}
+        </label>
+      ) : (
+        <div className="flex gap-3">
+          <ButtonPurple text="Save" onClick={() => {}} />
+          <ButtonPurple text="Cancel" onClick={() => {}} />
+        </div>
+      )}
+    </>
   );
 };
 
-export default ButtonPurple;
+export default ButtonPurpleUpLoad;

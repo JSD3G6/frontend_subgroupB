@@ -1,16 +1,14 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable react/prop-types */
 
-import ButtonPurple from '../buttons/ButtonPurple';
+import ButtonPurpleUpLoad from '../buttons/ButtonPurpleUpLoad';
 
 function UploadPhoto() {
-  const handleOnClick = () => {
-    // widgetRef.current.open();
-  };
+  const handleOnClick = () => {};
 
   return (
     <div>
-      <ButtonPurple text="Edit Photo" onClick={handleOnClick} type="file" />
+      <ButtonPurpleUpLoad text="Edit Photo" onClick={handleOnClick} file="" />
     </div>
   );
 }
