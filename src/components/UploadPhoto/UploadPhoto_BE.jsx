@@ -4,7 +4,7 @@
 import { useState } from 'react';
 import ButtonPurpleUpLoad from '../buttons/ButtonPurpleUpLoad';
 
-function UploadPhoto({ file, setFile }) {
+function UploadPhoto({ file, setFile, inputFileRef }) {
   const onChangeFile = (event) => {
     if (event.target.files[0]) {
       setFile(event.target.files[0]);
@@ -25,6 +25,7 @@ function UploadPhoto({ file, setFile }) {
         onChangeFile={onChangeFile}
         onSaveFile={onSaveFile}
         onCanCelFile={onCanCelFile}
+        inputFileRef={inputFileRef}
       />
     </div>
   );

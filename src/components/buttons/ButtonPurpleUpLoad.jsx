@@ -13,7 +13,12 @@ import ButtonPurple from './ButtonPurple';
 
 // eslint-disable-next-line react/function-component-definition
 const ButtonPurpleUpLoad = ({
- text, file, onChangeFile, onSaveFile, onCanCelFile,
+  text,
+  file,
+  onChangeFile,
+  onSaveFile,
+  onCanCelFile,
+  inputFileRef,
 }) => {
   const [isHover, setIsHover] = useState(false);
 
@@ -43,7 +48,7 @@ const ButtonPurpleUpLoad = ({
     <>
       {!file ? (
         <label style={styles}>
-          <input type="file" onChange={onChangeFile} />
+          <input type="file" onChange={onChangeFile} ref={inputFileRef} />
           {text}
         </label>
       ) : (
