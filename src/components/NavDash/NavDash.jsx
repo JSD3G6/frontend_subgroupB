@@ -18,6 +18,10 @@ export default function NavDash() {
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
 
+  // Mean's Code: start here//
+  const displayName = `${AUTH.user.firstName} ${AUTH.user.lastName}`;
+  // Change display name on nav bar: Line 46 {displayName}
+  // Mean's Code: end here //
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -36,10 +40,10 @@ export default function NavDash() {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Web Brand
+            EliteMove
           </Typography>
           <Typography variant="h6" component="div" sx={{ flexGrow: 0 }}>
-            Firstname Lastname
+            {displayName}
           </Typography>
           {auth && (
             <div>
