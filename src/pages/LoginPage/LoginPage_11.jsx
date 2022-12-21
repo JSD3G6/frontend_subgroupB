@@ -37,7 +37,7 @@ function LoginPage() {
       <div className="w-[60%] min-w-[360px] lg:max-w-[921px] h-[780px] rounded-[10px] bg-gray-primary   px-[10%] semi-lg:px-[100px] flex flex-col">
         {/* Profile Image */}
         <div className="mx-auto text-center pt-8">
-          <div className="mb-1">
+          <div className="mb-1 flex mx-auto justify-center">
             <img src={LoginLogo} alt="login-logo" className="w-[130px]" />
           </div>
           <h3 className="font-thin text-[40px] text-white">Make yourself Fit</h3>

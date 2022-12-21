@@ -9,6 +9,8 @@ import RegisterPage from '../pages/RegisterPage/RegisterPage_28';
 import ProfilePage from '../pages/ProfilePage/ProfilePage';
 import { useAuth } from '../contexts/authContext';
 import ProfileSummaryPage from '../pages/ProfilePage/ProfileSummaryPage';
+import UpdateActivity from '../pages/UpdateActivity/UpdateActivity';
+import EditActivity from '../pages/EditActivity/EditActivity';
 // import LoginPage from '../pages/LoginPage/LoginPage';
 // import RegisterPage from '../pages/RegisterPage/RegisterPage';
 
@@ -26,6 +28,8 @@ function Router() {
         <Route path="/register" element={<RegisterPage />} /> */}
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/profile/profileSummary" element={<ProfileSummaryPage />} />
+        <Route path="/updateactivity" element={<UpdateActivity />} />
+        <Route path="/editactivity" element={<EditActivity />} />
       </Routes>
     );
   }

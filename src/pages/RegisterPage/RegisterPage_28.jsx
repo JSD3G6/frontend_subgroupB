@@ -60,7 +60,7 @@ function RegisterPage() {
   };
   return (
     <div className="flex justify-center items-center" style={backgroundStyle}>
-      <div className="w-[90%] min-w-[360px] lg:max-w-[921px] h-[780px] rounded-[10px] bg-gray-primary   px-[10%] semi-lg:px-[100px] flex flex-col">
+      <div className="w-[90%] min-w-[360px] lg:max-w-[921px] h-[780px] rounded-[10px] bg-gray-primary px-[10%] semi-lg:px-[100px] flex flex-col">
         {/* Profile Image */}
         <div className="mx-auto text-center pt-8">
           <div className="mb-1">
