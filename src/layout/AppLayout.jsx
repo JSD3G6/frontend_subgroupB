@@ -2,8 +2,7 @@
 import { Outlet } from 'react-router-dom';
 import { useLoading } from '../contexts/loadingContext';
 
-function PrivateAppLayout() {
-  console.log(useLoading());
+function AppLayout() {
   const { loading } = useLoading();
 
   return (
@@ -18,4 +17,4 @@ function PrivateAppLayout() {
   );
 }
 
-export default PrivateAppLayout;
+export default AppLayout;

@@ -4,11 +4,13 @@
 import axios from '../../services/axios';
 import ButtonPurpleUpLoad from '../buttons/ButtonPurpleUpLoad';
 import { useAuth } from '../../contexts/authContext';
+import { useLoading } from '../../contexts/loadingContext';
 
 function UploadPhoto({
   file, setFile, inputFileRef, userID,
 }) {
   const AUTH = useAuth();
+  const { startLoading, stopLoading } = useLoading();
   const onChangeFile = (event) => {
     if (event.target.files[0]) {
       setFile(event.target.files[0]);
@@ -19,11 +21,13 @@ function UploadPhoto({
     try {
       const formData = new FormData();
       formData.append('profilePhoto', file);
+      startLoading();
       await AUTH.updateUserProfile(formData);
     } catch (error) {
       console.log(error);
     } finally {
       setFile(null);
+      stopLoading();
     }
   };
   const onCanCelFile = () => {
