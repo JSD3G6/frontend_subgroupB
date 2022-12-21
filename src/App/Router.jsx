@@ -8,7 +8,6 @@ import LoginPage from '../pages/LoginPage/LoginPage_11';
 import RegisterPage from '../pages/RegisterPage/RegisterPage_28';
 import ProfilePage from '../pages/ProfilePage/ProfilePage';
 import { useAuth } from '../contexts/authContext';
-import ProfileSummaryPage from '../pages/ProfilePage/ProfileSummaryPage';
 import AppLayout from '../layout/AppLayout';
 // import LoginPage from '../pages/LoginPage/LoginPage';
 // import RegisterPage from '../pages/RegisterPage/RegisterPage';
