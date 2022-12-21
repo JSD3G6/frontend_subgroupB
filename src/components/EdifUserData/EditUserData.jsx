@@ -1,7 +1,7 @@
 /* eslint-disable import/order */
 /* eslint-disable linebreak-style */
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMyContext } from '../../Context/Context';
 import './EditUserData.css';
@@ -12,8 +12,10 @@ import ButtonPurple from '../buttons/ButtonPurple';
 import ButtonPurpleOutline from '../buttons/ButtonPurpleOutline';
 
 function EditUserData() {
-  // const { user } = useMyContext();
-  // console.log(user);
+  const { user } = useMyContext();
+  const birth = user?.birthDate?.split('T')[0];
+  const [date, setDate] = useState('');
+  console.log(date);
   const handleSubmitForm = (e) => {
     e.preventDefault();
   };
@@ -47,7 +49,7 @@ function EditUserData() {
         <Row className="row my-3">
           <Col className="col-lg-6 col-12">
             <Form.Label>Birthdate</Form.Label>
-            <Form.Control id="birthDateInput" type="date" />
+            <Form.Control id="birthDateInput" type="date" defaultValue={birth} value={date} onChange={(e) => setDate(e.target.value)} />
           </Col>
           <Col className="col-lg-6 col-12">
             <Form.Label>Gender</Form.Label>
