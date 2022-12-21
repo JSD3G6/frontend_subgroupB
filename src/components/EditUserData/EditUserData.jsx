@@ -50,8 +50,16 @@ function EditUserData() {
   // console.log(birthDateFormatted);
 
   useEffect(() => {
-    setUserData(AUTH.user);
-    setUserData({ birthDate: birthDateFormatted });
+    setUserData({
+      firstName: AUTH.user.firstName,
+      lastName: AUTH.user.lastName,
+      bio: AUTH.user.bio,
+      birthDate: birthDateFormatted,
+      gender: AUTH.user.gender,
+      height: AUTH.user.height,
+      weight: AUTH.user.weight,
+      weeklyGoalCal: AUTH.user.weeklyGoalCal,
+    });
   }, []);
   // setUserData(AUTH.user);
   const handleInputChange = (event) => {
@@ -198,7 +206,7 @@ function EditUserData() {
             />
           </Col>
           <Col className="col-lg-3 col-12 mt-3 pt-3 text-center">
-            <Link to="/dashboard" className="">
+            <Link to="/" className="">
               <ButtonPurpleOutline
                 className="btn-cancel-profile "
                 text="Cancel"
