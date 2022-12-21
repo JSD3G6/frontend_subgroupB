@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 :root {
   --purple: hsla(266, 99%, 56%, 1);
   --yellow: hsla(36, 96%, 71%, 1);
@@ -35,9 +36,11 @@ body {
   .rounded-base {
     @apply rounded-[10px];
   }
+
   .btn-primary {
-    @apply w-full bg-purple-p-500 h-[60px] rounded-[10px] text-white text-xl font-semibold hover:bg-purple-p-600 drop-shadow-2xl;
+    @apply w-full bg-purple-p-500 h-[60px] rounded-[10px] text-white text-xl font-semibold hover: bg-purple-p-600 drop-shadow-2xl;
   }
+
   .input-primary {
     @apply w-full rounded-base h-[50px] bg-gray-light text-black px-6 font-thin text-2xl;
   }
@@ -48,6 +51,7 @@ body {
     @apply w-[350px];
   }
 }
+
 input::placeholder {
   @apply text-gray-600 font-thin text-2xl text-center;
 }

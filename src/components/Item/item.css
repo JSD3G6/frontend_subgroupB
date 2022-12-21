@@ -1,0 +1,10 @@
+.bg-button {
+  background-color: #181818;
+  color: #fff;
+}
+
+.active {
+  background-color: #fff;
+  color: black;
+  width: 100%;
+}
