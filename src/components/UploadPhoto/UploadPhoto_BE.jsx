@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable linebreak-style */
 /* eslint-disable react/prop-types */
-import axios from '../../services/axios';
 import ButtonPurpleUpLoad from '../buttons/ButtonPurpleUpLoad';
 import { useAuth } from '../../contexts/authContext';
 import { useLoading } from '../../contexts/loadingContext';

@@ -16,7 +16,7 @@ function LoginPage() {
     event.preventDefault(); // กัน Default Action Form
     // console.log('TRY TO SUBMIT');
     // Validate FrontEnd
-    startLoading();
+    startLoading(); // loading == true
     await AUTH.login({ email, password });
     stopLoading();
   };
