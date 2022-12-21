@@ -17,16 +17,19 @@ import ButtonPurpleOutline from '../buttons/ButtonPurpleOutline';
 import './EditUserData.css';
 
 const formSchema = Joi.object({
-  firstName: Joi.string().min(6).max(20).label('First Name')
+  firstName: Joi.string().min(3).max(25).label('First Name')
     .required(),
-  lastName: Joi.string().min(6).max(20).label('Last Name')
+  lastName: Joi.string().min(3).max(25).label('Last Name')
     .required(),
-  bio: Joi.optional(),
+  bio: Joi.string().max(255).optional(),
   birthDate: Joi.date().iso().label('Birthdate').required(),
   gender: Joi.string().valid('female', 'male', 'not-specified').label('Gender'),
-  height: Joi.number().integer().required().label('Height'),
-  weight: Joi.number().integer().required().label('Weight'),
-  weeklyGoalCal: Joi.optional(),
+  height: Joi.number().integer().min(1).required()
+    .label('Height'),
+  weight: Joi.number().integer().min(1).required()
+    .label('Weight'),
+  weeklyGoalCal: Joi.number().integer().min(1).optional()
+    .label('Weekly Goal'),
 });
 
 const defaultUserData = {
