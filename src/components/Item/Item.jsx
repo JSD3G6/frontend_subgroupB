@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useState } from 'react';
 import LineChart from '../LineChart/LineChart';
-import ProfileSummary from '../ProfileSummary/ProfileSummary';
 import ActivityAllSummary from '../ActivityAllSummary/ActivityAllSummary';
 import ActivityCard from '../ActivityCard/ActivityCard';
 import './item.css';
