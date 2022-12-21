@@ -36,10 +36,10 @@ export default function NavDash() {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Web Brand
+            EliteMove
           </Typography>
           <Typography variant="h6" component="div" sx={{ flexGrow: 0 }}>
-            Firstname Lastname
+            {`${AUTH.user.firstName} ${AUTH.user.lastName}`}
           </Typography>
           {auth && (
             <div>

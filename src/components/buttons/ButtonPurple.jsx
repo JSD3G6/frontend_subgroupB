@@ -11,7 +11,7 @@
 import React, { useState } from 'react';
 
 // eslint-disable-next-line react/function-component-definition
-const ButtonPurple = ({ text, onClick }) => {
+const ButtonPurple = ({ text, onClick, type }) => {
   const [isHover, setIsHover] = useState(false);
   const handleOnClick = () => {
     onClick();
@@ -52,6 +52,7 @@ const ButtonPurple = ({ text, onClick }) => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={handleOnClick}
+      type={type}
     >
       {text}
     </button>
