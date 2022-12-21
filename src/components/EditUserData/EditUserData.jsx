@@ -6,7 +6,7 @@
 /* eslint-disable no-unused-vars */
 
 import { Link } from 'react-router-dom';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Joi from 'joi';
 import {
   Container, Row, Col, Form,
@@ -44,10 +44,20 @@ function EditUserData() {
   const [userData, setUserData] = useState(defaultUserData);
 
   const AUTH = useAuth();
+  // console.log('line 47');
+  // console.log(AUTH.user.birthDate);
+  const birthDateFormatted = AUTH.user.birthDate.split('T')[0];
+  // console.log(birthDateFormatted);
 
+  useEffect(() => {
+    setUserData(AUTH.user);
+    setUserData({ birthDate: birthDateFormatted });
+  }, []);
+  // setUserData(AUTH.user);
   const handleInputChange = (event) => {
     const formInputName = event.target.name;
     const formInputValue = event.target.value;
+    // console.log(formInputName, formInputValue);
     const newUserData = { ...userData };
     newUserData[formInputName] = formInputValue;
     setUserData(newUserData);
