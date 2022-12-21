@@ -3,6 +3,7 @@ import { useState } from 'react';
 import LineChart from '../LineChart/LineChart';
 import ActivityAllSummary from '../ActivityAllSummary/ActivityAllSummary';
 import ActivityCard from '../ActivityCard/ActivityCard';
+import ProfileSummary from '../ProfileSummary/ProfileSummary';
 import './item.css';
 
 function Item() {
@@ -26,7 +27,11 @@ function Item() {
           <ProfileSummary />
         </div>
         <div className="d-flex flex-column align-items-center col-xl-5 col-md-12 col-12 order-3 order-md-3 order-xl-2">
-          <button type="submit" className="btn-sign w-100 mb-4 mt-3 mt-md-0" onClick={addNewActivity}>
+          <button
+            type="submit"
+            className="btn-sign w-100 mb-4 mt-3 mt-md-0"
+            onClick={addNewActivity}
+          >
             create new activity
           </button>
           <ActivityCard />
@@ -46,8 +51,14 @@ function Item() {
               <h6>0 cal</h6>
             </div>
             <div className="d-flex flex-column align-items-center mb-2">
-              <select className="bg-button" onChange={(e) => setType(e.target.value)} defaultValue="Select Type">
-                <option value="select" hidden>Select Type</option>
+              <select
+                className="bg-button"
+                onChange={(e) => setType(e.target.value)}
+                defaultValue="Select Type"
+              >
+                <option value="select" hidden>
+                  Select Type
+                </option>
                 <option value="bicycling">bicycling</option>
                 <option value="hiking">hiking</option>
                 <option value="running">running</option>
@@ -55,9 +66,30 @@ function Item() {
                 <option value="swimming">swimming</option>
               </select>
               <div className="d-flex w-100">
-                <button type="button" className={active === 'w' ? 'active' : 'w-100 bg-button'} onClick={handleClick} id="w">W</button>
-                <button type="button" className={active === 'm' ? 'active' : 'w-100 bg-button'} onClick={handleClick} id="m">M</button>
-                <button type="button" className={active === 'y' ? 'active' : 'w-100 bg-button'} onClick={handleClick} id="y">Y</button>
+                <button
+                  type="button"
+                  className={active === 'w' ? 'active' : 'w-100 bg-button'}
+                  onClick={handleClick}
+                  id="w"
+                >
+                  W
+                </button>
+                <button
+                  type="button"
+                  className={active === 'm' ? 'active' : 'w-100 bg-button'}
+                  onClick={handleClick}
+                  id="m"
+                >
+                  M
+                </button>
+                <button
+                  type="button"
+                  className={active === 'y' ? 'active' : 'w-100 bg-button'}
+                  onClick={handleClick}
+                  id="y"
+                >
+                  Y
+                </button>
               </div>
             </div>
           </div>
