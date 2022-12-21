@@ -9,7 +9,7 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import './Register.css';
+import './register.css';
 import User from '../../images/user-Reg.png';
 
 function Register1() {
