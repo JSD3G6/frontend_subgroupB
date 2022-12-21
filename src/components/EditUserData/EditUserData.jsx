@@ -1,3 +1,5 @@
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable guard-for-in */
 /* eslint-disable no-alert */
 /* eslint-disable no-undef */
 /* eslint-disable linebreak-style */
@@ -41,19 +43,14 @@ const defaultUserData = {
 function EditUserData() {
   const [userData, setUserData] = useState(defaultUserData);
 
-  // try api
   const AUTH = useAuth();
 
-  const updateUserData = async () => {
-    // Send Request
-    try {
-      const formData = new FormData();
-      formData.set(newUserData);
-      /// ///////////////here////////
-      await AUTH.updateUserProfile(newUserData);
-    } catch (error) {
-      console.log(error);
-    }
+  const handleInputChange = (event) => {
+    const formInputName = event.target.name;
+    const formInputValue = event.target.value;
+    const newUserData = { ...userData };
+    newUserData[formInputName] = formInputValue;
+    setUserData(newUserData);
   };
 
   const handleFormSubmit = (event) => {
@@ -63,19 +60,24 @@ function EditUserData() {
     if (error) {
       const fieldError = error.details.map((item) => alert(item.message));
     }
-    console.log('validated data: ', value);
+  };
+
+  const updateUserData = async () => {
+    // Send Request
+    try {
+      const editiedUserData = userData;
+      const formData = new FormData();
+      for (const key in editiedUserData) {
+        formData.append(key, editiedUserData[key]);
+      }
+      await AUTH.updateUserProfile(editiedUserData);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleOnClick = () => {
     updateUserData();
-  };
-
-  const handleInputChange = (event) => {
-    const formInputName = event.target.name;
-    const formInputValue = event.target.value;
-    const newUserData = { ...userData };
-    newUserData[formInputName] = formInputValue;
-    setUserData(newUserData);
   };
 
   // render
