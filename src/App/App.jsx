@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default-member */
 /* eslint-disable linebreak-style */
 import { BrowserRouter } from 'react-router-dom';
 import AuthContextProvider from '../contexts/authContext';

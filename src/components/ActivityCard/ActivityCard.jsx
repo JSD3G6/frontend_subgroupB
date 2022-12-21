@@ -1,16 +1,22 @@
 /* eslint-disable */
+import { useNavigate } from 'react-router-dom';
 import './ActivityCard.css';
 import ActivityImage from '../../images/activitycard-img.png';
 import Edit from '../../images/edit.png';
 import Delete from '../../images/delete.png';
 
 function ActivityCard() {
+  // props : activityId
+  const ACTIVITY_ID = '6ecx123ffsdf3234';
+  const navigate = useNavigate();
+
   const editActivity = () => {
-    console.log('edit');    
+    console.log('edit');
+    navigate(`/activity/edit/${ACTIVITY_ID}`);
   };
-  
+
   const deleteActivy = () => {
-    if (window.confirm("Are you sure to delete ?")) {
+    if (window.confirm('Are you sure to delete ?')) {
       console.log('delete');
     }
   };
@@ -22,10 +28,10 @@ function ActivityCard() {
         </div>
         <div className="col-sm-8 col-12 bg-card text-white">
           <div className="fw-bolder d-flex justify-content-between">
-              <h3 className="p-2">Title your activity</h3>
-              <div className="d-flex justify-content-between p-2">
-            <img src={Edit} alt="edit" className="img-edit p-2" onClick={editActivity} />
-            <img src={Delete} alt="delete" className="img-edit p-2" onClick={deleteActivy} />
+            <h3 className="p-2">Title your activity</h3>
+            <div className="d-flex justify-content-between p-2">
+              <img src={Edit} alt="edit" className="img-edit p-2" onClick={editActivity} />
+              <img src={Delete} alt="delete" className="img-edit p-2" onClick={deleteActivy} />
             </div>
           </div>
           <div className="ActC-info d-flex ">
@@ -41,13 +47,11 @@ function ActivityCard() {
           <p className="ActC-shered">
             Shared more about your activity
             <br />
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
-            tempor cursus enim at malesuada. Praesent vitae sem interdum, semper
-            sapien vitae, placerat metus. Cras sit amet ex sem. Fusce aliquet,
-            nibh a venenatis scelerisque, orci.orem ipsum dolor sit amet,
-            consectetur adipiscing elit. Maecenas tempor cursus enim at
-            malesuada. Praesent vitae sem interdum, semper sapien vitae,
-            placerat metu
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor cursus enim at
+            malesuada. Praesent vitae sem interdum, semper sapien vitae, placerat metus. Cras sit
+            amet ex sem. Fusce aliquet, nibh a venenatis scelerisque, orci.orem ipsum dolor sit
+            amet, consectetur adipiscing elit. Maecenas tempor cursus enim at malesuada. Praesent
+            vitae sem interdum, semper sapien vitae, placerat metu
             <br />
           </p>
         </div>

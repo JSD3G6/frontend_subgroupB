@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/authContext';
 import LineChart from '../LineChart/LineChart';
 import ActivityAllSummary from '../ActivityAllSummary/ActivityAllSummary';
@@ -9,6 +10,7 @@ import './item.css';
 import ButtonPurple from '../buttons/ButtonPurple';
 
 function Item() {
+  const navigate = useNavigate();
   const [active, setActive] = useState('');
   const [type, setType] = useState('');
   const { user, allActivity, getAllActivityUser } = useAuth();
@@ -19,6 +21,7 @@ function Item() {
 
   const addNewActivity = () => {
     console.log('change to page add a activity');
+    navigate('/activity/create');
   };
 
   // const handleData = (e) => {
@@ -37,7 +40,11 @@ function Item() {
           <ProfileSummary />
         </div>
         <div className="mt-5 mt-md-0 d-flex flex-column align-items-center col-xl-5 col-md-12 col-12 order-3 order-md-3 order-xl-2">
-          <ButtonPurple text="create new activity" className="w-100 mb-4" onClick={addNewActivity} />
+          <ButtonPurple
+            text="create new activity"
+            className="w-100 mb-4"
+            onClick={addNewActivity}
+          />
           <ActivityCard />
         </div>
         <div className="d-flex flex-column align-items-center col-xl-4 col-md-6 col-12 order-2 order-md-2 order-xl-3">

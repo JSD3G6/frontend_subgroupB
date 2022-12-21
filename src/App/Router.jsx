@@ -7,8 +7,11 @@ import LandingPage from '../pages/LandingPage/LandingPage';
 import LoginPage from '../pages/LoginPage/LoginPage_11';
 import RegisterPage from '../pages/RegisterPage/RegisterPage_28';
 import ProfilePage from '../pages/ProfilePage/ProfilePage';
+import CreateActivity from '../pages/Activity/CreateActivity';
+import EditActivity from '../pages/Activity/EditActivity';
 import { useAuth } from '../contexts/authContext';
 import AppLayout from '../layout/AppLayout';
+
 // import LoginPage from '../pages/LoginPage/LoginPage';
 // import RegisterPage from '../pages/RegisterPage/RegisterPage';
 
@@ -31,6 +34,8 @@ function Router() {
       <Route path="/" element={<AppLayout />}>
         <Route path="" element={<DashBoardPage />} />
         <Route path="profile" element={<ProfilePage />} />
+        <Route path="/activity/create" element={<CreateActivity />} />
+        <Route path="/activity/edit/:activityId" element={<EditActivity />} />
       </Route>
     </Routes>
   );
