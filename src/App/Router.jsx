@@ -24,8 +24,7 @@ function Router() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/dashboard" element={<DashBoardPage />} />
-        {/* <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} /> */}
+        {/* for temperary purposes only [1000] */}
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/profile/profileSummary" element={<ProfileSummaryPage />} />
         <Route path="/updateactivity" element={<UpdateActivity />} />

@@ -14,8 +14,8 @@ import React, { useState } from 'react';
 function ButtonPurple({ text, onClick }) {
 	const [isHover, setIsHover] = useState(false);
 	const handleOnClick = () => {
-		onClick()
-	}
+		// onClick()
+	};
 
 	const handleMouseEnter = () => {
 		setIsHover(true);
