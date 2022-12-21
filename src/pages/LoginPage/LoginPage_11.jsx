@@ -4,9 +4,11 @@ import LoginLogo from '../../assets/login-logo.png';
 import GmailLogo from '../../assets/gmail.png';
 import FacebookLogo from '../../assets/facebook.png';
 import { AuthContext } from '../../contexts/authContext';
+import { useLoading } from '../../contexts/loadingContext';
 
 function LoginPage() {
   const AUTH = useContext(AuthContext);
+  const { startLoading, stopLoading } = useLoading();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -14,8 +16,9 @@ function LoginPage() {
     event.preventDefault(); // กัน Default Action Form
     // console.log('TRY TO SUBMIT');
     // Validate FrontEnd
-
-    AUTH.login({ email, password });
+    startLoading(); // loading == true
+    await AUTH.login({ email, password });
+    stopLoading();
   };
 
   const onChangeEmail = (event) => {
