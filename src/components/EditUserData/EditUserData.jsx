@@ -66,7 +66,7 @@ function EditUserData() {
             <Form.Control id="caloriesInput" type="number" placeholder="2,000" />
           </Col>
           <Col className="col-lg-3 col-12 mt-3 pt-3 text-center">
-            <Link to="/dashboard" className="">
+            <Link to="/" className="">
               <ButtonPurpleOutline
                 className="btn-cancel-profile "
                 text="Cancel"

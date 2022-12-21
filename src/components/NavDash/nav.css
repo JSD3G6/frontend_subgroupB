@@ -1,3 +1,11 @@
 .css-hip9hq-MuiPaper-root-MuiAppBar-root {
   background-color: #151515 !important;
+  
+}
+
+.box-navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
 }

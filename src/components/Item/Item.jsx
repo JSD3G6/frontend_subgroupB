@@ -1,14 +1,18 @@
 /* eslint-disable no-unused-vars */
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useAuth } from '../../contexts/authContext';
 import LineChart from '../LineChart/LineChart';
 import ActivityAllSummary from '../ActivityAllSummary/ActivityAllSummary';
 import ActivityCard from '../ActivityCard/ActivityCard';
 import ProfileSummary from '../ProfileSummary/ProfileSummary';
 import './item.css';
+import ButtonPurple from '../buttons/ButtonPurple';
 
 function Item() {
   const [active, setActive] = useState('');
   const [type, setType] = useState('');
+  const { user, allActivity, getAllActivityUser } = useAuth();
+  // console.log(user);
   const handleClick = (event) => {
     setActive(event.target.id);
   };
@@ -20,20 +24,20 @@ function Item() {
   // const handleData = (e) => {
   //   console.log(e.target.id);
   // };
+
+  useEffect(() => {
+    getAllActivityUser();
+  }, []);
+
+  console.log(allActivity);
   return (
-    <div className="container-fluid mt-4">
+    <div className="container-fluid mt-10">
       <div className="row">
         <div className="d-flex flex-column align-items-center col-xl-3 col-md-6 col-12 order-1 order-md-1 order-xl-1">
           <ProfileSummary />
         </div>
-        <div className="d-flex flex-column align-items-center col-xl-5 col-md-12 col-12 order-3 order-md-3 order-xl-2">
-          <button
-            type="submit"
-            className="btn-sign w-100 mb-4 mt-3 mt-md-0"
-            onClick={addNewActivity}
-          >
-            create new activity
-          </button>
+        <div className="mt-5 mt-md-0 d-flex flex-column align-items-center col-xl-5 col-md-12 col-12 order-3 order-md-3 order-xl-2">
+          <ButtonPurple text="create new activity" className="w-100 mb-4" onClick={addNewActivity} />
           <ActivityCard />
         </div>
         <div className="d-flex flex-column align-items-center col-xl-4 col-md-6 col-12 order-2 order-md-2 order-xl-3">
@@ -94,7 +98,7 @@ function Item() {
             </div>
           </div>
           <LineChart active={active} />
-          <div className="activity-all-summary">
+          <div className="activity-all-summary mb-4 mb-md-0">
             <ActivityAllSummary />
           </div>
         </div>
