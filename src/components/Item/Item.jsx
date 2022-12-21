@@ -3,14 +3,18 @@ import { useState } from 'react';
 import LineChart from '../LineChart/LineChart';
 import ProfileSummary from '../ProfileSummary/ProfileSummary';
 import ActivityAllSummary from '../ActivityAllSummary/ActivityAllSummary';
+import ActivityCard from '../ActivityCard/ActivityCard';
 import './item.css';
 
 function Item() {
   const [active, setActive] = useState('');
   const [type, setType] = useState('');
-  console.log(type);
   const handleClick = (event) => {
     setActive(event.target.id);
+  };
+
+  const addNewActivity = () => {
+    console.log('change to page add a activity');
   };
 
   // const handleData = (e) => {
@@ -23,7 +27,10 @@ function Item() {
           <ProfileSummary />
         </div>
         <div className="d-flex flex-column align-items-center col-xl-5 col-md-12 col-12 order-3 order-md-3 order-xl-2">
-          <h1>Create Activity</h1>
+          <button type="submit" className="btn-sign w-100 mb-4 mt-3 mt-md-0" onClick={addNewActivity}>
+            create new activity
+          </button>
+          <ActivityCard />
         </div>
         <div className="d-flex flex-column align-items-center col-xl-4 col-md-6 col-12 order-2 order-md-2 order-xl-3">
           <div className="d-flex gap-3 align-items-center">

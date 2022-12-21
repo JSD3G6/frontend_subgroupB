@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable consistent-return */
 /* eslint-disable no-else-return */
 /* eslint-disable react/prop-types */
@@ -32,16 +33,16 @@ function LineChart({ active }) {
     if (props === 'w') {
       return ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     } else if (props === 'm') {
-      return ['', 'Dec', ''];
+      return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31];
     } else if (props === 'y') {
       return ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     }
   };
   const handleOnChaneData = (props) => {
     if (props === 'w') {
-      return [10, 7, 8, 12, 5, 9, 10];
+      return [1, 1.5, 1, 1, 1, 1, 0.5];
     } else if (props === 'm') {
-      return ['', 37, ''];
+      return [1, 2, 1, 2, 1, 2, 1, 2, 2, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 3, 2, 1, 2, 2, 3, 1, 0, 1];
     } else if (props === 'y') {
       return [20, 10, 10, 30, 50, 70, 80, 10, 20, 30, 40, 50];
     }
