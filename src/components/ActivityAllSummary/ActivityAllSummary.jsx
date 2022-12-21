@@ -13,7 +13,7 @@ function ActivityAllSummary() {
   const totalDurationMin = (700 / 60).toFixed(2);
   const percent = 75;
   return (
-    <div className="activity-all-container">
+    <div className="activity-all-container mt-4">
       <div className="summary-container bicycling">
         <BiCycling className="activity-icon" />
         <span>{`Total: ${count} times`}</span>

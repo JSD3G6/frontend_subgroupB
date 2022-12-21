@@ -1,8 +1,10 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable linebreak-style */
 /* eslint-disable no-unused-vars */
 
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../contexts/authContext';
 import ProgressBar from '../ProgressBar/ProgressBar';
 import ActivityAllSummary from '../ActivityAllSummary/ActivityAllSummary';
 import Motivation from '../Motivation/Motivation';
@@ -10,9 +12,9 @@ import './ProfileSummary.css';
 
 function ProfileSummary() {
   const defaultAvatar = 'https://images.unsplash.com/photo-1626245550585-0b8d640da77f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80';
-
   const [imageSrc, setImageSrc] = useState(defaultAvatar);
   const [imageAlt, setImageAlt] = useState('profile');
+  const { user } = useAuth();
 
   const getData = (src, alt) => {
     setImageSrc(src);
@@ -30,16 +32,16 @@ function ProfileSummary() {
         <div className="profile-box">
           <div className="profile-info">
             <h1>
-              <span>firstName</span>
-              <span>lastName</span>
+              <span>{user.firstName}</span>
+              <span>{user.lastName}</span>
             </h1>
             <div className="profile-details">
               <div className="box weight-box">
-                <p>80 kg</p>
+                <p>{user.weight} kg</p>
                 <p className="box-title">Weight</p>
               </div>
               <div className="box height-box">
-                <p>170 cm</p>
+                <p>{user.height} cm</p>
                 <p className="box-title">Height</p>
               </div>
               <div className="box age-box">
@@ -64,10 +66,10 @@ function ProfileSummary() {
           />
         </div>
       </div>
-      <div className="activity-all-summary">
-        <ActivityAllSummary />
+      <div className="activity-all-summary mt-3">
+        {/* <ActivityAllSummary /> */}
       </div>
-      <div className="motivation-box-container">
+      <div className="motivation-box-container mb-3">
         <Motivation className="motivation-quotes" />
       </div>
     </div>

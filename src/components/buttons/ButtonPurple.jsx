@@ -1,3 +1,4 @@
+/* eslint-disable object-curly-newline */
 /* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable linebreak-style */
@@ -11,7 +12,7 @@
 import React, { useState } from 'react';
 
 // eslint-disable-next-line react/function-component-definition
-const ButtonPurple = ({ text, onClick, type }) => {
+const ButtonPurple = ({ text, onClick, type, className }) => {
   const [isHover, setIsHover] = useState(false);
   const handleOnClick = () => {
     onClick();
@@ -52,6 +53,7 @@ const ButtonPurple = ({ text, onClick, type }) => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={handleOnClick}
+      className={className}
       type={type}
     >
       {text}
