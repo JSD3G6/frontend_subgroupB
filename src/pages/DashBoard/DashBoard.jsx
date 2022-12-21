@@ -3,7 +3,7 @@ import NavDash from '../../components/NavDash/NavDash';
 
 function DashBoard() {
   return (
-    <div className="overflow-hidden">
+    <div className="overflow-hidden mt-10">
       <NavDash />
       <Item />
     </div>

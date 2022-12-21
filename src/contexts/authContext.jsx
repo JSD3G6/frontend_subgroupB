@@ -7,6 +7,7 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as AuthAPI from '../api/authApi'; // {login: (data)=> {}, register: (data)=>}
 import * as ProfileAPI from '../api/profileApi';
+import * as ActAPI from '../api/activityApi';
 import { setAccessToken, getAccessToken, removeAccessToken } from '../services/localStorage';
 
 // ### Named Context ใช้ 2 ที่
@@ -16,6 +17,7 @@ const AuthContext = createContext();
 function AuthContextProvider({ children }) {
   // ## SHARED DATA
   const [user, setUser] = useState(null);
+  const [allActivity, setActivity] = useState([]);
   const [initialLoading, setInitialLoading] = useState(true);
   const navigate = useNavigate();
 
@@ -90,10 +92,27 @@ function AuthContextProvider({ children }) {
     }
   };
 
+  const getAllActivityUser = async () => {
+    try {
+      const res = await ActAPI.getAllLazyLoad(user?._id);
+      const data = res.data.activities;
+      setActivity(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    const token = getAccessToken();
+    if (token) {
+      getAllActivityUser();
+    }
+  }, []);
+
   // # Bundle Shared Value,Logic in Object
   const shared = {
     user,
     initialLoading,
+    allActivity,
     login,
     logout,
     register,

@@ -20,6 +20,10 @@
   overflow: hidden;
 }
 
+.bg-card {
+  background-color: #181818;
+}
+
 @media screen and (max-width: 768px) {
   .img {
      width: 100%;

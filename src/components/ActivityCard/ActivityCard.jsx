@@ -13,18 +13,17 @@ function ActivityCard() {
     if (window.confirm("Are you sure to delete ?")) {
       console.log('delete');
     }
-  }
- 
+  };
   return (
-    <div className="container-fluid bg-dark">
+    <div className="container-fluid bg-card mb-3">
       <div className="row">
         <div className="col-sm-4 col-12">
           <img className="img-fluid img" src={ActivityImage} alt="" />
         </div>
-        <div className="col-sm-8 col-12 bg-dark text-white">
+        <div className="col-sm-8 col-12 bg-card text-white">
           <div className="fw-bolder d-flex justify-content-between">
               <h3 className="p-2">Title your activity</h3>
-              <div className="justify-content-between p-2">
+              <div className="d-flex justify-content-between p-2">
             <img src={Edit} alt="edit" className="img-edit p-2" onClick={editActivity} />
             <img src={Delete} alt="delete" className="img-edit p-2" onClick={deleteActivy} />
             </div>
