@@ -17,7 +17,7 @@ const AuthContext = createContext();
 function AuthContextProvider({ children }) {
   // ## SHARED DATA
   const [user, setUser] = useState(null);
-  const [allActivity, setActivity] = useState([]);
+  const [allActivity, setAllActivity] = useState([]);
   const [initialLoading, setInitialLoading] = useState(true);
   const navigate = useNavigate();
 
@@ -96,17 +96,11 @@ function AuthContextProvider({ children }) {
     try {
       const res = await ActAPI.getAllLazyLoad(user?._id);
       const data = res.data.activities;
-      setActivity(data);
+      setAllActivity(data);
     } catch (error) {
       console.log(error);
     }
   };
-  useEffect(() => {
-    const token = getAccessToken();
-    if (token) {
-      getAllActivityUser();
-    }
-  }, []);
 
   // # Bundle Shared Value,Logic in Object
   const shared = {
@@ -118,6 +112,7 @@ function AuthContextProvider({ children }) {
     register,
     getUserProfile,
     updateUserProfile,
+    getAllActivityUser,
   };
   // ที่ที่ 1 : ใช้ตั้ง Provider
   return <AuthContext.Provider value={shared}>{children}</AuthContext.Provider>;

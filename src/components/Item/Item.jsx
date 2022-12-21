@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useAuth } from '../../contexts/authContext';
 import LineChart from '../LineChart/LineChart';
 import ActivityAllSummary from '../ActivityAllSummary/ActivityAllSummary';
@@ -11,7 +11,7 @@ import ButtonPurple from '../buttons/ButtonPurple';
 function Item() {
   const [active, setActive] = useState('');
   const [type, setType] = useState('');
-  const { user, allActivity } = useAuth();
+  const { user, allActivity, getAllActivityUser } = useAuth();
   // console.log(user);
   const handleClick = (event) => {
     setActive(event.target.id);
@@ -25,7 +25,11 @@ function Item() {
   //   console.log(e.target.id);
   // };
 
-  console.log(user);
+  useEffect(() => {
+    getAllActivityUser();
+  }, []);
+
+  console.log(allActivity);
   return (
     <div className="container-fluid mt-10">
       <div className="row">
@@ -35,26 +39,6 @@ function Item() {
         <div className="mt-5 mt-md-0 d-flex flex-column align-items-center col-xl-5 col-md-12 col-12 order-3 order-md-3 order-xl-2">
           <ButtonPurple text="create new activity" className="w-100 mb-4" onClick={addNewActivity} />
           <ActivityCard />
-          <ActivityCard />
-          <ActivityCard />
-          <ActivityCard />
-          <ActivityCard />
-          <ActivityCard />
-          <ActivityCard />
-          <ActivityCard />
-          <ActivityCard />
-          <ActivityCard />
-          <ActivityCard />
-          <ActivityCard />
-          <ActivityCard />
-          <ActivityCard />
-          <ActivityCard />
-          <ActivityCard />
-          <ActivityCard />
-          <ActivityCard />
-          <ActivityCard />
-          <ActivityCard />
-
         </div>
         <div className="d-flex flex-column align-items-center col-xl-4 col-md-6 col-12 order-2 order-md-2 order-xl-3">
           <div className="d-flex gap-3 align-items-center">
