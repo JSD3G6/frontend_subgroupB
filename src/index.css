@@ -63,3 +63,37 @@ input[type="file"] {
 label {
   cursor: pointer;
 }
+
+.loader-container {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  background: rgba(100, 100, 100, 0.05);
+  height: 100%;
+  display: flex;
+  z-index: 20;
+}
+.loader {
+  border-top-color: var(--purple);
+  -webkit-animation: spinner 1.5s linear infinite;
+  animation: spinner 1.5s linear infinite;
+  margin: auto;
+}
+
+@-webkit-keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -9,6 +9,7 @@ import RegisterPage from '../pages/RegisterPage/RegisterPage_28';
 import ProfilePage from '../pages/ProfilePage/ProfilePage';
 import { useAuth } from '../contexts/authContext';
 import ProfileSummaryPage from '../pages/ProfilePage/ProfileSummaryPage';
+import PrivateAppLayout from '../layout/PrivateAppLayout';
 // import LoginPage from '../pages/LoginPage/LoginPage';
 // import RegisterPage from '../pages/RegisterPage/RegisterPage';
 
@@ -31,8 +32,10 @@ function Router() {
   }
   return (
     <Routes>
-      <Route path="/" element={<DashBoardPage />} />
-      <Route path="/profile" element={<ProfilePage />} />
+      <Route path="/" element={<PrivateAppLayout />}>
+        <Route path="" element={<DashBoardPage />} />
+        <Route path="profile" element={<ProfilePage />} />
+      </Route>
     </Routes>
   );
 }
