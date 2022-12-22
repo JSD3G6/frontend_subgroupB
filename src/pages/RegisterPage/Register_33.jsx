@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint-disable prefer-regex-literals */
 /* eslint-disable no-unused-vars */
 import { useState } from 'react';
@@ -19,12 +20,17 @@ const formSchema = Joi.object({
     .required(),
   email: Joi.string()
     .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } })
-    .label('Email').required(),
-  password: Joi.string().required().pattern(new RegExp('^[a-zA-Z0-9]{6,20}$'))
+    .label('Email')
+    .required(),
+  password: Joi.string()
+    .required()
+    .pattern(new RegExp('^[a-zA-Z0-9]{6,20}$'))
     .label('Password')
     .required(),
-  confirmPassword: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{6,20}$'))
-    .label('Confirm password').required(),
+  confirmPassword: Joi.string()
+    .pattern(new RegExp('^[a-zA-Z0-9]{6,20}$'))
+    .label('Confirm password')
+    .required(),
   birthDate: Joi.date().iso().label('Birthdate').required(),
   gender: Joi.string().valid('female', 'male', 'not-specified').label('Gender'),
   height: Joi.number().integer().min(1).required()
@@ -33,7 +39,6 @@ const formSchema = Joi.object({
     .label('Weight'),
   weeklyGoalCal: Joi.number().integer().min(1).optional()
     .label('Weekly Goal'),
-
 });
 const defaultUserData = {
   firstName: '',
@@ -69,6 +74,11 @@ function RegisterPage() {
     if (error) {
       const e = Object.entries(error);
       console.log(e);
+      const message = error?.details[0].message;
+      console.log(error.details);
+      if (message.toLowerCase().includes('password')) {
+        return alert('password must be alphabet and number and length between 6-20');
+      }
       const fieldError = error.details.map((item) => alert(item.message));
     }
     try {
@@ -87,17 +97,8 @@ function RegisterPage() {
   return (
     <div className="Background-Register">
       <div className="Register">
-        <Form
-          noValidate
-          onSubmit={handleFormSubmit}
-          className="container-register "
-        >
-          <img
-            src={Logo}
-            alt="register"
-            width={100}
-            className="mt-4 mb-2"
-          />
+        <Form noValidate onSubmit={handleFormSubmit} className="container-register ">
+          <img src={Logo} alt="register" width={100} className="mt-4 mb-2" />
           <h1
             className="mb-3"
             style={{
@@ -106,7 +107,6 @@ function RegisterPage() {
             }}
           >
             Register
-
           </h1>
           <Container className="r-cotainer d-flex">
             <Row className="mb-3 ">
@@ -138,7 +138,6 @@ function RegisterPage() {
                   />
                 </Form.Group>
               </Col>
-
             </Row>
 
             <Row>
@@ -155,7 +154,6 @@ function RegisterPage() {
                     id="emailInput"
                   />
                 </Form.Group>
-
               </Col>
             </Row>
 
@@ -163,9 +161,7 @@ function RegisterPage() {
               <Col>
                 <Form.Group className="mb-3">
                   <Form.Label>
-                    Password (at least 6 characters, including letters and numbers
-                    )
-
+                    Password (at least 6 characters, including letters and numbers )
                   </Form.Label>
                   <Form.Control
                     type="password"
@@ -228,7 +224,6 @@ function RegisterPage() {
                     <option value="male">Male</option>
                     <option value="not-specified">Not-specified</option>
                   </Form.Select>
-
                 </Form.Group>
               </Col>
             </Row>
