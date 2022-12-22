@@ -35,8 +35,8 @@ function Router() {
       <Route path="/" element={<AppLayout />}>
         <Route path="" element={<DashBoardPage />} />
         <Route path="profile" element={<ProfilePage />} />
-        <Route path="/activity/create" element={<CreateActivity />} />
-        <Route path="/activity/edit/:activityId" element={<EditActivity />} />
+        <Route path="activity/create" element={<CreateActivity />} />
+        <Route path="activity/edit/:activityId" element={<EditActivity />} />
       </Route>
     </Routes>
   );

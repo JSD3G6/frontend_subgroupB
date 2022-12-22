@@ -28,8 +28,10 @@ function AuthContextProvider({ children }) {
 
       try {
         const response = await ProfileAPI.getMe();
+        // const r = await ProfileAPI.getProfile(response.data.user._id);
         const fetchedUser = response.data.user;
         // 1 setUser
+        console.log(fetchedUser);
         setUser(fetchedUser);
         // 2 navigate
         navigate('/');
@@ -43,6 +45,7 @@ function AuthContextProvider({ children }) {
     // ถ้าไม่มี ก็ไม่ต้องทำอะไร / setUser(null)
     const token = getAccessToken();
     if (token) {
+      console.log('FM');
       fetchMe();
     }
   }, []);

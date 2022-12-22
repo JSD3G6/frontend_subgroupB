@@ -15,7 +15,7 @@ function ProfileSummary() {
   const [imageSrc, setImageSrc] = useState(defaultAvatar);
   const [imageAlt, setImageAlt] = useState('profile');
   const { user } = useAuth();
-
+  console.log(user);
   const getData = (src, alt) => {
     setImageSrc(src);
     setImageAlt(alt);
@@ -26,7 +26,11 @@ function ProfileSummary() {
       <div className="profile-summary-container">
         <div className="edit-avatar-container">
           <Link className="link-edit-profile" to="/profile">
-            <img className="avatar-photo" src={user?.profilePhoto ? user?.profilePhoto : defaultAvatar} alt={imageAlt} />
+            <img
+              className="avatar-photo"
+              src={user?.profilePhoto ? user?.profilePhoto : defaultAvatar}
+              alt={imageAlt}
+            />
           </Link>
         </div>
         <div className="profile-box">
@@ -45,7 +49,7 @@ function ProfileSummary() {
                 <p className="box-title">Height</p>
               </div>
               <div className="box age-box">
-                <p>25 yrs</p>
+                <p>{user.age || 32}</p>
                 <p className="box-title">Age</p>
               </div>
             </div>
@@ -66,9 +70,7 @@ function ProfileSummary() {
           />
         </div>
       </div>
-      <div className="activity-all-summary mt-3">
-        {/* <ActivityAllSummary /> */}
-      </div>
+      <div className="activity-all-summary mt-3">{/* <ActivityAllSummary /> */}</div>
       <div className="motivation-box-container mb-3">
         <Motivation className="motivation-quotes" />
       </div>
