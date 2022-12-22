@@ -5,17 +5,15 @@ import {
   createContext, useContext, useState,
 } from 'react';
 import * as ActAPI from '../api/activityApi';
-import { useAuth } from './authContext';
 
 const ActivityContext = createContext();
 
 function ActivityContextProvider({ children }) {
   const [allActivity, setAllActivity] = useState([]);
-  const { user } = useAuth();
 
-  const getAllActivityUser = async () => {
+  const getAllActivityUser = async (userId) => {
     try {
-      const res = await ActAPI.getAllLazyLoad(user?._id);
+      const res = await ActAPI.getAllLazyLoad(userId);
       const data = res.data.activities;
       setAllActivity(data);
     } catch (error) {
