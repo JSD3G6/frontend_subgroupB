@@ -45,7 +45,6 @@ function Item() {
             className="w-100 mb-4"
             onClick={addNewActivity}
           />
-          <ActivityCard />
         </div>
         <div className="d-flex flex-column align-items-center col-xl-4 col-md-6 col-12 order-2 order-md-2 order-xl-3">
           <div className="d-flex gap-3 align-items-center">
