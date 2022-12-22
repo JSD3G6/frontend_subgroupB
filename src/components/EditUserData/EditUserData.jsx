@@ -92,7 +92,7 @@ function EditUserData() {
       const formData = new FormData();
       for (const key in editiedUserData) {
         formData.append(key, editiedUserData[key]);
-        console.log('Edok', key);
+        // console.log('Edok', key);
       }
       startLoading();
       await AUTH.updateUserProfile(editiedUserData);

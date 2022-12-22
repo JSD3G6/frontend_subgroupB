@@ -67,7 +67,7 @@ function ActivityList() {
 
   useEffect(() => {
     const event = window.addEventListener('scroll', () => {
-      console.log('result', window.innerHeight + window.scrollY > document.body.offsetHeight + 400);
+      // console.log('result', window.innerHeight + window.scrollY > document.body.offsetHeight + 400);
       if (window.innerHeight + window.scrollY > document.body.offsetHeight + 400 && startLoading) {
         shouldFetch();
       }

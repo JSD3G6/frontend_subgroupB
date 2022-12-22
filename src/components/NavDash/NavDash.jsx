@@ -52,7 +52,7 @@ export default function NavDash() {
                 onClick={handleMenu}
                 color="inherit"
               >
-                {AUTH.user ? <img className="img-user" src={AUTH.user?.profilePhoto} alt="photo-user" /> : <AccountCircle />}
+                {AUTH.user.profilePhoto ? <img className="img-user" src={AUTH.user?.profilePhoto} alt="photo-user" /> : <AccountCircle />}
               </IconButton>
               <Menu
                 id="menu-appbar"
