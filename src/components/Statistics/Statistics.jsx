@@ -1,29 +1,90 @@
 /* eslint-disable no-unused-vars */
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import LineChart from '../LineChart/LineChart';
 import ActivityAllSummary from '../ActivityAllSummary/ActivityAllSummary';
+import * as statisticsAPI from '../../api/statisticsApi';
 
 function Statistics() {
   const [type, setType] = useState('');
-  const [active, setActive] = useState('w');
+  const [active, setActive] = useState('week');
+  const [linear, setLinear] = useState([]);
+  const [queryString, setQueryString] = useState('');
+  const [typeChartData, setTypeChartData] = useState([]);
+  const [totalStat, setTotalStat] = useState({
+    totalCount: 0,
+    totalCaloriesBurnedCal: 0,
+    totalDurationMin: 0,
+    totalDistanceKM: 0,
+  });
 
   const handleClick = (event) => {
     setActive(event.target.id);
   };
+  useEffect(() => {
+    const fetchStat = async () => {
+      try {
+        const res = await statisticsAPI.getStatistics(queryString);
+        const arrayLinear = res.data.summary.linear;
+        const typeChart = res.data.summary.type.sort((a, b) => b.count - a.count);
+        setLinear(arrayLinear);
+        setTypeChartData(typeChart);
+        setTotalStat({
+          totalCount: res.data.summary.totalCount,
+          totalCaloriesBurnedCal: res.data.summary.totalCaloriesBurnedCal,
+          totalDurationMin: res.data.summary.totalDurationMin,
+          totalDistanceKM: res.data.summary.totalDistanceKM,
+        });
+        console.log(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchStat();
+  }, [queryString]);
+
+  useEffect(() => {
+    let q = '';
+
+    if (type) {
+      q += `activityType=${type}`;
+    }
+
+    if (active) {
+      q += `&duration=${active}`;
+    }
+    if (type === 'all') {
+      q = `duration=${active}`;
+    }
+
+    setQueryString(q);
+  }, [active, type]);
+
   return (
     <div className="d-flex flex-column align-items-center col-xl-4 col-md-6 col-12 order-2 order-md-2 order-xl-3">
       <div className="d-flex gap-3 align-items-center">
         <div className="d-flex flex-column align-items-center">
           <h6>Distance</h6>
-          <h6>0 km</h6>
+          <h6>
+            {totalStat.totalDistanceKM.toLocaleString()}
+            {' '}
+            km
+          </h6>
         </div>
         <div className="d-flex flex-column align-items-center">
           <h6>Time</h6>
-          <h6>0 Hr</h6>
+          <h6>
+            {(totalStat.totalDurationMin / 60).toFixed(2).toLocaleString()}
+            {' '}
+            Hr
+          </h6>
         </div>
         <div className="d-flex flex-column align-items-center">
           <h6>Calories</h6>
-          <h6>0 cal</h6>
+          <h6>
+            {totalStat.totalCaloriesBurnedCal.toLocaleString()}
+            {' '}
+            cal
+          </h6>
         </div>
         <div className="d-flex flex-column align-items-center mb-2">
           <select
@@ -34,6 +95,7 @@ function Statistics() {
             <option value="select" hidden>
               Select Type
             </option>
+            <option value="all">all</option>
             <option value="bicycling">bicycling</option>
             <option value="hiking">hiking</option>
             <option value="running">running</option>
@@ -43,34 +105,34 @@ function Statistics() {
           <div className="d-flex w-100">
             <button
               type="button"
-              className={active === 'w' ? 'active' : 'w-100 bg-button'}
+              className={active === 'week' ? 'active' : 'w-100 bg-button'}
               onClick={handleClick}
-              id="w"
+              id="week"
             >
               W
             </button>
             <button
               type="button"
-              className={active === 'm' ? 'active' : 'w-100 bg-button'}
+              className={active === 'month' ? 'active' : 'w-100 bg-button'}
               onClick={handleClick}
-              id="m"
+              id="month"
             >
               M
             </button>
             <button
               type="button"
-              className={active === 'y' ? 'active' : 'w-100 bg-button'}
+              className={active === 'year' ? 'active' : 'w-100 bg-button'}
               onClick={handleClick}
-              id="y"
+              id="year"
             >
               Y
             </button>
           </div>
         </div>
       </div>
-      <LineChart active={active} />
-      <div className="activity-all-summary mb-4 mb-md-0">
-        <ActivityAllSummary />
+      <div>
+        <LineChart active={active} linear={linear} />
+        <ActivityAllSummary data={typeChartData} />
       </div>
     </div>
   );
