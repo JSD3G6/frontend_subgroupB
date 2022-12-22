@@ -15,7 +15,7 @@ import { useLoading } from '../../contexts/loadingContext';
 const formSchema = Joi.object({
   title: Joi.string().min(3).max(20).label('title')
     .required(),
-  dateTime: Joi.date().label('date').required(),
+  dateTime: Joi.date().iso().label('date').required(),
   type: Joi.string()
     .valid('bicycling', 'running', 'hiking', 'walking', 'swimming')
     .label('activity type')
@@ -38,6 +38,7 @@ const defaultActivityData = {
 function CreateActivity() {
   const navigate = useNavigate();
   const [file, setFile] = useState(null);
+  const [formDate, setFormDate] = useState(null);
   const [activityData, setActivityData] = useState(defaultActivityData);
   const ACTIVITY = useActivity();
   const AUTH = useAuth();
@@ -45,7 +46,14 @@ function CreateActivity() {
   // const dateTimeFo rmatted = AUTH.user.dateTime.split('T')[0];
   const handleInputChange = (event) => {
     const formInputName = event.target.name;
-    const formInputValue = event.target.value;
+    let formInputValue;
+
+    formInputValue = event.target.value;
+    if (formInputName === 'dateTime') {
+      const d = new Date(event.target.value);
+      setFormDate(d);
+    }
+    console.log(formInputValue);
     const newActivityData = { ...activityData };
     newActivityData[formInputName] = formInputValue;
     setActivityData(newActivityData);
@@ -75,11 +83,19 @@ function CreateActivity() {
     // Send Request
     try {
       const newActivityData = activityData;
+      console.log(activityData);
+
       const formData = new FormData();
+      formData.append('dateTime', `${activityData.dateTime}T02:00:00.000Z`);
       // eslint-disable-next-line no-restricted-syntax
       for (let key in newActivityData) {
-        formData.append(key, newActivityData[key]);
+        if (key !== 'dateTime') {
+          console.log('KEY', key);
+          formData.append(key, newActivityData[key]);
+        }
       }
+      console.log(`${activityData.dateTime}T02:00:00.000Z`);
+
       console.log(file);
       if (file) {
         formData.append('photo', file);
@@ -89,7 +105,7 @@ function CreateActivity() {
         console.log(`${pair[0]}, ${pair[1]}`);
       }
       startLoading();
-      await ACTIVITY.createActivity(newActivityData);
+      await ACTIVITY.createActivity(formData);
     } catch (error) {
       console.log(error);
     } finally {
