@@ -51,18 +51,14 @@ function EditActivity() {
     startLoading();
     const res = await ActAPI.getActivity(activityId);
     const {
-      title,
-      dateTime,
-      type,
-      details,
-      distanceKM,
-      durationMin,
-      photo,
+      title, dateTime, type, details, distanceKM, durationMin, photo,
     } = res.data.activityDetail;
+
+    // console.log(dateTime.split('T')[0]);
 
     let newObj = {
       title,
-      dateTime,
+      dateTime: dateTime.split('T')[0],
       type,
       details,
       distanceKM,
@@ -119,10 +115,17 @@ function EditActivity() {
       for (const key in newActivityData) {
         formData.append(key, newActivityData[key]);
       }
+      if (file) {
+        formData.append('photo', file);
+      }
       console.log(activityId);
       await ActAPI.updateActivityById(activityId, formData);
+      startLoading();
+      navigate('/');
     } catch (error) {
       console.log(error);
+    } finally {
+      stopLoading();
     }
   };
   const handleOnClick = () => {
@@ -207,7 +210,7 @@ function EditActivity() {
           </div>
           <div className="flex justify-center">
             <div className="w-5/6 rounded-lg shadow-xl bg-transparent">
-              {!file ? (
+              {!activityData.photo && !file ? (
                 <div>
                   <label className="inline-block mb-2 text-gray-400">Upload a photo</label>
                   <div className="flex items-center justify-center w-full">
@@ -243,7 +246,7 @@ function EditActivity() {
                         className="opacity-0"
                         name="photo"
                         id="photoInput"
-                        value={activityData.photo}
+                        value={file}
                         onChange={handleFileChange}
                       />
                     </label>
@@ -251,7 +254,11 @@ function EditActivity() {
                 </div>
               ) : (
                 <div className="flex justify-center">
-                  <img src={URL.createObjectURL(file)} alt="activity pic" className="h-[150px]" />
+                  <img
+                    src={file ? URL.createObjectURL(file) : activityData.photo}
+                    alt="activity pic"
+                    className="h-[150px]"
+                  />
                 </div>
               )}
             </div>
