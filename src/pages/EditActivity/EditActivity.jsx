@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/button-has-type */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Joi from 'joi';
 import { useState, useEffect } from 'react';
 import { useAuth } from '../../contexts/authContext';
@@ -33,6 +33,7 @@ const defaultActivityData = {
 };
 
 function EditActivity() {
+  const navigate = useNavigate();
   const [file, setFile] = useState(null);
   const [activityData, setActivityData] = useState(defaultActivityData);
   const AUTH = useAuth();
@@ -63,6 +64,7 @@ function EditActivity() {
   };
   const onCancel = (event) => {
     setFile(null);
+    navigate('/');
   };
   console.log('photo', file);
   const handleFormSubmit = (event) => {
@@ -89,6 +91,8 @@ function EditActivity() {
   };
   const handleOnClick = () => {
     createActivityData();
+    // SEND API TO CREATE ACTIVITY
+    navigate('/');
   };
 
   return (
@@ -96,9 +100,7 @@ function EditActivity() {
       <div className="w-[90%] min-w-[360px] lg:max-w-[921px] h-[780px] rounded-[10px] bg-gray-primary px-[10%] semi-lg:px-[100px] flex flex-col">
         {/* Profile Image */}
         <div className="mx-auto text-center pt-8">
-          <h3 className="font-thin text-[40px] text-white">
-            Edit Activity
-          </h3>
+          <h3 className="font-thin text-[40px] text-white">Edit Activity</h3>
         </div>
         {/* input field */}
         <form
@@ -172,9 +174,7 @@ function EditActivity() {
             <div className="w-5/6 rounded-lg shadow-xl bg-transparent">
               {!file ? (
                 <div>
-                  <label className="inline-block mb-2 text-gray-400">
-                    Upload a photo
-                  </label>
+                  <label className="inline-block mb-2 text-gray-400">Upload a photo</label>
                   <div className="flex items-center justify-center w-full">
                     <label
                       className="flex flex-col w-full h-32 border-4 border-white
@@ -196,7 +196,8 @@ function EditActivity() {
                           5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
                           />
                         </svg>
-                        <p className="pt-1 text-sm tracking-wider
+                        <p
+                          className="pt-1 text-sm tracking-wider
                       text-purple-400 group-hover:text-purple-900"
                         >
                           Attach a file
@@ -213,12 +214,11 @@ function EditActivity() {
                     </label>
                   </div>
                 </div>
-              )
-                : (
-                  <div className="flex justify-center">
-                    <img src={URL.createObjectURL(file)} alt="activity pic" className="h-[150px]" />
-                  </div>
-                )}
+              ) : (
+                <div className="flex justify-center">
+                  <img src={URL.createObjectURL(file)} alt="activity pic" className="h-[150px]" />
+                </div>
+              )}
             </div>
           </div>
           <div className="hidden semi-lg:flex justify-between gap-8 ">
@@ -227,14 +227,14 @@ function EditActivity() {
               className="w-full border-2 border-purple-500 h-[60px] rounded-[10px] text-white text-xl font-semibold drop-shadow-2xl flex-1"
               onClick={onCancel}
             >
-              <Link to="/" className="text-white">Cancel</Link>
+              Cancel
             </button>
             <button
               type="submit"
               className="btn-primary self-center flex-1"
               onClick={handleOnClick}
             >
-              <Link to="/" className="text-white">Save</Link>
+              Save
             </button>
           </div>
         </form>
