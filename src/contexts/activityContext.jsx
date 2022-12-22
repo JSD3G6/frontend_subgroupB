@@ -11,11 +11,11 @@ const ActivityContext = createContext();
 function ActivityContextProvider({ children }) {
   const [allActivity, setAllActivity] = useState([]);
 
-  const getAllActivityUser = async (userId) => {
+  const getAllActivityUser = async (userId, page) => {
     try {
-      const res = await ActAPI.getAllLazyLoad(userId);
-      const data = res.data.activities;
-      setAllActivity(data);
+      const res = await ActAPI.getAllLazyLoad(userId, page);
+      const data = await res.data.activities;
+      setAllActivity((oldData) => [...oldData, ...data]);
     } catch (error) {
       console.log(error);
     }

@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable no-unused-vars */
@@ -11,13 +12,18 @@ import ActivityCard from '../ActivityCard/ActivityCard';
 import ProfileSummary from '../ProfileSummary/ProfileSummary';
 import './item.css';
 import ButtonPurple from '../buttons/ButtonPurple';
+import { useLoading } from '../../contexts/loadingContext';
 
 function ActivityList() {
   const navigate = useNavigate();
   const [active, setActive] = useState('');
   const [type, setType] = useState('');
+  const [page, setPage] = useState(10);
   const { user } = useAuth();
+  const { startLoading, stopLoading } = useLoading();
   const { allActivity, getAllActivityUser } = useActivity();
+  console.log(allActivity.length);
+
   const handleClick = (event) => {
     setActive(event.target.id);
   };
@@ -28,7 +34,17 @@ function ActivityList() {
   };
 
   useEffect(() => {
-    getAllActivityUser(user?._id);
+    getAllActivityUser(user?._id, page);
+  }, [page]);
+  console.log(page);
+
+  useEffect(() => {
+    const event = window.addEventListener('scroll', () => {
+      if (window.innerWidth + window.scrollY > document.body.offsetHeight - 500 && !startLoading) {
+        setPage((oldPage) => oldPage + 1);
+      }
+    });
+    return () => window.removeEventListener('scroll', event);
   }, []);
 
   return (
