@@ -15,6 +15,7 @@ import { useAuth } from '../../contexts/authContext';
 import ButtonPurple from '../buttons/ButtonPurple';
 import ButtonPurpleOutline from '../buttons/ButtonPurpleOutline';
 import './EditUserData.css';
+import { useLoading } from '../../contexts/loadingContext';
 
 const formSchema = Joi.object({
   firstName: Joi.string().min(3).max(25).label('First Name')
@@ -45,7 +46,7 @@ const defaultUserData = {
 
 function EditUserData() {
   const [userData, setUserData] = useState(defaultUserData);
-
+  const { startLoading, stopLoading } = useLoading();
   const AUTH = useAuth();
   // console.log('line 47');
   // console.log(AUTH.user.birthDate);
@@ -91,9 +92,12 @@ function EditUserData() {
       for (const key in editiedUserData) {
         formData.append(key, editiedUserData[key]);
       }
+      startLoading();
       await AUTH.updateUserProfile(editiedUserData);
     } catch (error) {
       console.log(error);
+    } finally {
+      stopLoading();
     }
   };
 
