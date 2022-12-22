@@ -6,7 +6,6 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../contexts/authContext';
 import ProgressBar from '../ProgressBar/ProgressBar';
-import ActivityAllSummary from '../ActivityAllSummary/ActivityAllSummary';
 import Motivation from '../Motivation/Motivation';
 import './ProfileSummary.css';
 
@@ -58,7 +57,7 @@ function ProfileSummary() {
         <div className="weekly-goal">
           <div className="goal-text">
             <span>Weekly Goal (Cal)</span>
-            <span className="cal">2,000/4,000</span>
+            <span className="cal">{user.weeklyGoalCal}/4000</span>
           </div>
 
           <ProgressBar
@@ -70,7 +69,7 @@ function ProfileSummary() {
           />
         </div>
       </div>
-      <div className="activity-all-summary mt-3">{/* <ActivityAllSummary /> */}</div>
+
       <div className="motivation-box-container mb-3">
         <Motivation className="motivation-quotes" />
       </div>

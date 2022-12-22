@@ -55,14 +55,14 @@ function LineChart({ active, linear }) {
     //     },
     //   },
     // },
-    // layout: {
-    //   padding: {
-    //     left: 25,
-    //     right: 30,
-    //     top: 10,
-    //     bottom: 10,
-    //   },
-    // },
+    layout: {
+      padding: {
+        left: 25,
+        right: 30,
+        top: 10,
+        bottom: 10,
+      },
+    },
     responsive: true,
     plugins: {
       legend: {

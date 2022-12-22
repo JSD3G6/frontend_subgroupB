@@ -23,7 +23,7 @@ function UploadPhoto({
       formData.append('profilePhoto', file);
       startLoading();
       await AUTH.updateUserProfile(formData);
-      toast.success('UpdatePhoto Succesfully!', {
+      toast.success('UpdatePhoto Successfully!', {
         position: 'top-right',
         autoClose: 2000,
         hideProgressBar: false,
