@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-alert */
 /* eslint-disable prefer-regex-literals */
 import { useContext, useState } from 'react';
@@ -17,7 +18,7 @@ const formSchema = Joi.object({
     .label('Email')
     .required(),
 
-  password: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{8,20}$')).label('Password').required(),
+  password: Joi.string().label('Password').required(),
 });
 
 function LoginPage() {
@@ -32,14 +33,19 @@ function LoginPage() {
     // Validate FrontEnd
     const { error } = formSchema.validate({ email, password });
     if (error) {
-      // error.details.map((item) => alert(item.message));
-      alert('Please enter a valid email address and password');
+      error.details.map((item) => alert(item.message));
+      // alert('Please enter a valid email address and password');
       // console.error(error.details);
     }
 
-    startLoading(); // loading == true
-    await AUTH.login({ email, password });
-    stopLoading();
+    try {
+      startLoading(); // loading == true
+      await AUTH.login({ email, password });
+    } catch (err) {
+      console.log(err);
+    } finally {
+      stopLoading();
+    }
   };
 
   const onChangeEmail = (event) => {

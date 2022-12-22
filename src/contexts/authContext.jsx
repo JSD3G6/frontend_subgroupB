@@ -67,7 +67,10 @@ function AuthContextProvider({ children }) {
       // #3 Navigate Path
       navigate('/');
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
+      if (error.message === 'Request failed with status code 403') {
+        alert('Please login with valid email and password');
+      }
     }
   };
   const logout = async () => {
