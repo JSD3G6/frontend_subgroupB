@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Joi from 'joi';
 import BackgroundImage from '../../assets/bg-1.png';
-import LogoAuth from '../../assets/logo-auth.png';
+import Logo from '../../assets/login-logo.png';
 
 const formSchema = Joi.object({
   firstName: Joi.string().alphanum().min(6).max(20)
@@ -63,8 +63,8 @@ function RegisterPage() {
       <div className="w-[90%] min-w-[360px] lg:max-w-[921px] h-[780px] rounded-[10px] bg-gray-primary   px-[10%] semi-lg:px-[100px] flex flex-col">
         {/* Profile Image */}
         <div className="mx-auto text-center pt-8">
-          <div className="mb-1">
-            <img src={LogoAuth} alt="logo-auth" />
+          <div className="mb-1 flex mx-auto">
+            <img src={Logo} alt="logo-auth" width={100} className="flex mx-auto" />
           </div>
           <h3 className="font-thin text-[40px] text-white">Register</h3>
         </div>
