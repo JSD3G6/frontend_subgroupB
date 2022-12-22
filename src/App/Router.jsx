@@ -12,6 +12,7 @@ import EditActivity from '../pages/Activity/EditActivity';
 import { useAuth } from '../contexts/authContext';
 import AppLayout from '../layout/AppLayout';
 
+import ProfileSummaryPage from '../pages/ProfilePage/ProfileSummaryPage';
 // import LoginPage from '../pages/LoginPage/LoginPage';
 // import RegisterPage from '../pages/RegisterPage/RegisterPage';
 

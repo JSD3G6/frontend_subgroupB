@@ -32,7 +32,7 @@ function AuthContextProvider({ children }) {
         // 1 setUser
         setUser(fetchedUser);
         // 2 navigate
-        navigate('/');
+        navigate('/editactivity');
       } catch (error) {
         console.log(error);
       }
