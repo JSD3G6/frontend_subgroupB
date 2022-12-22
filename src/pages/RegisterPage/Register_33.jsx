@@ -68,14 +68,14 @@ function RegisterPage() {
     const { value, error } = formSchema.validate(userData);
     if (error) {
       const e = Object.entries(error);
-      console.log(e);
+      // console.log(e);
       const fieldError = error.details.map((item) => alert(item.message));
     }
     try {
       startLoading(); // loading == true
       await AUTH.register(userData);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     } finally {
       stopLoading();
       console.log('finally register_33');

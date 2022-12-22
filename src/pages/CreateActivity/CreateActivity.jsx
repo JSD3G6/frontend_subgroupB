@@ -1,3 +1,6 @@
+/* eslint-disable prefer-const */
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable no-console */
 /* eslint-disable guard-for-in */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/button-has-type */
@@ -6,6 +9,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import Joi from 'joi';
 import { useState } from 'react';
 import { useAuth } from '../../contexts/authContext';
+import { useActivity } from '../../contexts/activityContext';
+import { useLoading } from '../../contexts/loadingContext';
 
 const formSchema = Joi.object({
   title: Joi.string().min(3).max(20).label('title')
@@ -19,7 +24,6 @@ const formSchema = Joi.object({
   distanceKM: Joi.number().integer().optional().label('distance'),
   durationMin: Joi.number().integer().required().label('duration')
     .required(),
-  photo: Joi.string().label('photo').optional(),
 });
 
 const defaultActivityData = {
@@ -29,14 +33,15 @@ const defaultActivityData = {
   details: '',
   distanceKM: '',
   durationMin: '',
-  photo: '',
 };
 
 function CreateActivity() {
   const navigate = useNavigate();
   const [file, setFile] = useState(null);
   const [activityData, setActivityData] = useState(defaultActivityData);
+  const ACTIVITY = useActivity();
   const AUTH = useAuth();
+  const { startLoading, stopLoading } = useLoading();
   // const dateTimeFo rmatted = AUTH.user.dateTime.split('T')[0];
   const handleInputChange = (event) => {
     const formInputName = event.target.name;
@@ -72,12 +77,23 @@ function CreateActivity() {
       const newActivityData = activityData;
       const formData = new FormData();
       // eslint-disable-next-line no-restricted-syntax
-      for (const key in newActivityData) {
+      for (let key in newActivityData) {
         formData.append(key, newActivityData[key]);
       }
-      await AUTH.createActivity(newActivityData);
+      console.log(file);
+      if (file) {
+        formData.append('photo', file);
+      }
+
+      for (const pair of formData.entries()) {
+        console.log(`${pair[0]}, ${pair[1]}`);
+      }
+      startLoading();
+      await ACTIVITY.createActivity(newActivityData);
     } catch (error) {
       console.log(error);
+    } finally {
+      stopLoading();
     }
   };
   const handleOnClick = () => {
