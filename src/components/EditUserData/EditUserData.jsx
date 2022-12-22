@@ -16,7 +16,6 @@ import { useLoading } from '../../contexts/loadingContext';
 import ButtonPurple from '../buttons/ButtonPurple';
 import ButtonPurpleOutline from '../buttons/ButtonPurpleOutline';
 import './EditUserData.css';
-import { useLoading } from '../../contexts/loadingContext';
 
 const formSchema = Joi.object({
   firstName: Joi.string().min(3).max(25).label('First Name')

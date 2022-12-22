@@ -5,6 +5,7 @@
 /* eslint-disable react/prop-types */
 // eslint-disable-next-line object-curly-newline
 import { createContext, useContext, useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import * as AuthAPI from '../api/authApi'; // {login: (data)=> {}, register: (data)=>}
 import * as ProfileAPI from '../api/profileApi';
@@ -59,14 +60,15 @@ function AuthContextProvider({ children }) {
 
       // #2 SET TOKEN
       setAccessToken(token);
-
+      toast.success('Login Success');
       // #3 Navigate Path
       navigate('/');
     } catch (error) {
-      console.log(error.message);
-      if (error.message === 'Request failed with status code 403') {
-        alert('Please login with valid email and password');
-      }
+      // console.log(error.message);
+      // if (error.message === 'Request failed with status code 403') {
+      //   alert('Please login with valid email and password');
+      // }
+      toast.error(error.response.data.message);
     }
   };
   const logout = async () => {

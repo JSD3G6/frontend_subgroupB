@@ -18,7 +18,6 @@ import * as ActAPI from '../../api/activityApi';
 function ActivityList() {
   const navigate = useNavigate();
   const [active, setActive] = useState('');
-  const [count, setCount] = useState(0);
   const [type, setType] = useState('');
   const [page, setPage] = useState(0);
   const [list, setList] = useState([]);
@@ -40,6 +39,7 @@ function ActivityList() {
     // getAllActivityUser(user?._id, page);
     const fetchNewActivity = async () => {
       try {
+        startLoading();
         const res = await ActAPI.getAllLazyLoad(user?._id, page);
         const newList = res.data.activities;
         setTmpList([...newList]);
