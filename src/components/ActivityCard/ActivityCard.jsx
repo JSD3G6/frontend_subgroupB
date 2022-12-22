@@ -7,7 +7,7 @@ import ActivityImage from '../../images/activitycard-img.png';
 import Edit from '../../images/edit.png';
 import Delete from '../../images/delete.png';
 
-function ActivityCard({ title, dateTime, durationMin, distanceKM, type, details, _id, onDelete }) {
+function ActivityCard({ title, dateTime, durationMin, distanceKM, type, details, _id, onDelete, photo }) {
   const { startLoading, stopLoading } = useLoading();
   const navigate = useNavigate();
   const date = dateTime.split('T')[0];
@@ -31,7 +31,7 @@ function ActivityCard({ title, dateTime, durationMin, distanceKM, type, details,
     <div className="container-fluid bg-card mb-3">
       <div className="row">
         <div className="col-sm-4 col-12">
-          <img className="img-fluid img" src={ActivityImage} alt="" />
+          <img className="img-fluid img" src={photo || ActivityImage} alt="" />
         </div>
         <div className="col-sm-8 col-12 bg-card text-white">
           <div className="fw-bolder d-flex justify-content-between">
