@@ -5,7 +5,7 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable no-unused-vars */
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import Joi from 'joi';
 import {
@@ -52,6 +52,7 @@ function EditUserData() {
   // console.log(AUTH.user.birthDate);
   const birthDateFormatted = AUTH.user.birthDate.split('T')[0];
   // console.log(birthDateFormatted);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setUserData({
@@ -96,6 +97,7 @@ function EditUserData() {
       }
       startLoading();
       await AUTH.updateUserProfile(editiedUserData);
+      navigate('/');
     } catch (error) {
       console.log(error);
     } finally {
