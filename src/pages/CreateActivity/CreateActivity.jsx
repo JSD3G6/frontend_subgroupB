@@ -78,7 +78,6 @@ function CreateActivity() {
   const handleOnClick = () => {
     createActivityData();
   };
-  const defaultAvatar = 'https://images.unsplash.com/photo-1626245550585-0b8d640da77f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80';
 
   return (
     <div className="flex justify-center items-center w-screen min-h-screen">
@@ -140,7 +139,7 @@ function CreateActivity() {
           <div className="hidden semi-lg:flex justify-between gap-8 ">
             <input
               type="number"
-              placeholder="Distance"
+              placeholder="Distance(KM)"
               name="distanceKM"
               id="distanceKMInput"
               value={activityData.distanceKM}
@@ -149,7 +148,7 @@ function CreateActivity() {
             />
             <input
               type="number"
-              placeholder="Duration"
+              placeholder="Duration(Min)"
               name="durationMin"
               id="durationMinInput"
               value={activityData.durationMin}
