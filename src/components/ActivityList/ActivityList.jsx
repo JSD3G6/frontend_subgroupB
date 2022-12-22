@@ -1,3 +1,5 @@
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable no-unused-vars */
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -9,7 +11,7 @@ import ProfileSummary from '../ProfileSummary/ProfileSummary';
 import './item.css';
 import ButtonPurple from '../buttons/ButtonPurple';
 
-function Item() {
+function ActivityList() {
   const navigate = useNavigate();
   const [active, setActive] = useState('');
   const [type, setType] = useState('');
@@ -32,7 +34,6 @@ function Item() {
     getAllActivityUser();
   }, []);
 
-  console.log(allActivity);
   return (
     <div className="container-fluid mt-10">
       <div className="row">
@@ -45,7 +46,9 @@ function Item() {
             className="w-100 mb-4"
             onClick={addNewActivity}
           />
-          <ActivityCard />
+          {allActivity.map((item) => (
+            <ActivityCard {...item} key={item._id} />
+          ))}
         </div>
         <div className="d-flex flex-column align-items-center col-xl-4 col-md-6 col-12 order-2 order-md-2 order-xl-3">
           <div className="d-flex gap-3 align-items-center">
@@ -114,4 +117,4 @@ function Item() {
   );
 }
 
-export default Item;
+export default ActivityList;

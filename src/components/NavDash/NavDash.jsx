@@ -36,7 +36,7 @@ export default function NavDash() {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            EliteMove
+            <Link to="/" className="cursor-pointer text-white">EliteMove</Link>
           </Typography>
           <Typography variant="h6" component="div" sx={{ flexGrow: 0 }}>
             {`${AUTH.user.firstName} ${AUTH.user.lastName}`}

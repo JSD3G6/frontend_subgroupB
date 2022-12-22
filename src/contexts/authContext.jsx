@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/jsx-no-constructed-context-values */
 /* eslint-disable no-unused-vars */
@@ -17,18 +18,16 @@ const AuthContext = createContext();
 function AuthContextProvider({ children }) {
   // ## SHARED DATA
   const [user, setUser] = useState(null);
+  const [activity, setActivity] = useState({});
   const [allActivity, setAllActivity] = useState([]);
   const [initialLoading, setInitialLoading] = useState(true);
   const navigate = useNavigate();
-
   // ## EFFECT HOOK
   useEffect(() => {
-    console.log('LOG IN USE EFFECT');
     const fetchMe = async () => {
       // Send API to get Profile as USER
 
       try {
-        console.log('TRY TO FETCH ME');
         const response = await ProfileAPI.getMe();
         const fetchedUser = response.data.user;
         // 1 setUser
@@ -85,7 +84,6 @@ function AuthContextProvider({ children }) {
     try {
       const res = await ProfileAPI.updateProfile(user._id, formData);
       const newProfile = res.data.profile;
-      console.log('NEW PROFILE');
       setUser(newProfile);
     } catch (error) {
       console.log(error);
@@ -102,17 +100,46 @@ function AuthContextProvider({ children }) {
     }
   };
 
+  const getActivityById = async () => {
+    try {
+      // const res = await ActAPI.getActivity('63a33c34a9036c601036c4fe');
+      // const data = res.data.activityDetail;
+      // setActivity(data);
+      // console.log(res, '109');
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // console.log(acttivity);
+  const deleteActivityUser = async () => {
+    try {
+      // const res = await ActAPI.deleteActivity();
+      // const deleteItem = allActivity.map((item) => item._id);
+      console.log('activity', res);
+      // const data = res.data.activities;
+      // setAllActivity(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  console.log(user);
+
   // # Bundle Shared Value,Logic in Object
   const shared = {
     user,
     initialLoading,
     allActivity,
+    setAllActivity,
     login,
     logout,
     register,
     getUserProfile,
     updateUserProfile,
     getAllActivityUser,
+    deleteActivityUser,
+    getActivityById,
   };
   // ที่ที่ 1 : ใช้ตั้ง Provider
   return <AuthContext.Provider value={shared}>{children}</AuthContext.Provider>;
