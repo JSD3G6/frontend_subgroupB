@@ -59,8 +59,7 @@ function EditActivity() {
 
     let newObj = {
       title,
-      // dateTime: dateTime.split('T')[0],
-      dateTime,
+      dateTime: dateTime.split('T')[0],
       type,
       details,
       distanceKM,
@@ -115,8 +114,13 @@ function EditActivity() {
       const formData = new FormData();
       // eslint-disable-next-line no-restricted-syntax
       for (const key in newActivityData) {
-        formData.append(key, newActivityData[key]);
+        if (key !== 'dateTime') {
+          formData.append(key, newActivityData[key]);
+        }
       }
+      const formatDateTime = `${newActivityData.dateTime}T02:00:00.000Z`;
+      console.log(formatDateTime);
+      formData.append('dateTime', formatDateTime);
       if (file) {
         formData.append('photo', file);
       }

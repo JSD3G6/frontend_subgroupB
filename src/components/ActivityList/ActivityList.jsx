@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default */
 /* eslint-disable max-len */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/jsx-props-no-spreading */
@@ -5,10 +6,8 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { useActivity } from '../../contexts/activityContext';
 import { useAuth } from '../../contexts/authContext';
-// import LineChart from '../LineChart/LineChart';
-// import ActivityAllSummary from '../ActivityAllSummary/ActivityAllSummary';
+
 import Statistics from '../Statistics/Statistics';
 import ActivityCard from '../ActivityCard/ActivityCard';
 import ProfileSummary from '../ProfileSummary/ProfileSummary';
