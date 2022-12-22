@@ -33,7 +33,7 @@ function RegisterPage() {
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
   };
-
+  //  some change
   const handleInputChange = (event) => {
     const fieldName = event.target.name;
     const newInfo = { ...formInfo };
