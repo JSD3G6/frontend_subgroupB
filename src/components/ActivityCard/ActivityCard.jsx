@@ -6,8 +6,6 @@ import './ActivityCard.css';
 import ActivityImage from '../../images/train2.jpg';
 import Edit from '../../images/edit.png';
 import Delete from '../../images/delete.png';
-import { useState } from 'react';
-import { useActivity } from '../../contexts/activityContext';
 
 function ActivityCard({
   title,
@@ -21,11 +19,7 @@ function ActivityCard({
   photo,
 }) {
   const { startLoading, stopLoading } = useLoading();
-  const { deleteActivityById } = useActivity();
-  // props : activityId
-  const ACTIVITY_ID = '6ecx123ffsdf3234';
   const navigate = useNavigate();
-  console.log('DATE', dateTime);
   const date = dateTime.split('T')[0];
 
   const editActivity = async () => {

@@ -4,6 +4,7 @@
 /* eslint-disable no-unused-vars */
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { useActivity } from '../../contexts/activityContext';
 import { useAuth } from '../../contexts/authContext';
 // import LineChart from '../LineChart/LineChart';
@@ -58,11 +59,21 @@ function ActivityList() {
   const deleteActivityById = (id) => {
     const newActivityList = list.filter((item) => item._id !== id);
     setList(newActivityList);
+    toast.success('Delete Succesfully!', {
+      position: 'top-right',
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'dark',
+    });
   };
 
   useEffect(() => {
     const event = window.addEventListener('scroll', () => {
-      console.log('result', window.innerHeight + window.scrollY > document.body.offsetHeight + 400);
+      // console.log('result', window.innerHeight + window.scrollY > document.body.offsetHeight + 400);
       if (window.innerHeight + window.scrollY > document.body.offsetHeight + 400 && startLoading) {
         shouldFetch();
       }

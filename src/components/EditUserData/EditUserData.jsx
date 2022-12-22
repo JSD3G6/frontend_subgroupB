@@ -7,6 +7,7 @@
 
 import { Link } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import Joi from 'joi';
 import {
   Container, Row, Col, Form,
@@ -77,7 +78,7 @@ function EditUserData() {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    console.log('update data');
+    // console.log('update data');
     const { value, error } = formSchema.validate(userData);
     if (error) {
       const fieldError = error.details.map((item) => alert(item.message));
@@ -88,14 +89,24 @@ function EditUserData() {
     // Send Request
     try {
       const editiedUserData = userData;
-      console.log(editiedUserData);
+      // console.log(editiedUserData);
       const formData = new FormData();
       for (const key in editiedUserData) {
         formData.append(key, editiedUserData[key]);
-        console.log('Edok', key);
+        // console.log('Edok', key);
       }
       startLoading();
       await AUTH.updateUserProfile(editiedUserData);
+      toast.success('UpdateProfile Succesfully!', {
+        position: 'top-right',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'dark',
+      });
     } catch (error) {
       console.log(error);
     } finally {

@@ -63,7 +63,16 @@ function AuthContextProvider({ children }) {
 
       // #2 SET TOKEN
       setAccessToken(token);
-      toast.success('Login Success');
+      toast.success('Login Succesfully!', {
+        position: 'top-right',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'dark',
+      });
       // #3 Navigate Path
       navigate('/');
     } catch (error) {
@@ -71,7 +80,16 @@ function AuthContextProvider({ children }) {
       // if (error.message === 'Request failed with status code 403') {
       //   alert('Please login with valid email and password');
       // }
-      toast.error(error.response.data.message);
+      toast.error(error.response.data.message, {
+        position: 'top-right',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'dark',
+      });
     }
   };
   const logout = async () => {

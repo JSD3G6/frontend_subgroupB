@@ -1,11 +1,15 @@
+/* eslint-disable prefer-const */
 /* eslint-disable guard-for-in */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/button-has-type */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import Joi from 'joi';
+import { toast } from 'react-toastify';
 import { useState, useEffect } from 'react';
 import { useAuth } from '../../contexts/authContext';
+import * as ActAPI from '../../api/activityApi';
+import { useLoading } from '../../contexts/loadingContext';
 
 const formSchema = Joi.object({
   title: Joi.string().min(3).max(20).label('title')
@@ -20,36 +24,65 @@ const formSchema = Joi.object({
   durationMin: Joi.number().integer().required().label('duration')
     .required(),
   photo: Joi.string().label('photo').optional(),
+  _id: Joi.string().optional(),
 });
 
-const defaultActivityData = {
-  title: '',
-  dateTime: '',
-  type: 'default',
-  details: '',
-  distanceKM: '',
-  durationMin: '',
-  photo: '',
-};
-
 function EditActivity() {
+  const { activityId } = useParams();
+  const defaultActivityData = {
+    title: '',
+    dateTime: '',
+    type: 'default',
+    details: '',
+    distanceKM: '',
+    durationMin: '',
+    photo: '',
+  };
+
   const navigate = useNavigate();
   const [file, setFile] = useState(null);
   const [activityData, setActivityData] = useState(defaultActivityData);
+  const [activityById, setActivityById] = useState({});
+  const { startLoading, stopLoading } = useLoading();
+  // const date = activityData.dateTime.split('T')[0];
+  // console.log(date);
   const AUTH = useAuth();
+
+  const getActivityById = async () => {
+    startLoading();
+    const res = await ActAPI.getActivity(activityId);
+    const {
+      title, dateTime, type, details, distanceKM, durationMin, photo,
+    } = res.data.activityDetail;
+
+    // console.log(dateTime.split('T')[0]);
+
+    let newObj = {
+      title,
+      // dateTime: dateTime.split('T')[0],
+      dateTime,
+      type,
+      details,
+      distanceKM,
+      durationMin,
+      photo,
+    };
+    setActivityData(newObj);
+    stopLoading();
+  };
   // const dateTimeFormatted = AUTH.user.dateTime.split('T')[0];
-  // useEffect(() => {
-  //   setActivityData({
-  //     firstName: AUTH.user.firstName,
-  //     lastName: AUTH.user.lastName,
-  //     bio: AUTH.user.bio,
-  //     birthDate: dateTimeFormatted,
-  //     gender: AUTH.user.gender,
-  //     height: AUTH.user.height,
-  //     weight: AUTH.user.weight,
-  //     weeklyGoalCal: AUTH.user.weeklyGoalCal,
-  //   });
-  // }, []);
+
+  useEffect(() => {
+    getActivityById();
+    setActivityData({
+      title: activityById.title,
+      dateTime: activityById.dateTime,
+      type: activityById.type,
+      details: activityById.details,
+      distanceKM: activityById.distanceKM,
+      durationMin: activityById.durationMin,
+    });
+  }, []);
   const handleInputChange = (event) => {
     const formInputName = event.target.name;
     const formInputValue = event.target.value;
@@ -62,20 +95,20 @@ function EditActivity() {
       setFile(event.target.files[0]);
     }
   };
-  const onCancel = (event) => {
+  const onCancel = () => {
     setFile(null);
     navigate('/');
   };
-  console.log('photo', file);
+  // console.log('photo', file);
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    console.log('Create activity', activityData);
+    // console.log('Edit activity', activityData);
     const { value, error } = formSchema.validate(activityData);
     if (error) {
       const fieldError = error.details.map((item) => alert(item.message));
     }
   };
-  const createActivityData = async () => {
+  const editActivityData = async () => {
     // Send Request
     try {
       const newActivityData = activityData;
@@ -84,15 +117,33 @@ function EditActivity() {
       for (const key in newActivityData) {
         formData.append(key, newActivityData[key]);
       }
-      await AUTH.createActivity(newActivityData);
+      if (file) {
+        formData.append('photo', file);
+      }
+      console.log(newActivityData);
+      startLoading();
+      await ActAPI.updateActivityById(activityId, formData);
+      navigate('/');
+      toast.success('Update Succesfully!', {
+        position: 'top-right',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'dark',
+      });
     } catch (error) {
       console.log(error);
+    } finally {
+      stopLoading();
     }
   };
   const handleOnClick = () => {
-    createActivityData();
-    // SEND API TO CREATE ACTIVITY
-    navigate('/');
+    editActivityData();
+    // SEND API TO EDIT ACTIVITY
+    // navigate('/');
   };
 
   return (
@@ -134,7 +185,6 @@ function EditActivity() {
             value={activityData.type}
             onChange={handleInputChange}
           >
-            <option>Select activity type</option>
             <option value="bicycling">Bicycling</option>
             <option value="hiking">Hiking</option>
             <option value="running">Running</option>
@@ -172,7 +222,7 @@ function EditActivity() {
           </div>
           <div className="flex justify-center">
             <div className="w-5/6 rounded-lg shadow-xl bg-transparent">
-              {!file ? (
+              {!activityData.photo && !file ? (
                 <div>
                   <label className="inline-block mb-2 text-gray-400">Upload a photo</label>
                   <div className="flex items-center justify-center w-full">
@@ -208,7 +258,7 @@ function EditActivity() {
                         className="opacity-0"
                         name="photo"
                         id="photoInput"
-                        value={activityData.photo}
+                        value={file}
                         onChange={handleFileChange}
                       />
                     </label>
@@ -216,7 +266,11 @@ function EditActivity() {
                 </div>
               ) : (
                 <div className="flex justify-center">
-                  <img src={URL.createObjectURL(file)} alt="activity pic" className="h-[150px]" />
+                  <img
+                    src={file ? URL.createObjectURL(file) : activityData.photo}
+                    alt="activity pic"
+                    className="h-[150px]"
+                  />
                 </div>
               )}
             </div>
