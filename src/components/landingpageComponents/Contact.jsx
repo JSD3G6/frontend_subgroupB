@@ -13,14 +13,13 @@ function Contact() {
               id="text_contact"
             >
               <div className="d-flex flex-column align-items-center justify-content-center gap-3">
-                <h5 className="head_call ">CALL US TO DAY</h5>
+                <h5 className="head_call ">CALL US TODAY</h5>
                 <h2>089 965 7542</h2>
                 <div className="text_call">
                   <div>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Perferendis sapiente ipsam ullam numquam aspernatur soluta
-                    impedit atque laboriosam iusto, dolores quia quibusdam optio
-                    quidem, harum consectetur? Magnam libero sint quasi.
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis sapiente
+                    ipsam ullam numquam aspernatur soluta impedit atque laboriosam iusto, dolores
+                    quia quibusdam optio quidem, harum consectetur? Magnam libero sint quasi.
                   </div>
                 </div>
                 <div className="p-4">

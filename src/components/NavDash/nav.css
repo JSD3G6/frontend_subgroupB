@@ -1,6 +1,5 @@
 .css-hip9hq-MuiPaper-root-MuiAppBar-root {
-  background-color: #151515 !important;
-  
+  background-color: #151515 !important;  
 }
 
 .box-navbar {
@@ -8,4 +7,9 @@
   top: 0;
   width: 100%;
   z-index: 1000;
+}
+
+.img-user {
+  border-radius: 50%;
+  height: 30px;
 }

@@ -11,14 +11,12 @@ function Footer() {
           <div className="col-12  col-md-12 col-lg-5 col-xxl-3 text-white  d-flex flex-column align-items-center justify-content-center mt-5">
             <Slide left>
               <h3 className="contact_info">
-                GYM
-                <span style={{ color: 'orange' }}>NEX</span>
+                <span style={{ color: 'var(--white)', fontSize: '2rem' }}>EliteMove</span>
               </h3>
               <span className="title_footer">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque
-                praesentium consequatur, aliquid, molestiae optio, ullam odit
-                accusamus atque porro quibusdam quaerat? Voluptatum sunt maiores
-                suscipit. Optio sunt ipsa pariatur ab.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque praesentium
+                consequatur, aliquid, molestiae optio, ullam odit accusamus atque porro quibusdam
+                quaerat? Voluptatum sunt maiores suscipit. Optio sunt ipsa pariatur ab.
               </span>
             </Slide>
           </div>
@@ -29,12 +27,11 @@ function Footer() {
                 <ul className="contact_info">
                   <li>
                     <FaEnvelope />
-                    gymnex@gmail.com
+                    elitemove@gmail.com
                   </li>
                   <li>
                     <FaMapMarkerAlt />
-                    Lake Isabella Blvd Lake Isabella,
-                    California(CA), 93240
+                    Lake Isabella Blvd Lake Isabella, California(CA), 93240
                   </li>
                   <li>
                     <FaPhoneAlt />
@@ -62,9 +59,7 @@ function Footer() {
           </div>
           <div className="copyright mt-3 mb-3">
             <Slide bottom>
-              <h6 className="text-white text-center">
-                &#169;COPYRIGHT 2022 ALL RIGHT RESERVED
-              </h6>
+              <h6 className="text-white text-center">&#169;COPYRIGHT 2022 ALL RIGHT RESERVED</h6>
             </Slide>
           </div>
         </div>

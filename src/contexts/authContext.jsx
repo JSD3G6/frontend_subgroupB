@@ -1,9 +1,11 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/jsx-no-constructed-context-values */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 // eslint-disable-next-line object-curly-newline
 import { createContext, useContext, useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import * as AuthAPI from '../api/authApi'; // {login: (data)=> {}, register: (data)=>}
 import * as ProfileAPI from '../api/profileApi';
@@ -17,24 +19,20 @@ const AuthContext = createContext();
 function AuthContextProvider({ children }) {
   // ## SHARED DATA
   const [user, setUser] = useState(null);
-  const [allActivity, setAllActivity] = useState([]);
   const [initialLoading, setInitialLoading] = useState(true);
   const navigate = useNavigate();
-
   // ## EFFECT HOOK
   useEffect(() => {
-    console.log('LOG IN USE EFFECT');
     const fetchMe = async () => {
       // Send API to get Profile as USER
 
       try {
-        console.log('TRY TO FETCH ME');
         const response = await ProfileAPI.getMe();
         const fetchedUser = response.data.user;
         // 1 setUser
         setUser(fetchedUser);
         // 2 navigate
-        navigate('/');
+        navigate('/editactivity');
       } catch (error) {
         console.log(error);
       }
@@ -49,7 +47,6 @@ function AuthContextProvider({ children }) {
     }
   }, []);
 
-  console.log('GLOBAL', user);
   // console.log('CTX');
   // ## SHARED LOGIC
   // # AUTH
@@ -63,11 +60,15 @@ function AuthContextProvider({ children }) {
 
       // #2 SET TOKEN
       setAccessToken(token);
-
+      toast.success('Login Success');
       // #3 Navigate Path
       navigate('/');
     } catch (error) {
-      console.log(error);
+      // console.log(error.message);
+      // if (error.message === 'Request failed with status code 403') {
+      //   alert('Please login with valid email and password');
+      // }
+      toast.error(error.response.data.message);
     }
   };
   const logout = async () => {
@@ -96,18 +97,7 @@ function AuthContextProvider({ children }) {
     try {
       const res = await ProfileAPI.updateProfile(user._id, formData);
       const newProfile = res.data.profile;
-      console.log('NEW PROFILE');
       setUser(newProfile);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const getAllActivityUser = async () => {
-    try {
-      const res = await ActAPI.getAllLazyLoad(user?._id);
-      const data = res.data.activities;
-      setAllActivity(data);
     } catch (error) {
       console.log(error);
     }
@@ -117,13 +107,11 @@ function AuthContextProvider({ children }) {
   const shared = {
     user,
     initialLoading,
-    allActivity,
     login,
     logout,
     register,
     getUserProfile,
     updateUserProfile,
-    getAllActivityUser,
   };
   // ที่ที่ 1 : ใช้ตั้ง Provider
   return <AuthContext.Provider value={shared}>{children}</AuthContext.Provider>;

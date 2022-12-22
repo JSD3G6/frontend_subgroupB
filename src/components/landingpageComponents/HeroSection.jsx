@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Link } from 'react-router-dom';
 import { Slide } from 'react-reveal';
 import headerImg from '../../images/header.jpg';
@@ -19,20 +20,18 @@ function HeroSection() {
           >
             <Slide right>
               <div>
-                <h1 className="title_hero text-center mt-1">GYMNEX</h1>
+                <h1 className="title_hero text-center mt-1">EliteMove</h1>
               </div>
               <div>
                 <span className="span_hero">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Libero deserunt, corporis at sint modi earum, atque maiores,
-                  fugit id debitis numquam enim ducimus quibusdam velit
-                  consequuntur doloribus. Tempora, doloremque labore.
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero deserunt, corporis
+                  at sint modi earum, atque maiores, fugit id debitis numquam enim ducimus quibusdam
+                  velit consequuntur doloribus. Tempora, doloremque labore.
                 </span>
                 <span className="span_hero">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Libero deserunt, corporis at sint modi earum, atque maiores,
-                  fugit id debitis numquam enim ducimus quibusdam velit
-                  consequuntur doloribus. Tempora, doloremque labore.
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero deserunt, corporis
+                  at sint modi earum, atque maiores, fugit id debitis numquam enim ducimus quibusdam
+                  velit consequuntur doloribus. Tempora, doloremque labore.
                 </span>
               </div>
               <div className="btn-group mb-5">

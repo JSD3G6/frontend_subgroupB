@@ -8,8 +8,8 @@ import LoginPage from '../pages/LoginPage/LoginPage_11';
 // import RegisterPage from '../pages/RegisterPage/RegisterPage_28';
 import RegisterPage from '../pages/RegisterPage/Register_33';
 import ProfilePage from '../pages/ProfilePage/ProfilePage';
-import CreateActivity from '../pages/Activity/CreateActivity';
-import EditActivity from '../pages/Activity/EditActivity';
+import CreateActivity from '../pages/CreateActivity/CreateActivity';
+import EditActivity from '../pages/EditActivity/EditActivity';
 import { useAuth } from '../contexts/authContext';
 import AppLayout from '../layout/AppLayout';
 

@@ -12,6 +12,7 @@ import {
   Container, Row, Col, Form,
 } from 'react-bootstrap';
 import { useAuth } from '../../contexts/authContext';
+import { useLoading } from '../../contexts/loadingContext';
 import ButtonPurple from '../buttons/ButtonPurple';
 import ButtonPurpleOutline from '../buttons/ButtonPurpleOutline';
 import './EditUserData.css';
@@ -45,7 +46,7 @@ const defaultUserData = {
 
 function EditUserData() {
   const [userData, setUserData] = useState(defaultUserData);
-
+  const { startLoading, stopLoading } = useLoading();
   const AUTH = useAuth();
   // console.log('line 47');
   // console.log(AUTH.user.birthDate);
@@ -87,13 +88,18 @@ function EditUserData() {
     // Send Request
     try {
       const editiedUserData = userData;
+      console.log(editiedUserData);
       const formData = new FormData();
       for (const key in editiedUserData) {
         formData.append(key, editiedUserData[key]);
+        console.log('Edok', key);
       }
+      startLoading();
       await AUTH.updateUserProfile(editiedUserData);
     } catch (error) {
       console.log(error);
+    } finally {
+      stopLoading();
     }
   };
 

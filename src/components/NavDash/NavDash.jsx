@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 /* eslint-disable no-unused-vars */
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
@@ -36,7 +37,7 @@ export default function NavDash() {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            EliteMove
+            <Link to="/" className="cursor-pointer text-white">EliteMove</Link>
           </Typography>
           <Typography variant="h6" component="div" sx={{ flexGrow: 0 }}>
             {`${AUTH.user.firstName} ${AUTH.user.lastName}`}
@@ -51,7 +52,7 @@ export default function NavDash() {
                 onClick={handleMenu}
                 color="inherit"
               >
-                <AccountCircle />
+                {AUTH.user ? <img className="img-user" src={AUTH.user?.profilePhoto} alt="photo-user" /> : <AccountCircle />}
               </IconButton>
               <Menu
                 id="menu-appbar"
