@@ -7,9 +7,11 @@ import ActivityImage from '../../images/activitycard-img.png';
 import Edit from '../../images/edit.png';
 import Delete from '../../images/delete.png';
 import { useState } from 'react';
+import { useActivity } from '../../contexts/activityContext';
 
 function ActivityCard({ title, dateTime, durationMin, distanceKM, type, details, _id }) {
   const { startLoading, stopLoading } = useLoading();
+  const { deleteActivityById } = useActivity();
   // props : activityId
   const ACTIVITY_ID = '6ecx123ffsdf3234';
   const navigate = useNavigate();
@@ -26,10 +28,10 @@ function ActivityCard({ title, dateTime, durationMin, distanceKM, type, details,
     if (window.confirm('Are you sure to delete ?')) {
       startLoading();
       await ActAPI.deleteActivity(_id);
+      deleteActivityById(_id);
       stopLoading();
     }
   };
-  // console.log(allActivity.length);
   return (
     <div className="container-fluid bg-card mb-3">
       <div className="row">

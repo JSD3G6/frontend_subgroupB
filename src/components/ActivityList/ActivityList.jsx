@@ -3,7 +3,7 @@
 /* eslint-disable no-unused-vars */
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../contexts/authContext';
+import { useActivity } from '../../contexts/activityContext';
 import LineChart from '../LineChart/LineChart';
 import ActivityAllSummary from '../ActivityAllSummary/ActivityAllSummary';
 import ActivityCard from '../ActivityCard/ActivityCard';
@@ -15,8 +15,7 @@ function ActivityList() {
   const navigate = useNavigate();
   const [active, setActive] = useState('');
   const [type, setType] = useState('');
-  const { user, allActivity, getAllActivityUser } = useAuth();
-  // console.log(user);
+  const { allActivity, getAllActivityUser } = useActivity();
   const handleClick = (event) => {
     setActive(event.target.id);
   };
@@ -25,10 +24,6 @@ function ActivityList() {
     console.log('change to page add a activity');
     navigate('/activity/create');
   };
-
-  // const handleData = (e) => {
-  //   console.log(e.target.id);
-  // };
 
   useEffect(() => {
     getAllActivityUser();
