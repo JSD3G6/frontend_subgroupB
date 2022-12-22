@@ -79,7 +79,18 @@ function AuthContextProvider({ children }) {
     // navigate --> landing page ('/')
     // setUser = null
   };
-  const register = async (data) => {};
+  const register = async (formData) => {
+    try {
+      const res = await AuthAPI.register(formData);
+      setUser(null);
+      navigate('/login');
+    } catch (error) {
+      console.log(error);
+      if (error.code === 'ERR_BAD_REQUEST') {
+        alert('This email is already in use');
+      }
+    }
+  };
   // # PROFILE
   const getUserProfile = async () => {};
   const updateUserProfile = async (formData) => {
