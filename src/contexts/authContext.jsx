@@ -48,7 +48,6 @@ function AuthContextProvider({ children }) {
     }
   }, []);
 
-  console.log('GLOBAL', user);
   // console.log('CTX');
   // ## SHARED LOGIC
   // # AUTH
@@ -100,32 +99,6 @@ function AuthContextProvider({ children }) {
     }
   };
 
-  const getActivityById = async () => {
-    try {
-      // const res = await ActAPI.getActivity('63a33c34a9036c601036c4fe');
-      // const data = res.data.activityDetail;
-      // setActivity(data);
-      // console.log(res, '109');
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  // console.log(acttivity);
-  const deleteActivityUser = async () => {
-    try {
-      // const res = await ActAPI.deleteActivity();
-      // const deleteItem = allActivity.map((item) => item._id);
-      console.log('activity', res);
-      // const data = res.data.activities;
-      // setAllActivity(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  console.log(user);
-
   // # Bundle Shared Value,Logic in Object
   const shared = {
     user,
@@ -138,8 +111,6 @@ function AuthContextProvider({ children }) {
     getUserProfile,
     updateUserProfile,
     getAllActivityUser,
-    deleteActivityUser,
-    getActivityById,
   };
   // ที่ที่ 1 : ใช้ตั้ง Provider
   return <AuthContext.Provider value={shared}>{children}</AuthContext.Provider>;

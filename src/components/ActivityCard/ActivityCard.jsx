@@ -6,6 +6,7 @@ import './ActivityCard.css';
 import ActivityImage from '../../images/activitycard-img.png';
 import Edit from '../../images/edit.png';
 import Delete from '../../images/delete.png';
+import { useState } from 'react';
 
 function ActivityCard({ title, dateTime, durationMin, distanceKM, type, details, _id }) {
   const { startLoading, stopLoading } = useLoading();
@@ -13,10 +14,12 @@ function ActivityCard({ title, dateTime, durationMin, distanceKM, type, details,
   const ACTIVITY_ID = '6ecx123ffsdf3234';
   const navigate = useNavigate();
   const date = dateTime.split('T')[0];  
-  const editActivity = () => {
-    ActAPI.getActivity(_id);
-    console.log(title);
+
+  const editActivity = async () => {
+    startLoading();
+    await ActAPI.getActivity(_id); 
     navigate(`/activity/edit/${_id}`);
+    stopLoading();    
   };
 
   const deleteActivy = async () => {   
