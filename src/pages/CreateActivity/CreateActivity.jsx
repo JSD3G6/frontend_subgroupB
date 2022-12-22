@@ -1,9 +1,12 @@
+/* eslint-disable guard-for-in */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/button-has-type */
 /* eslint-disable jsx-a11y/label-has-associated-control */
+import { Link } from 'react-router-dom';
 import Joi from 'joi';
 import { useState } from 'react';
 import { useAuth } from '../../contexts/authContext';
+import UploadPhoto from '../../components/UploadPhoto/UploadPhoto_BE';
 
 const formSchema = Joi.object({
   title: Joi.string().min(3).max(20).label('title')
@@ -32,13 +35,40 @@ const defaultActivityData = {
 function CreateActivity() {
   const [activityData, setActivityData] = useState(defaultActivityData);
   const AUTH = useAuth();
-  const dateTimeFormatted = AUTH.user.dateTime.split('T')[0];
+  // const dateTimeFo rmatted = AUTH.user.dateTime.split('T')[0];
   const handleInputChange = (event) => {
     const formInputName = event.target.name;
     const formInputValue = event.target.value;
     const newActivityData = { ...activityData };
     newActivityData[formInputName] = formInputValue;
     setActivityData(newActivityData);
+  };
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    console.log('Create activity', activityData);
+    const { value, error } = formSchema.validate(activityData);
+    if (error) {
+      const fieldError = error.details.map((item) => alert(item.message));
+    }
+  };
+  const createActivityData = async () => {
+    // Send Request
+    try {
+      const newActivityData = activityData;
+      console.log('Kodlnw', newActivityData);
+      const formData = new FormData();
+      // eslint-disable-next-line no-restricted-syntax
+      for (const key in newActivityData) {
+        formData.append(key, newActivityData[key]);
+        console.log('lnwza', key);
+      }
+      await AUTH.createActivity(newActivityData);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const handleOnClick = () => {
+    createActivityData();
   };
 
   return (
@@ -49,7 +79,7 @@ function CreateActivity() {
           <h3 className="font-thin text-[40px] text-white">Create New Activity</h3>
         </div>
         {/* input field */}
-        <form className="h-full py-4 semi-lg:py-8 flex flex-col justify-around ">
+        <form className="h-full py-4 semi-lg:py-8 flex flex-col justify-around " onSubmit={handleFormSubmit}>
           <div className="hidden semi-lg:flex justify-between gap-8 ">
             <input
               type="text"
@@ -57,6 +87,7 @@ function CreateActivity() {
               name="title"
               id="titleInput"
               value={activityData.title}
+              onChange={handleInputChange}
               className="input-primary flex-1"
             />
             <input
@@ -65,10 +96,11 @@ function CreateActivity() {
               name="dateTime"
               id="dateTimeInput"
               value={activityData.dateTime}
+              onChange={handleInputChange}
               className="input-primary flex-1"
             />
           </div>
-          <select className="input-primary" name="type" id="typeInput" value={activityData.type}>
+          <select className="input-primary" name="type" id="typeInput" value={activityData.type} onChange={handleInputChange}>
             <option>Select activity type</option>
             <option value="bicycling">Bicycling</option>
             <option value="hiking">Hiking</option>
@@ -82,6 +114,7 @@ function CreateActivity() {
             name="details"
             id="detialsInput"
             value={activityData.details}
+            onChange={handleInputChange}
             className="input-primary"
           />
           <div className="hidden semi-lg:flex justify-between gap-8 ">
@@ -91,6 +124,7 @@ function CreateActivity() {
               name="distanceKM"
               id="distanceKMInput"
               value={activityData.distanceKM}
+              onChange={handleInputChange}
               className="input-primary flex-1"
             />
             <input
@@ -99,6 +133,7 @@ function CreateActivity() {
               name="durationMin"
               id="durationMinInput"
               value={activityData.durationMin}
+              onChange={handleInputChange}
               className="input-primary flex-1"
             />
           </div>
@@ -135,6 +170,7 @@ function CreateActivity() {
                       name="photo"
                       id="photoInput"
                       value={activityData.photo}
+                      onChange={handleInputChange}
                     />
                   </label>
                 </div>
@@ -143,7 +179,7 @@ function CreateActivity() {
           </div>
           <div className="hidden semi-lg:flex justify-between gap-8 ">
             <button type="submit" className="w-full border-2 border-purple-500 h-[60px] rounded-[10px] text-white text-xl font-semibold drop-shadow-2xl flex-1">Cancel</button>
-            <button type="submit" className="btn-primary self-center flex-1">Save</button>
+            <button type="submit" className="btn-primary self-center flex-1" onClick={handleOnClick}>Save</button>
           </div>
         </form>
       </div>

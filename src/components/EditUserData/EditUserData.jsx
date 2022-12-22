@@ -84,9 +84,11 @@ function EditUserData() {
     // Send Request
     try {
       const editiedUserData = userData;
+      console.log(editiedUserData);
       const formData = new FormData();
       for (const key in editiedUserData) {
         formData.append(key, editiedUserData[key]);
+        console.log('Edok', key);
       }
       await AUTH.updateUserProfile(editiedUserData);
     } catch (error) {
