@@ -7,12 +7,11 @@ import LandingPage from '../pages/LandingPage/LandingPage';
 import LoginPage from '../pages/LoginPage/LoginPage_11';
 import RegisterPage from '../pages/RegisterPage/RegisterPage_28';
 import ProfilePage from '../pages/ProfilePage/ProfilePage';
-import CreateActivity from '../pages/Activity/CreateActivity';
-import EditActivity from '../pages/Activity/EditActivity';
+import CreateActivity from '../pages/CreateActivity/CreateActivity';
+import EditActivity from '../pages/EditActivity/EditActivity';
 import { useAuth } from '../contexts/authContext';
 import AppLayout from '../layout/AppLayout';
 
-import ProfileSummaryPage from '../pages/ProfilePage/ProfileSummaryPage';
 // import LoginPage from '../pages/LoginPage/LoginPage';
 // import RegisterPage from '../pages/RegisterPage/RegisterPage';
 
