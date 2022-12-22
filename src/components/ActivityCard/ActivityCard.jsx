@@ -3,13 +3,23 @@ import { useNavigate } from 'react-router-dom';
 import * as ActAPI from '../../api/activityApi';
 import { useLoading } from '../../contexts/loadingContext';
 import './ActivityCard.css';
-import ActivityImage from '../../images/activitycard-img.png';
+import ActivityImage from '../../images/train2.jpg';
 import Edit from '../../images/edit.png';
 import Delete from '../../images/delete.png';
 import { useState } from 'react';
 import { useActivity } from '../../contexts/activityContext';
 
-function ActivityCard({ title, dateTime, durationMin, distanceKM, type, details, _id, onDelete }) {
+function ActivityCard({
+  title,
+  dateTime,
+  durationMin,
+  distanceKM,
+  type,
+  details,
+  _id,
+  onDelete,
+  photo,
+}) {
   const { startLoading, stopLoading } = useLoading();
   const { deleteActivityById } = useActivity();
   // props : activityId
@@ -34,10 +44,10 @@ function ActivityCard({ title, dateTime, durationMin, distanceKM, type, details,
     }
   };
   return (
-    <div className="container-fluid bg-card mb-3">
-      <div className="row">
-        <div className="col-sm-4 col-12">
-          <img className="img-fluid img" src={ActivityImage} alt="" />
+    <div className="container-fluid bg-card mb-3 h-[200px]">
+      <div className="row h-full">
+        <div className="col-sm-4 col-12 p-[10px] h-full">
+          <img className=" h-full aspect-square object-cover" src={photo || ActivityImage} alt="" />
         </div>
         <div className="col-sm-8 col-12 bg-card text-white">
           <div className="fw-bolder d-flex justify-content-between">

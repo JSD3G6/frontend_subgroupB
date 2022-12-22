@@ -16,7 +16,7 @@ function EditAvatar() {
 
   const [file, setFile] = useState(null);
   const inputFileRef = useRef();
-  const avatarPic = user ? user.profilePhoto : defaultAvatar;
+  const avatarPic = user.profilePhoto ? user.profilePhoto : defaultAvatar;
 
   const onClickAvatar = () => {
     inputFileRef.current.click();

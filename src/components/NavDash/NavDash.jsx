@@ -14,11 +14,13 @@ import Menu from '@mui/material/Menu';
 import './nav.css';
 import { AuthContext } from '../../contexts/authContext';
 
+const defaultAvatar = 'https://images.unsplash.com/photo-1626245550585-0b8d640da77f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80';
 export default function NavDash() {
   const AUTH = useContext(AuthContext);
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
 
+  console.log(AUTH.user);
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -37,7 +39,9 @@ export default function NavDash() {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            <Link to="/" className="cursor-pointer text-white">EliteMove</Link>
+            <Link to="/" className="cursor-pointer text-white">
+              EliteMove
+            </Link>
           </Typography>
           <Typography variant="h6" component="div" sx={{ flexGrow: 0 }}>
             {`${AUTH.user.firstName} ${AUTH.user.lastName}`}
@@ -52,7 +56,15 @@ export default function NavDash() {
                 onClick={handleMenu}
                 color="inherit"
               >
-                {AUTH.user ? <img className="img-user" src={AUTH.user?.profilePhoto} alt="photo-user" /> : <AccountCircle />}
+                {AUTH.user ? (
+                  <img
+                    className="img-user"
+                    src={AUTH.user?.profilePhoto || defaultAvatar}
+                    alt="photo-user"
+                  />
+                ) : (
+                  <AccountCircle />
+                )}
               </IconButton>
               <Menu
                 id="menu-appbar"

@@ -1,5 +1,5 @@
 .css-hip9hq-MuiPaper-root-MuiAppBar-root {
-  background-color: #151515 !important;  
+  background-color: #151515 !important;
 }
 
 .box-navbar {
@@ -11,5 +11,6 @@
 
 .img-user {
   border-radius: 50%;
-  height: 30px;
+  width: 30px;
+  aspect-ratio: 1;
 }
