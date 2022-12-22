@@ -13,16 +13,19 @@ import ProfileSummary from '../ProfileSummary/ProfileSummary';
 import './item.css';
 import ButtonPurple from '../buttons/ButtonPurple';
 import { useLoading } from '../../contexts/loadingContext';
+import * as ActAPI from '../../api/activityApi';
 
 function ActivityList() {
   const navigate = useNavigate();
   const [active, setActive] = useState('');
+  const [count, setCount] = useState(0);
   const [type, setType] = useState('');
-  const [page, setPage] = useState(10);
+  const [page, setPage] = useState(0);
+  const [list, setList] = useState([]);
+  const [tmpList, setTmpList] = useState([]);
   const { user } = useAuth();
   const { startLoading, stopLoading } = useLoading();
   const { allActivity, getAllActivityUser } = useActivity();
-  console.log(allActivity.length);
 
   const handleClick = (event) => {
     setActive(event.target.id);
@@ -34,14 +37,39 @@ function ActivityList() {
   };
 
   useEffect(() => {
-    getAllActivityUser(user?._id, page);
+    // getAllActivityUser(user?._id, page);
+    const fetchNewActivity = async () => {
+      try {
+        const res = await ActAPI.getAllLazyLoad(user?._id, page);
+        const newList = res.data.activities;
+        setTmpList([...newList]);
+        if (newList.length > 0) {
+          setList((p) => [...p, ...newList]);
+        }
+      } catch (error) {
+        console.log(error);
+      } finally {
+        stopLoading();
+      }
+    };
+    fetchNewActivity();
   }, [page]);
-  console.log(page);
+
+  const shouldFetch = () => {
+    if (page !== 0 && tmpList.length !== 0) {
+      setPage((p) => p + 1);
+    }
+  };
+  const deleteActivityById = (id) => {
+    const newActivityList = list.filter((item) => item._id !== id);
+    setList(newActivityList);
+  };
 
   useEffect(() => {
     const event = window.addEventListener('scroll', () => {
-      if (window.innerWidth + window.scrollY > document.body.offsetHeight - 500 && !startLoading) {
-        setPage((oldPage) => oldPage + 1);
+      console.log('result', window.innerHeight + window.scrollY > document.body.offsetHeight + 400);
+      if (window.innerHeight + window.scrollY > document.body.offsetHeight + 400 && startLoading) {
+        shouldFetch();
       }
     });
     return () => window.removeEventListener('scroll', event);
@@ -59,8 +87,8 @@ function ActivityList() {
             className="w-100 mb-4"
             onClick={addNewActivity}
           />
-          {allActivity.map((item) => (
-            <ActivityCard {...item} key={item._id} />
+          {list.map((item) => (
+            <ActivityCard {...item} key={item._id} onDelete={deleteActivityById} />
           ))}
         </div>
         <div className="d-flex flex-column align-items-center col-xl-4 col-md-6 col-12 order-2 order-md-2 order-xl-3">

@@ -9,26 +9,27 @@ import Delete from '../../images/delete.png';
 import { useState } from 'react';
 import { useActivity } from '../../contexts/activityContext';
 
-function ActivityCard({ title, dateTime, durationMin, distanceKM, type, details, _id }) {
+function ActivityCard({ title, dateTime, durationMin, distanceKM, type, details, _id, onDelete }) {
   const { startLoading, stopLoading } = useLoading();
   const { deleteActivityById } = useActivity();
   // props : activityId
   const ACTIVITY_ID = '6ecx123ffsdf3234';
   const navigate = useNavigate();
-  const date = dateTime.split('T')[0];  
+  console.log('DATE', dateTime);
+  const date = dateTime.split('T')[0];
 
   const editActivity = async () => {
     startLoading();
-    await ActAPI.getActivity(_id); 
+    await ActAPI.getActivity(_id);
     navigate(`/activity/edit/${_id}`);
-    stopLoading();    
+    stopLoading();
   };
 
-  const deleteActivy = async () => {   
+  const deleteActivity = async () => {
     if (window.confirm('Are you sure to delete ?')) {
       startLoading();
       await ActAPI.deleteActivity(_id);
-      deleteActivityById(_id);
+      onDelete(_id);
       stopLoading();
     }
   };
@@ -43,7 +44,7 @@ function ActivityCard({ title, dateTime, durationMin, distanceKM, type, details,
             <h3 className="p-2">{title}</h3>
             <div className="d-flex justify-content-between p-2">
               <img src={Edit} alt="edit" className="img-edit p-2" onClick={editActivity} />
-              <img src={Delete} alt="delete" className="img-edit p-2" onClick={deleteActivy} />
+              <img src={Delete} alt="delete" className="img-edit p-2" onClick={deleteActivity} />
             </div>
           </div>
           <div className="ActC-info d-flex ">
@@ -56,7 +57,7 @@ function ActivityCard({ title, dateTime, durationMin, distanceKM, type, details,
               <p className="ActC-Duration p-2">Duration : {durationMin} min.</p>
             </div>
           </div>
-          <p className="ActC-shered">{" "}{details}</p>
+          <p className="ActC-shered"> {details}</p>
         </div>
       </div>
     </div>
