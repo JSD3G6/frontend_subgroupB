@@ -54,21 +54,25 @@ function AboutUs() {
             <div className="d-flex flex-column align-items-center gap-2">
               <Slide right>
                 <div>
-                  <h4>About GYMNEX</h4>
-                  <h2>Welcome to Us</h2>
-                  <hr />
+                  <h2 style={{ fontWeight: 400, fontSize: '2rem' }}>
+                    About
+                    {' '}
+                    <span style={{ color: 'var(--purple)', fontWeight: 700, fontStyle: 'italic' }}>
+                      EliteMove
+                    </span>
+                  </h2>
+                  {/* <h2>Welcome to Us</h2>
+                  <hr /> */}
                 </div>
-                <span className="about_span_1">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Minima quidem cupiditate vitae aliquid, ullam eveniet libero
-                  fuga qui rem cumque officiis ducimus ratione ipsam omnis est
-                  blanditiis inventore quae amet.
-                </span>
+                {/* <span className="about_span_1">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima quidem cupiditate
+                  vitae aliquid, ullam eveniet libero fuga qui rem cumque officiis ducimus ratione
+                  ipsam omnis est blanditiis inventore quae amet.
+                </span> */}
                 <span className="about_span">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Minima quidem cupiditate vitae aliquid, ullam eveniet libero
-                  fuga qui rem cumque officiis ducimus ratione ipsam omnis est
-                  blanditiis inventore quae amet.
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima quidem cupiditate
+                  vitae aliquid, ullam eveniet libero fuga qui rem cumque officiis ducimus ratione
+                  ipsam omnis est blanditiis quae amet.
                   <span className="read_more">Read More</span>
                 </span>
               </Slide>

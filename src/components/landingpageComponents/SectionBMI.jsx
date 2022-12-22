@@ -44,8 +44,8 @@ function SectionBMI() {
           >
             <Slide left>
               <div className="text-center">
-                <h1>ADVANCE CALCULATOR</h1>
-                <h2>Calculate Your BMI</h2>
+                {/* <h1>ADVANCE CALCULATOR</h1> */}
+                <h2 style={{ fontWeight: 400 }}>Calculate Your BMI</h2>
               </div>
               <div>
                 <form>
@@ -54,21 +54,19 @@ function SectionBMI() {
                     onChange={(e) => setWeight(e.target.value)}
                     value={weigth}
                     placeholder="weight (kg)"
-                    className="shadow appearance-none d-flex justify-content-center d-xl-flex d-md-flex align-items-md-center d-xxl-inline-block  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                    className="shadow appearance-none d-flex justify-content-center d-xl-flex d-md-flex align-items-md-center d-xxl-inline-block   w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                   />
                   <input
                     type="number"
                     onChange={(e) => setHeight(e.target.value)}
                     value={height}
                     placeholder="height (cm)"
-                    className="shadow appearance-none d-flex justify-content-center d-md-flex align-items-md-center d-xxl-inline-block   rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                    className="shadow appearance-none d-flex justify-content-center d-md-flex align-items-md-center d-xxl-inline-block  w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                   />
                 </form>
                 <div className="d-flex align-items-center justify-content-center">
                   <button
-                    onClick={
-                      weigth === '' || height === '' ? null : calculateBmi
-                    }
+                    onClick={weigth === '' || height === '' ? null : calculateBmi}
                     className="btn-start d-flex align-items-center justify-content-center "
                     type="submit"
                   >
@@ -89,11 +87,7 @@ function SectionBMI() {
 
           <div className="col d-flex justify-content-end  p-0">
             <Slide right>
-              <img
-                src={sectionImg}
-                className="bmi_img d-flex justify-content-start-100"
-                alt=""
-              />
+              <img src={sectionImg} className="bmi_img d-flex justify-content-start-100" alt="" />
             </Slide>
           </div>
         </div>
