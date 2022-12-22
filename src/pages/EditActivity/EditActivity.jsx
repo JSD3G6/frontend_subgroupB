@@ -100,7 +100,7 @@ function EditActivity() {
   // console.log('photo', file);
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    console.log('Edit activity', activityData);
+    // console.log('Edit activity', activityData);
     const { value, error } = formSchema.validate(activityData);
     if (error) {
       const fieldError = error.details.map((item) => alert(item.message));
@@ -118,7 +118,6 @@ function EditActivity() {
       if (file) {
         formData.append('photo', file);
       }
-      console.log(activityId);
       await ActAPI.updateActivityById(activityId, formData);
       startLoading();
       navigate('/');

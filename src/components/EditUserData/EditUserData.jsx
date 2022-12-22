@@ -77,7 +77,7 @@ function EditUserData() {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    console.log('update data');
+    // console.log('update data');
     const { value, error } = formSchema.validate(userData);
     if (error) {
       const fieldError = error.details.map((item) => alert(item.message));
@@ -88,7 +88,7 @@ function EditUserData() {
     // Send Request
     try {
       const editiedUserData = userData;
-      console.log(editiedUserData);
+      // console.log(editiedUserData);
       const formData = new FormData();
       for (const key in editiedUserData) {
         formData.append(key, editiedUserData[key]);
