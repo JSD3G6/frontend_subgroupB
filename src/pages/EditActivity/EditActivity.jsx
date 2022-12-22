@@ -5,6 +5,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import Joi from 'joi';
+import { toast } from 'react-toastify';
 import { useState, useEffect } from 'react';
 import { useAuth } from '../../contexts/authContext';
 import * as ActAPI from '../../api/activityApi';
@@ -58,7 +59,8 @@ function EditActivity() {
 
     let newObj = {
       title,
-      dateTime: dateTime.split('T')[0],
+      // dateTime: dateTime.split('T')[0],
+      dateTime,
       type,
       details,
       distanceKM,
@@ -118,9 +120,20 @@ function EditActivity() {
       if (file) {
         formData.append('photo', file);
       }
-      await ActAPI.updateActivityById(activityId, formData);
+      console.log(newActivityData);
       startLoading();
+      await ActAPI.updateActivityById(activityId, formData);
       navigate('/');
+      toast.success('Update Succesfully!', {
+        position: 'top-right',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'dark',
+      });
     } catch (error) {
       console.log(error);
     } finally {
