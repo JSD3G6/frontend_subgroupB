@@ -1,11 +1,11 @@
 /* eslint-disable prefer-regex-literals */
 /* eslint-disable no-unused-vars */
 import { useState } from 'react';
-// import { useLoading } from '../../contexts/loadingContext';
 import Joi from 'joi';
 import {
   Col, Row, Container, Button, Form,
 } from 'react-bootstrap';
+import { useLoading } from '../../contexts/loadingContext';
 import { useAuth } from '../../contexts/authContext';
 import './register_33.css';
 import Logo from '../../images/Logo.png';
@@ -50,7 +50,7 @@ const defaultUserData = {
 
 function RegisterPage() {
   const [userData, setUserData] = useState(defaultUserData);
-  //   const { startLoading, stopLoading } = useLoading();
+  const { startLoading, stopLoading } = useLoading();
   const AUTH = useAuth();
 
   const handleInputChange = (event) => {
@@ -72,12 +72,12 @@ function RegisterPage() {
       const fieldError = error.details.map((item) => alert(item.message));
     }
     try {
-      // startLoading(); // loading == true
+      startLoading(); // loading == true
       await AUTH.register(userData);
     } catch (err) {
       console.log(err);
     } finally {
-      // stopLoading();
+      stopLoading();
       console.log('finally register_33');
     }
   };
