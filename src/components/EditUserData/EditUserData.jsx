@@ -7,6 +7,7 @@
 
 import { Link } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import Joi from 'joi';
 import {
   Container, Row, Col, Form,
@@ -96,6 +97,16 @@ function EditUserData() {
       }
       startLoading();
       await AUTH.updateUserProfile(editiedUserData);
+      toast.success('UpdateProfile Succesfully!', {
+        position: 'top-right',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'dark',
+      });
     } catch (error) {
       console.log(error);
     } finally {

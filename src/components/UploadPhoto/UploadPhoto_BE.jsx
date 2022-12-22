@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable linebreak-style */
 /* eslint-disable react/prop-types */
+import { toast } from 'react-toastify';
 import ButtonPurpleUpLoad from '../buttons/ButtonPurpleUpLoad';
 import { useAuth } from '../../contexts/authContext';
 import { useLoading } from '../../contexts/loadingContext';
@@ -22,6 +23,16 @@ function UploadPhoto({
       formData.append('profilePhoto', file);
       startLoading();
       await AUTH.updateUserProfile(formData);
+      toast.success('UpdatePhoto Succesfully!', {
+        position: 'top-right',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'dark',
+      });
     } catch (error) {
       console.log(error);
     } finally {
