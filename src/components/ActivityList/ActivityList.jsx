@@ -1,6 +1,10 @@
+/* eslint-disable max-len */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable no-unused-vars */
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useActivity } from '../../contexts/activityContext';
 import { useAuth } from '../../contexts/authContext';
 import LineChart from '../LineChart/LineChart';
 import ActivityAllSummary from '../ActivityAllSummary/ActivityAllSummary';
@@ -8,13 +12,21 @@ import ActivityCard from '../ActivityCard/ActivityCard';
 import ProfileSummary from '../ProfileSummary/ProfileSummary';
 import './item.css';
 import ButtonPurple from '../buttons/ButtonPurple';
+import { useLoading } from '../../contexts/loadingContext';
+import * as ActAPI from '../../api/activityApi';
 
-function Item() {
+function ActivityList() {
   const navigate = useNavigate();
   const [active, setActive] = useState('');
+  const [count, setCount] = useState(0);
   const [type, setType] = useState('');
-  const { user, allActivity, getAllActivityUser } = useAuth();
-  // console.log(user);
+  const [page, setPage] = useState(0);
+  const [list, setList] = useState([]);
+  const [tmpList, setTmpList] = useState([]);
+  const { user } = useAuth();
+  const { startLoading, stopLoading } = useLoading();
+  const { allActivity, getAllActivityUser } = useActivity();
+
   const handleClick = (event) => {
     setActive(event.target.id);
   };
@@ -24,15 +36,45 @@ function Item() {
     navigate('/activity/create');
   };
 
-  // const handleData = (e) => {
-  //   console.log(e.target.id);
-  // };
+  useEffect(() => {
+    // getAllActivityUser(user?._id, page);
+    const fetchNewActivity = async () => {
+      try {
+        const res = await ActAPI.getAllLazyLoad(user?._id, page);
+        const newList = res.data.activities;
+        setTmpList([...newList]);
+        if (newList.length > 0) {
+          setList((p) => [...p, ...newList]);
+        }
+      } catch (error) {
+        console.log(error);
+      } finally {
+        stopLoading();
+      }
+    };
+    fetchNewActivity();
+  }, [page]);
+
+  const shouldFetch = () => {
+    if (page !== 0 && tmpList.length !== 0) {
+      setPage((p) => p + 1);
+    }
+  };
+  const deleteActivityById = (id) => {
+    const newActivityList = list.filter((item) => item._id !== id);
+    setList(newActivityList);
+  };
 
   useEffect(() => {
-    getAllActivityUser();
+    const event = window.addEventListener('scroll', () => {
+      console.log('result', window.innerHeight + window.scrollY > document.body.offsetHeight + 400);
+      if (window.innerHeight + window.scrollY > document.body.offsetHeight + 400 && startLoading) {
+        shouldFetch();
+      }
+    });
+    return () => window.removeEventListener('scroll', event);
   }, []);
 
-  console.log(allActivity);
   return (
     <div className="container-fluid mt-10">
       <div className="row">
@@ -45,7 +87,9 @@ function Item() {
             className="w-100 mb-4"
             onClick={addNewActivity}
           />
-          <ActivityCard />
+          {list.map((item) => (
+            <ActivityCard {...item} key={item._id} onDelete={deleteActivityById} />
+          ))}
         </div>
         <div className="d-flex flex-column align-items-center col-xl-4 col-md-6 col-12 order-2 order-md-2 order-xl-3">
           <div className="d-flex gap-3 align-items-center">
@@ -114,4 +158,4 @@ function Item() {
   );
 }
 
-export default Item;
+export default ActivityList;

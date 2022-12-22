@@ -1,23 +1,36 @@
 /* eslint-disable */
 import { useNavigate } from 'react-router-dom';
+import * as ActAPI from '../../api/activityApi';
+import { useLoading } from '../../contexts/loadingContext';
 import './ActivityCard.css';
 import ActivityImage from '../../images/activitycard-img.png';
 import Edit from '../../images/edit.png';
 import Delete from '../../images/delete.png';
+import { useState } from 'react';
+import { useActivity } from '../../contexts/activityContext';
 
-function ActivityCard() {
+function ActivityCard({ title, dateTime, durationMin, distanceKM, type, details, _id, onDelete }) {
+  const { startLoading, stopLoading } = useLoading();
+  const { deleteActivityById } = useActivity();
   // props : activityId
   const ACTIVITY_ID = '6ecx123ffsdf3234';
   const navigate = useNavigate();
+  console.log('DATE', dateTime);
+  const date = dateTime.split('T')[0];
 
-  const editActivity = () => {
-    console.log('edit');
-    navigate(`/activity/edit/${ACTIVITY_ID}`);
+  const editActivity = async () => {
+    startLoading();
+    await ActAPI.getActivity(_id);
+    navigate(`/activity/edit/${_id}`);
+    stopLoading();
   };
 
-  const deleteActivy = () => {
+  const deleteActivity = async () => {
     if (window.confirm('Are you sure to delete ?')) {
-      console.log('delete');
+      startLoading();
+      await ActAPI.deleteActivity(_id);
+      onDelete(_id);
+      stopLoading();
     }
   };
   return (
@@ -28,32 +41,23 @@ function ActivityCard() {
         </div>
         <div className="col-sm-8 col-12 bg-card text-white">
           <div className="fw-bolder d-flex justify-content-between">
-            <h3 className="p-2">Title your activity</h3>
+            <h3 className="p-2">{title}</h3>
             <div className="d-flex justify-content-between p-2">
               <img src={Edit} alt="edit" className="img-edit p-2" onClick={editActivity} />
-              <img src={Delete} alt="delete" className="img-edit p-2" onClick={deleteActivy} />
+              <img src={Delete} alt="delete" className="img-edit p-2" onClick={deleteActivity} />
             </div>
           </div>
           <div className="ActC-info d-flex ">
             <div>
-              <p className="ActC-date p-2">Date : yyyy/mm/dd</p>
-              <p className="ActC-type p-2">Type : running</p>
+              <p className="ActC-date p-2">Date : {date}</p>
+              <p className="ActC-type p-2">Type : {type}</p>
             </div>
             <div>
-              <p className="ActC-distance p-2">Distance : 00 km.</p>
-              <p className="ActC-Duration p-2">Duraion : 00 min.</p>
+              <p className="ActC-distance p-2">Distance : {distanceKM} km.</p>
+              <p className="ActC-Duration p-2">Duration : {durationMin} min.</p>
             </div>
           </div>
-          <p className="ActC-shered">
-            Shared more about your activity
-            <br />
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor cursus enim at
-            malesuada. Praesent vitae sem interdum, semper sapien vitae, placerat metus. Cras sit
-            amet ex sem. Fusce aliquet, nibh a venenatis scelerisque, orci.orem ipsum dolor sit
-            amet, consectetur adipiscing elit. Maecenas tempor cursus enim at malesuada. Praesent
-            vitae sem interdum, semper sapien vitae, placerat metu
-            <br />
-          </p>
+          <p className="ActC-shered"> {details}</p>
         </div>
       </div>
     </div>

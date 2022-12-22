@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/jsx-no-constructed-context-values */
 /* eslint-disable no-unused-vars */
@@ -17,18 +18,14 @@ const AuthContext = createContext();
 function AuthContextProvider({ children }) {
   // ## SHARED DATA
   const [user, setUser] = useState(null);
-  const [allActivity, setAllActivity] = useState([]);
   const [initialLoading, setInitialLoading] = useState(true);
   const navigate = useNavigate();
-
   // ## EFFECT HOOK
   useEffect(() => {
-    console.log('LOG IN USE EFFECT');
     const fetchMe = async () => {
       // Send API to get Profile as USER
 
       try {
-        console.log('TRY TO FETCH ME');
         const response = await ProfileAPI.getMe();
         const fetchedUser = response.data.user;
         // 1 setUser
@@ -49,7 +46,6 @@ function AuthContextProvider({ children }) {
     }
   }, []);
 
-  console.log('GLOBAL', user);
   // console.log('CTX');
   // ## SHARED LOGIC
   // # AUTH
@@ -88,18 +84,7 @@ function AuthContextProvider({ children }) {
     try {
       const res = await ProfileAPI.updateProfile(user._id, formData);
       const newProfile = res.data.profile;
-      console.log('NEW PROFILE');
       setUser(newProfile);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const getAllActivityUser = async () => {
-    try {
-      const res = await ActAPI.getAllLazyLoad(user?._id);
-      const data = res.data.activities;
-      setAllActivity(data);
     } catch (error) {
       console.log(error);
     }
@@ -109,13 +94,11 @@ function AuthContextProvider({ children }) {
   const shared = {
     user,
     initialLoading,
-    allActivity,
     login,
     logout,
     register,
     getUserProfile,
     updateUserProfile,
-    getAllActivityUser,
   };
   // ที่ที่ 1 : ใช้ตั้ง Provider
   return <AuthContext.Provider value={shared}>{children}</AuthContext.Provider>;
