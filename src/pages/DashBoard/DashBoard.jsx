@@ -1,4 +1,4 @@
-import ActivityList from '../../components/ActivityList/ActivityList';
+import ActivityList from '../../components/ActivityList/ActivityList_TW';
 import NavDash from '../../components/NavDash/NavDash';
 
 function DashBoard() {

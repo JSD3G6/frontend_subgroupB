@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 32rem;
+  min-width: 32rem;
   /* height: 25rem; */
   background: var(--black);
   /* box-shadow: 0 0 1px var(--yellow); */
@@ -11,7 +11,7 @@
 
 .summary-container {
   width: 100%;
-  padding: 1rem 2rem;
+  padding: 10px 2rem;
   background: #181818;
 }
 

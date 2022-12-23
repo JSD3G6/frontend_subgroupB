@@ -60,7 +60,7 @@ function Statistics() {
   }, [active, type]);
 
   return (
-    <div className="d-flex flex-column align-items-center col-xl-4 col-md-6 col-12 order-2 order-md-2 order-xl-3  fixed top-[80px] right-0">
+    <>
       <div className="d-flex gap-3 align-items-center">
         <div className="d-flex flex-column align-items-center">
           <h6>Distance</h6>
@@ -134,7 +134,7 @@ function Statistics() {
         <LineChart active={active} linear={linear} />
         <ActivityAllSummary data={typeChartData} />
       </div>
-    </div>
+    </>
   );
 }
 

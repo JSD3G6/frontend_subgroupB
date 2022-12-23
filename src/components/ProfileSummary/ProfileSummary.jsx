@@ -21,7 +21,7 @@ function ProfileSummary() {
   };
 
   return (
-    <div className="card-holder fixed top-[80px]">
+    <>
       <div className="profile-summary-container">
         <div className="edit-avatar-container">
           <Link className="link-edit-profile" to="/profile">
@@ -70,10 +70,10 @@ function ProfileSummary() {
         </div>
       </div>
 
-      <div className="motivation-box-container mb-3">
+      <div className="motivation-box-container mb-3 w-full ">
         <Motivation className="motivation-quotes" />
       </div>
-    </div>
+    </>
   );
 }
 

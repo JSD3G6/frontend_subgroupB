@@ -11,7 +11,7 @@ import Statistics from '../Statistics/Statistics';
 import ProfileSummary from '../ProfileSummary/ProfileSummary';
 import './item.css';
 import ButtonPurple from '../buttons/ButtonPurple';
-import ScrollLists from './Scrollist';
+import ScrollLists from './ScrollList';
 
 function ActivityList() {
   const navigate = useNavigate();
@@ -25,18 +25,25 @@ function ActivityList() {
       <div className="row">
         {/* LEFT */}
         <div className="d-flex flex-column align-items-center col-xl-3 col-md-6 col-12 order-1 order-md-1 order-xl-1">
-          <ProfileSummary />
+          <div className=" fixed top-[80px]">
+            <ProfileSummary />
+          </div>
         </div>
         {/* FEED-CENTER */}
 
-        <div className="mt-5 mt-md-0 d-flex flex-column align-items-center col-xl-5 col-md-12 col-12 order-3 order-md-3 order-xl-2">
+        <div className="mt-5 mt-md-0 d-flex flex-column align-items-center col-xl-5 col-md-12 col-12 order-3 order-md-3 order-xl-2 ">
+          <ButtonPurple text="create new activity " className="w-100 " onClick={addNewActivity} />
           <div className="relative w-full">
-            <ButtonPurple text="create new activity" className="w-100" onClick={addNewActivity} />
+            <ScrollLists />
           </div>
-          <ScrollLists />
         </div>
+
         {/* STAT-RIGHT */}
-        <Statistics />
+        <div className="d-flex flex-column align-items-center col-xl-4 col-md-6 col-12 order-2 order-md-2 order-xl-3  ">
+          <div className="fixed top-[80px] right-4">
+            <Statistics />
+          </div>
+        </div>
       </div>
     </div>
   );

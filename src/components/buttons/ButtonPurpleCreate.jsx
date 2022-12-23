@@ -33,7 +33,7 @@ const ButtonPurple = ({ text, onClick, type, className }) => {
 
   const styles = {
     padding: '0.5rem 1.5rem',
-    width: 'auto',
+    width: '100%',
     height: 'auto',
     border: 'none',
     outline: 'none',

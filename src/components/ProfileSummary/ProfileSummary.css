@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 20rem;
+  min-width: 20rem;
   height: 25rem;
   background: var(--black);
   box-shadow: 0 0 1px var(--yellow);
@@ -101,5 +101,6 @@ span:last-child {
 }
 
 .motivation-box-container {
+  width: 100%;
   margin-top: 3rem;
 }

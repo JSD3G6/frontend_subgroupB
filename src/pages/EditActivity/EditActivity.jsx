@@ -226,7 +226,7 @@ function EditActivity() {
           </div>
           <div className="flex justify-center">
             <div className="w-5/6 rounded-lg shadow-xl bg-transparent">
-              {!activityData.photo && !file ? (
+              {!activityData.photo || !file ? (
                 <div>
                   <label className="inline-block mb-2 text-gray-400">Upload a photo</label>
                   <div className="flex items-center justify-center w-full">
