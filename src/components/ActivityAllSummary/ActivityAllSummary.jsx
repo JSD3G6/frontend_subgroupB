@@ -46,66 +46,6 @@ function ActivityAllSummary({ data }) {
           </div>
         </div>
       ))}
-      {/* <div className="summary-container hiking">
-        <GiHiking className="activity-icon" />
-        <span>{`Total: ${count} times`}</span>
-        <span className="total-duration-span">{`${totalDurationMin} hours`}</span>
-        <div className="acitivity-bar">
-          <ProgressBar
-            className="hiking-bar"
-            percent={percent}
-            barColor="var(--purple)"
-            barWidth="18rem"
-            barHeight="0.75rem"
-          />
-          <span>{`${percent}%`}</span>
-        </div>
-      </div>
-      <div className="summary-container running">
-        <BiRun className="activity-icon" />
-        <span>{`Total: ${count} times`}</span>
-        <span className="total-duration-span">{`${totalDurationMin} hours`}</span>
-        <div className="acitivity-bar">
-          <ProgressBar
-            className="running-bar"
-            percent={percent}
-            barColor="var(--purple)"
-            barWidth="18rem"
-            barHeight="0.75rem"
-          />
-          <span>{`${percent}%`}</span>
-        </div>
-      </div>
-      <div className="summary-container swimming">
-        <BiSwim className="activity-icon" />
-        <span>{`Total: ${count} times`}</span>
-        <span className="total-duration-span">{`${totalDurationMin} hours`}</span>
-        <div className="acitivity-bar">
-          <ProgressBar
-            className="swimming-bar"
-            percent={percent}
-            barColor="var(--purple)"
-            barWidth="18rem"
-            barHeight="0.75rem"
-          />
-          <span>{`${percent}%`}</span>
-        </div>
-      </div>
-      <div className="summary-container walking">
-        <BiWalk className="activity-icon" />
-        <span>{`Total: ${count} times`}</span>
-        <span className="total-duration-span">{`${totalDurationMin} hours`}</span>
-        <div className="acitivity-bar">
-          <ProgressBar
-            className="walking-bar"
-            percent={percent}
-            barColor="var(--purple)"
-            barWidth="18rem"
-            barHeight="0.75rem"
-          />
-          <span>{`${percent}%`}</span>
-        </div>
-      </div> */}
     </div>
   );
 }
