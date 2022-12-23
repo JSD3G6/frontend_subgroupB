@@ -21,7 +21,7 @@ function ProfileSummary() {
   };
 
   return (
-    <div className="card-holder">
+    <div className="card-holder fixed top-[80px]">
       <div className="profile-summary-container">
         <div className="edit-avatar-container">
           <Link className="link-edit-profile" to="/profile">

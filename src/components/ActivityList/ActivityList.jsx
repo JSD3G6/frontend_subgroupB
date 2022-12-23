@@ -88,15 +88,16 @@ function ActivityList() {
           <ProfileSummary />
         </div>
         {/* FEED-CENTER */}
+
         <div className="mt-5 mt-md-0 d-flex flex-column align-items-center col-xl-5 col-md-12 col-12 order-3 order-md-3 order-xl-2">
-          <ButtonPurple
-            text="create new activity"
-            className="w-100 mb-4"
-            onClick={addNewActivity}
-          />
-          {list.map((item) => (
-            <ActivityCard {...item} key={item._id} onDelete={deleteActivityById} />
-          ))}
+          <div className="relative w-full">
+            <ButtonPurple text="create new activity" className="w-100" onClick={addNewActivity} />
+          </div>
+          <div className="mt-[10px] w-full">
+            {list.map((item) => (
+              <ActivityCard {...item} key={item._id} onDelete={deleteActivityById} />
+            ))}
+          </div>
         </div>
         {/* STAT-RIGHT */}
         <Statistics />
