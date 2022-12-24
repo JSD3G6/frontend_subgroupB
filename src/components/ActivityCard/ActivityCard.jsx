@@ -57,8 +57,8 @@ function ActivityCard({
               <p className="ActC-type p-2">Type : {type}</p>
             </div>
             <div>
-              <p className="ActC-distance p-2">Distance : {distanceKM} km.</p>
-              <p className="ActC-Duration p-2">Duration : {durationMin} min.</p>
+              <p className="ActC-distance p-2">Distance : {distanceKM} km</p>
+              <p className="ActC-Duration p-2">Duration : {durationMin} min</p>
             </div>
           </div>
           <p className="ActC-shered"> {details}</p>
