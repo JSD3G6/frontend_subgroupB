@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/extensions
 import ActivityList from '../../components/ActivityList/ActivityList_TW';
 import NavDash from '../../components/NavDash/NavDash';
 

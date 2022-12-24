@@ -36,7 +36,7 @@ export default function NavDash() {
 
   return (
     <Box sx={{ flexGrow: 1 }} className="box-navbar">
-      <AppBar position="static">
+      <AppBar position="static" sx={{ backgroundColor: '#151515' }}>
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <Link to="/" className="cursor-pointer text-white">
