@@ -20,7 +20,6 @@ export default function NavDash() {
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
 
-  console.log(AUTH.user);
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -30,16 +29,15 @@ export default function NavDash() {
   };
 
   const onClickSignOut = () => {
-    console.log('SIGN OUT');
     AUTH.logout();
   };
 
   return (
     <Box sx={{ flexGrow: 1 }} className="box-navbar">
-      <AppBar position="static">
+      <AppBar position="static" sx={{ backgroundColor: '#151515' }}>
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            <Link to="/" className="cursor-pointer text-white">
+            <Link to="/dashboard" className="cursor-pointer text-white">
               EliteMove
             </Link>
           </Typography>

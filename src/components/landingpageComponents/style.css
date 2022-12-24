@@ -10,11 +10,7 @@
 
 /*start nav*/
 .navbar {
-	background-color: var(--black);
-	color: white;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+	background-color: var(--black); 
 }
 
 .navbar-toggler {
@@ -22,15 +18,16 @@
 }
 
 .link {
-	color: white;
 	text-decoration: none;
 	display: flex;
+	align-items: center;
+	justify-content: center;
 	font-size: 18px;
-	margin: 5px;
+	margin: 0px 15px;
 }
 
 .link:hover {
-	color: orange !important;
+	color: var(--purple) !important;
 }
 
 /*end nav*/
@@ -320,12 +317,12 @@ li {
 }
 
 .tab > ul > li > a:hover {
-	color: white;
+	color: var(--black);
 }
 
 a {
 	text-decoration: none;
-	color: black;
+	color: var(--white);
 	font-size: 18px;
 }
 

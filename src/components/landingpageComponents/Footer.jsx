@@ -49,7 +49,7 @@ function Footer() {
                   <a href="#home">Home</a>
                 </li>
                 <li>
-                  <a href="#aboutus">About Us</a>
+                  <a href="#aboutus">About</a>
                 </li>
                 <li>
                   <a href="#contact">Contact</a>

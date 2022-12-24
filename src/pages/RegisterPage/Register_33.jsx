@@ -2,6 +2,7 @@
 /* eslint-disable prefer-regex-literals */
 /* eslint-disable no-unused-vars */
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Joi from 'joi';
 import {
   Col, Row, Container, Button, Form,
@@ -97,7 +98,7 @@ function RegisterPage() {
   return (
     <div className="Background-Register">
       <div className="Register">
-        <Form noValidate onSubmit={handleFormSubmit} className="container-register ">
+        <Form noValidate onSubmit={handleFormSubmit} className="container-register">
           <img src={Logo} alt="register" width={100} className="mt-4 mb-2" />
           <h1
             className="mb-3"
@@ -279,6 +280,7 @@ function RegisterPage() {
               Submit
             </Button>
           </Container>
+          <Link to="/" className="text-white">Back To Home</Link>
         </Form>
       </div>
     </div>

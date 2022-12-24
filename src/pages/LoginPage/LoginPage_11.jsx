@@ -3,7 +3,7 @@
 /* eslint-disable prefer-regex-literals */
 import { useContext, useState } from 'react';
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Joi from 'joi';
 import BackgroundImage from '../../assets/bg-1.png';
 import LoginLogo from '../../assets/login-logo.png';
@@ -27,6 +27,7 @@ function LoginPage() {
   const { startLoading, stopLoading } = useLoading();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const submitLogin = async (event) => {
     event.preventDefault(); // กัน Default Action Form
@@ -42,6 +43,7 @@ function LoginPage() {
     try {
       startLoading(); // loading == true
       await AUTH.login({ email, password });
+      navigate('/dashboard');
     } catch (err) {
       console.log(err);
     } finally {

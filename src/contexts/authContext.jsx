@@ -34,7 +34,7 @@ function AuthContextProvider({ children }) {
         console.log(fetchedUser);
         setUser(fetchedUser);
         // 2 navigate
-        navigate('/');
+        navigate('/dashboard');
       } catch (error) {
         console.log(error);
       }
@@ -74,7 +74,7 @@ function AuthContextProvider({ children }) {
         theme: 'dark',
       });
       // #3 Navigate Path
-      navigate('/');
+      navigate('/dashboard');
     } catch (error) {
       // console.log(error.message);
       // if (error.message === 'Request failed with status code 403') {

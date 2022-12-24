@@ -226,7 +226,7 @@ function EditUserData() {
             />
           </Col>
           <Col className="col-lg-3 col-12 mt-3 pt-3 text-center">
-            <Link to="/" className="">
+            <Link to="/dashboard" className="">
               <ButtonPurpleOutline
                 className="btn-cancel-profile "
                 text="Cancel"

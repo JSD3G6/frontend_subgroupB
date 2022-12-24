@@ -69,8 +69,7 @@ function ProfileSummary() {
           />
         </div>
       </div>
-
-      <div className="motivation-box-container mb-3 w-full ">
+      <div className="motivation-box-container mb-3 w-full">
         <Motivation className="motivation-quotes" />
       </div>
     </>

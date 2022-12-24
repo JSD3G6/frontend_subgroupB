@@ -97,7 +97,7 @@ function EditActivity() {
   };
   const onCancel = () => {
     setFile(null);
-    navigate('/');
+    navigate('/dashboard');
   };
   // console.log('photo', file);
   const handleFormSubmit = (event) => {
@@ -128,7 +128,7 @@ function EditActivity() {
       console.log(newActivityData);
       startLoading();
       await ActAPI.updateActivityById(activityId, formData);
-      navigate('/');
+      navigate('/dashboard');
       toast.success('Update Succesfully!', {
         position: 'top-right',
         autoClose: 2000,

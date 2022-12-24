@@ -66,7 +66,7 @@ function CreateActivity() {
   };
   const onCancel = (event) => {
     setFile(null);
-    navigate('/');
+    navigate('/dashboard');
   };
   // console.log('photo', file);
   const handleFormSubmit = (event) => {
@@ -117,7 +117,7 @@ function CreateActivity() {
         progress: undefined,
         theme: 'dark',
       });
-      navigate('/');
+      navigate('/dashboard');
     } catch (error) {
       console.log(error);
     } finally {

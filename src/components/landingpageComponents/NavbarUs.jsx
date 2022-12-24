@@ -11,14 +11,14 @@ function NavbarUs() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav" className="" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href="#home" className="text-white link">
+            <Nav className="me-aut">
+              <Nav.Link href="#home" className="text-white link bg-transparent">
                 Home
               </Nav.Link>
-              <Nav.Link href="#about" className="text-white link">
-                About Us
+              <Nav.Link href="#about" className="text-white link bg-transparent">
+                About
               </Nav.Link>
-              <Nav.Link href="#contact" className="text-white link">
+              <Nav.Link href="#contact" className="text-white link bg-transparent">
                 Contact
               </Nav.Link>
             </Nav>
