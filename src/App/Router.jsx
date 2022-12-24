@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable import/no-named-as-default-member */
 /* eslint-disable linebreak-style */
 
@@ -5,16 +6,12 @@ import { Route, Routes } from 'react-router-dom';
 import DashBoardPage from '../pages/DashBoard/DashBoard';
 import LandingPage from '../pages/LandingPage/LandingPage';
 import LoginPage from '../pages/LoginPage/LoginPage_11';
-// import RegisterPage from '../pages/RegisterPage/RegisterPage_28';
 import RegisterPage from '../pages/RegisterPage/Register_33';
 import ProfilePage from '../pages/ProfilePage/ProfilePage';
 import CreateActivity from '../pages/CreateActivity/CreateActivity';
 import EditActivity from '../pages/EditActivity/EditActivity';
 import { useAuth } from '../contexts/authContext';
 import AppLayout from '../layout/AppLayout';
-
-// import LoginPage from '../pages/LoginPage/LoginPage';
-// import RegisterPage from '../pages/RegisterPage/RegisterPage';
 
 function Router() {
   const { user } = useAuth();

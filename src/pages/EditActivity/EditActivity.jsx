@@ -8,6 +8,7 @@ import Joi from 'joi';
 import { toast } from 'react-toastify';
 import { useState, useEffect } from 'react';
 import { useAuth } from '../../contexts/authContext';
+import ActivityImage from '../../images/train2.jpg';
 import * as ActAPI from '../../api/activityApi';
 import { useLoading } from '../../contexts/loadingContext';
 

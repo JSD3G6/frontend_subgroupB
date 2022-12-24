@@ -6,6 +6,7 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import Joi from 'joi';
 import { useState } from 'react';
 import { useAuth } from '../../contexts/authContext';
@@ -53,7 +54,7 @@ function CreateActivity() {
       const d = new Date(event.target.value);
       setFormDate(d);
     }
-    console.log(formInputValue);
+    // console.log(formInputValue);
     const newActivityData = { ...activityData };
     newActivityData[formInputName] = formInputValue;
     setActivityData(newActivityData);
@@ -67,36 +68,36 @@ function CreateActivity() {
     setFile(null);
     navigate('/');
   };
-  console.log('photo', file);
+  // console.log('photo', file);
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    console.log('Create activity', activityData);
+    // console.log('Create activity', activityData);
     const { value, error } = formSchema.validate(activityData);
     if (error) {
       const fieldError = error.details.map((item) => alert(item.message));
     }
     // SEND API TO UPDATE
 
-    navigate('/');
+    // navigate('/');
   };
   const createActivityData = async () => {
     // Send Request
     try {
       const newActivityData = activityData;
-      console.log(activityData);
+      // console.log(activityData);
 
       const formData = new FormData();
       formData.append('dateTime', `${activityData.dateTime}T02:00:00.000Z`);
       // eslint-disable-next-line no-restricted-syntax
       for (let key in newActivityData) {
         if (key !== 'dateTime') {
-          console.log('KEY', key);
+          // console.log('KEY', key);
           formData.append(key, newActivityData[key]);
         }
       }
-      console.log(`${activityData.dateTime}T02:00:00.000Z`);
+      // console.log(`${activityData.dateTime}T02:00:00.000Z`);
 
-      console.log(file);
+      // console.log(file);
       if (file) {
         formData.append('photo', file);
       }
@@ -106,6 +107,17 @@ function CreateActivity() {
       }
       startLoading();
       await ACTIVITY.createActivity(formData);
+      toast.success('Create Activity Succesfully!', {
+        position: 'top-right',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'dark',
+      });
+      navigate('/');
     } catch (error) {
       console.log(error);
     } finally {

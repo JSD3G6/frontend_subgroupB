@@ -19,3 +19,11 @@
   padding: 50px;
   font-size: 20px;
 }
+
+.test:hover {
+  overflow-y: scroll;
+  overscroll-behavior: none;
+  height: 680px;
+  width: 350px;
+  position: fixed;  
+}

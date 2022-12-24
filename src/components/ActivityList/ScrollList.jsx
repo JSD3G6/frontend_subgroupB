@@ -5,9 +5,7 @@ import { toast } from 'react-toastify';
 import InfiniteScroll from 'react-infinite-scroller';
 import ActivityCard from '../ActivityCard/ActivityCard';
 import { useAuth } from '../../contexts/authContext';
-
 import './item.css';
-
 import { useLoading } from '../../contexts/loadingContext';
 import * as ActAPI from '../../api/activityApi';
 
