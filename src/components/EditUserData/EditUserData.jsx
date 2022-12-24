@@ -234,7 +234,7 @@ function EditUserData() {
               />
             </Link>
           </Col>
-          <Col className="col-lg-3 col-12 mt-3 pt-3">
+          <Col className="col-lg-3 col-12 mt-3 pt-3 d-flex justify-content-center">
             <ButtonPurple
               className="btn-update-profile"
               onClick={handleOnClick}

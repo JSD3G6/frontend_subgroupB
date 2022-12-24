@@ -9,13 +9,13 @@ function HeroSection() {
     <div id="home">
       <div className="container-fluid overflow-hidden">
         <div className="row">
-          <div className="col d-flex justify-content-start p-0">
+          <div className="col-12 col-md-6 d-flex justify-content-start p-0">
             <Slide left>
               <img src={headerImg} alt="" className="img-hero" />
             </Slide>
           </div>
           <div
-            className="col d-flex flex-column align-items-center justify-content-center gap-4"
+            className="col-12 col-md-6 d-flex flex-column align-items-center justify-content-center gap-4"
             id="text_hero"
           >
             <Slide right>
@@ -28,7 +28,7 @@ function HeroSection() {
                   at sint modi earum, atque maiores, fugit id debitis numquam enim ducimus quibusdam
                   velit consequuntur doloribus. Tempora, doloremque labore.
                 </span>
-                <span className="span_hero">
+                <span className="span_hero m-0">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero deserunt, corporis
                   at sint modi earum, atque maiores, fugit id debitis numquam enim ducimus quibusdam
                   velit consequuntur doloribus. Tempora, doloremque labore.

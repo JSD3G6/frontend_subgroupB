@@ -304,16 +304,15 @@ hr {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	/* background-color: orange; */
 	width: 100%;
 	margin-top: 50px;
 	background: var(--purple);
 }
 
 .tab-info {
-	display: flex;
+	display: flex;	
 	gap: 50px;
-	margin-top: 15px;
+	margin: 15px 0;
 }
 
 li {

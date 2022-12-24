@@ -39,7 +39,7 @@ function SectionBMI() {
       <div className="container-fluid overflow-hidden">
         <div className="row">
           <div
-            className="col d-flex flex-column justify-content-center align-items-center gap-3"
+            className="col-12 col-md-6 order-2 order-md-1 d-flex flex-column justify-content-center align-items-center gap-3"
             id="text_bmi"
           >
             <Slide left>
@@ -85,7 +85,7 @@ function SectionBMI() {
             </Slide>
           </div>
 
-          <div className="col d-flex justify-content-end  p-0">
+          <div className="col-12 col-md-6 order-1 order-md-2 d-flex justify-content-end  p-0">
             <Slide right>
               <img src={sectionImg} className="bmi_img d-flex justify-content-start-100" alt="" />
             </Slide>

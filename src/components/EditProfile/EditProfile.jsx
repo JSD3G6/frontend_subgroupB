@@ -11,7 +11,6 @@ function EditProfile() {
   return (
     <Container className="edit-profile">
       <Container>
-        {/* <h2 className="mt-5 mb-3 ms-5 ps-3">Edit Profile</h2> */}
         <Container className="mx-auto edit-profile-card">
           <Row>
             <Col className="col-lg-3 p-3 col-12 mt-5">

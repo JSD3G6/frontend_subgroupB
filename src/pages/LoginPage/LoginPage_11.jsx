@@ -58,7 +58,6 @@ function LoginPage() {
   };
   const backgroundStyle = {
     backgroundImage: `url(${BackgroundImage})`,
-    width: '100vw',
     minHeight: '100vh',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',

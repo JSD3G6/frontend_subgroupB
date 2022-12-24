@@ -31,7 +31,7 @@ function AboutUs() {
               <div>
                 <img src={slider.value} alt="" className="img_train mt-md-3" />
               </div>
-              <div className="d-flex align-items-center justify-content-center gap-2 mt-2">
+              <div className="d-flex gap-2 mt-2">
                 {imgs.map((data, i) => (
                   <div key={data.id}>
                     <img
