@@ -57,7 +57,7 @@ function ProfileSummary() {
         <div className="weekly-goal">
           <div className="goal-text">
             <span>Weekly Goal (Cal)</span>
-            <span className="cal">{user.weeklyGoalCal}/4000</span>
+            <span className="cal">2000/{user.weeklyGoalCal}</span>
           </div>
 
           <ProgressBar
