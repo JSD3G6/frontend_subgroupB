@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-alert */
 /* eslint-disable prefer-regex-literals */
@@ -65,7 +66,7 @@ function LoginPage() {
   };
   return (
     <div className="flex justify-center items-center" style={backgroundStyle}>
-      <div className="w-[60%] min-w-[360px] lg:max-w-[921px] h-[780px] rounded-[10px] bg-gray-primary   px-[10%] semi-lg:px-[100px] flex flex-col">
+      <div className="w-[60%] min-w-[360px] lg:max-w-[921px] h-[780px] bg-gray-primary   px-[10%] semi-lg:px-[100px] flex flex-col">
         {/* Profile Image */}
         <div className="mx-auto text-center pt-8">
           <div className="flex mb-1 mx-auto">
@@ -75,44 +76,47 @@ function LoginPage() {
         </div>
         {/* Desktop : Email & Password */}
         <form
-          className="h-full py-8 semi-lg:py-4 flex flex-col justify-around "
+          className="h-full py-4 semi-lg:py-4 flex flex-col justify-between"
           onSubmit={submitLogin}
         >
-          <input
-            type="text"
-            placeholder="Enter your Email"
-            name="Email"
-            className="input-primary"
-            value={email}
-            onChange={onChangeEmail}
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            name="Password"
-            className="input-primary"
-            value={password}
-            onChange={onChangePassword}
-          />
-          <button type="submit" className="btn-primary self-center ">
-            Login
-          </button>
-          <p className="text-white text-[24px] self-center">OR</p>
-          {/* social login */}
-          {/* <div className="flex justify-center gap-10">
-            <a href="facebook.com">
-              <img src={FacebookLogo} alt="facebook-logo" className="w-[60px] h-[60px]" />
-            </a>
-            <a href="gmail.com">
-              <img src={GmailLogo} alt="Gmail-logo" className="w-[60px] h-[60px]" />
-            </a>
-          </div> */}
-          {/* <p className="text-white text-[28px] self-center">
-            Need an account ? Register
-          </p> */}
-          <Link to="/register" className="text-white font - thin text-[32px] self-center">
-            Register
-          </Link>
+          <div className="flex-1 flex flex-col">
+            <label className="mt-[1rem] mb-[0.25rem] text-[1.2rem]">Email</label>
+            <input
+              type="text"
+              // placeholder="Enter your Email"
+              name="Email"
+              className="input-primary bg-slate-100"
+              value={email}
+              onChange={onChangeEmail}
+            />
+          </div>
+          <div className="flex-1 flex flex-col">
+            <label className="mt-[1rem] mb-[0.25rem] text-[1.2rem]">Password</label>
+            <input
+              type="password"
+              // placeholder="Password"
+              name="Password"
+              className="input-primary bg-slate-100"
+              value={password}
+              onChange={onChangePassword}
+            />
+          </div>
+          <div className="flex-1 flex flex-col">
+            {' '}
+            <button
+              type="submit"
+              className="btn-primary font-medium self-center text-[1.5rem] my-4"
+            >
+              Login
+            </button>
+            <p className="text-white text-[1.3rem] my-2 self-center">OR</p>
+            <Link
+              to="/register"
+              className="text-purple-p-500 hover:text-purple-100 mb-8 px-8 py-2 font-thin text-[32px] self-center shadow-md shadow-[0_0_4px_3px_rgba(131, 34, 254, 0.5)]"
+            >
+              Register
+            </Link>
+          </div>
         </form>
       </div>
     </div>
