@@ -118,7 +118,7 @@ function CreateActivity() {
 
   return (
     <div className="flex justify-center items-center w-screen min-h-screen">
-      <div className="w-[90%] min-w-[360px] lg:max-w-[921px] h-[780px] bg-gray-primary px-[10%] semi-lg:px-[100px] flex flex-col">
+      <div className="w-[90%] h-[90%] min-w-[360px] lg:max-w-[921px] bg-gray-primary px-[10%] semi-lg:px-[100px] flex flex-col shadow-md shadow-[0_5px_5px_5px_rgba(131, 34, 254, 0.7)]">
         {/* Profile Image */}
         <div className="mx-auto text-center pt-1">
           <h3 className="font-thin text-[40px] text-white">Create New Activity</h3>
@@ -128,7 +128,7 @@ function CreateActivity() {
           className="h-full py-4 semi-lg:py-8 flex flex-col justify-between"
           onSubmit={handleFormSubmit}
         >
-          <div className="hidden semi-lg:flex justify-between gap-8">
+          <div className="semi-lg:flex justify-between gap-8">
             <div className="flex-1 flex flex-col">
               <label className="mb-[0.25rem] text-[1.2rem]">Title</label>
               <input
@@ -172,7 +172,7 @@ function CreateActivity() {
             </select>
           </div>
           <div className="flex-1 flex flex-col">
-            <label className="mt-[1rem] mb-[0.25rem] text-[1.2rem]">Detail</label>
+            <label className="mt-[1rem] mb-[0.25rem] text-[1.2rem]">Details</label>
             <input
               type="text"
               // placeholder="Share more about your activity"
@@ -184,7 +184,7 @@ function CreateActivity() {
             />
           </div>
 
-          <div className="hidden semi-lg:flex justify-between gap-8 ">
+          <div className="semi-lg:flex justify-between gap-8 ">
             <div className="flex-1 flex flex-col">
               <label className="mt-[1rem] mb-[0.25rem] text-[1.2rem]">Distance (km)</label>
               <input
@@ -211,10 +211,10 @@ function CreateActivity() {
             </div>
           </div>
           <div className="flex justify-center mt-2">
-            <div className="w-5/6 rounded-lg shadow-xl bg-transparent">
+            <div className="w-5/6  shadow-xl bg-transparent">
               {!file ? (
                 <div>
-                  <label className="inline-block mb-2 mt-2 text-[1.2rem] text-white">
+                  <label className="inline-block my-3 text-[1.2rem] text-white">
                     Upload a photo
                   </label>
                   <div className="flex items-center justify-center w-full">
@@ -263,7 +263,7 @@ function CreateActivity() {
               )}
             </div>
           </div>
-          <div className="hidden semi-lg:flex justify-between gap-8 mt-4">
+          <div className="semi-lg:flex justify-between gap-8 mt-4">
             <button
               type="button"
               className="w-full border-2 text-[1.5rem] border-purple-500 h-[60px] text-white text-xl font-semibold drop-shadow-2xl flex-1"
