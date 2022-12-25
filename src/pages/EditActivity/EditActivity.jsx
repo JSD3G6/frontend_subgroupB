@@ -152,83 +152,103 @@ function EditActivity() {
 
   return (
     <div className="flex justify-center items-center w-screen min-h-screen">
-      <div className="w-[90%] min-w-[360px] lg:max-w-[921px] h-[780px] rounded-[10px] bg-gray-primary px-[10%] semi-lg:px-[100px] flex flex-col">
+      <div className="w-[90%] h-[90%] min-w-[360px] lg:max-w-[921px] bg-gray-primary px-[10%] semi-lg:px-[100px] flex flex-col shadow-md shadow-[0_5px_5px_5px_rgba(131, 34, 254, 0.7)]">
         {/* Profile Image */}
         <div className="mx-auto text-center pt-8">
           <h3 className="font-thin text-[40px] text-white">Edit Activity</h3>
         </div>
         {/* input field */}
         <form
-          className="h-full py-4 semi-lg:py-8 flex flex-col justify-around "
+          className="h-full py-4 semi-lg:py-8 flex flex-col justify-between"
           onSubmit={handleFormSubmit}
         >
-          <div className="hidden semi-lg:flex justify-between gap-8 ">
+          <div className="semi-lg:flex justify-between gap-8 ">
+            <div className="flex-1 flex flex-col">
+              <label className="mb-[0.25rem] text-[1.2rem]">Title</label>
+              <input
+                type="text"
+                // placeholder="Title your activity"
+                name="title"
+                id="titleInput"
+                value={activityData.title}
+                onChange={handleInputChange}
+                className="input-primary bg-slate-100"
+              />
+            </div>
+            <div className="flex-1 flex flex-col">
+              <label className="mb-[0.25rem] text-[1.2rem]">Date</label>
+              <input
+                type="date"
+                // placeholder="Date"
+                name="dateTime"
+                id="dateTimeInput"
+                value={activityData.dateTime}
+                onChange={handleInputChange}
+                className="input-primary bg-slate-100"
+              />
+            </div>
+          </div>
+          <div className="flex-1 flex flex-col">
+            <label className="mt-[1rem] mb-[0.25rem] text-[1.2rem]">Activity Type</label>
+            <select
+              className="input-primary bg-slate-100"
+              name="type"
+              id="typeInput"
+              value={activityData.type}
+              onChange={handleInputChange}
+            >
+              <option value="bicycling">Bicycling</option>
+              <option value="hiking">Hiking</option>
+              <option value="running">Running</option>
+              <option value="swimming">Swimming</option>
+              <option value="walking">Walking</option>
+            </select>
+          </div>
+          <div className="flex-1 flex flex-col">
+            <label className="mt-[1rem] mb-[0.25rem] text-[1.2rem]">Details</label>
             <input
               type="text"
-              placeholder="Title your activity"
-              name="title"
-              id="titleInput"
-              value={activityData.title}
+              // placeholder="Share more about your activity"
+              name="details"
+              id="detialsInput"
+              value={activityData.details}
               onChange={handleInputChange}
-              className="input-primary flex-1"
-            />
-            <input
-              type="date"
-              placeholder="Date"
-              name="dateTime"
-              id="dateTimeInput"
-              value={activityData.dateTime}
-              onChange={handleInputChange}
-              className="input-primary flex-1"
+              className="input-primary bg-slate-100"
             />
           </div>
-          <select
-            className="input-primary"
-            name="type"
-            id="typeInput"
-            value={activityData.type}
-            onChange={handleInputChange}
-          >
-            <option value="bicycling">Bicycling</option>
-            <option value="hiking">Hiking</option>
-            <option value="running">Running</option>
-            <option value="swimming">Swimming</option>
-            <option value="walking">Walking</option>
-          </select>
-          <input
-            type="text"
-            placeholder="Share more about your activity"
-            name="details"
-            id="detialsInput"
-            value={activityData.details}
-            onChange={handleInputChange}
-            className="input-primary"
-          />
-          <div className="hidden semi-lg:flex justify-between gap-8 ">
-            <input
-              type="number"
-              placeholder="Distance(KM)"
-              name="distanceKM"
-              id="distanceKMInput"
-              value={activityData.distanceKM}
-              onChange={handleInputChange}
-              className="input-primary flex-1"
-            />
-            <input
-              type="number"
-              placeholder="Duration(Min)"
-              name="durationMin"
-              id="durationMinInput"
-              value={activityData.durationMin}
-              onChange={handleInputChange}
-              className="input-primary flex-1"
-            />
+          <div className="semi-lg:flex justify-between gap-8 ">
+            <div className="flex-1 flex flex-col">
+              <label className="mt-[1rem] mb-[0.25rem] text-[1.2rem]">Distance (km)</label>
+              <input
+                type="number"
+                // placeholder="Distance(KM)"
+                name="distanceKM"
+                id="distanceKMInput"
+                value={activityData.distanceKM}
+                onChange={handleInputChange}
+                className="input-primary bg-slate-100"
+              />
+            </div>
+            <div className="flex-1 flex flex-col">
+              <label className="mt-[1rem] mb-[0.25rem] text-[1.2rem]">Duration (min)</label>
+              <input
+                type="number"
+                // placeholder="Duration(Min)"
+                name="durationMin"
+                id="durationMinInput"
+                value={activityData.durationMin}
+                onChange={handleInputChange}
+                className="input-primary bg-slate-100"
+              />
+            </div>
           </div>
           <div className="flex justify-center">
-            <div className="w-5/6 rounded-lg shadow-xl bg-transparent">
+            <div className="w-5/6  shadow-xl bg-transparent">
               {!file ? (
                 <div>
-                  <label className="inline-block mb-2 text-gray-400">Upload a photo</label>
+                  <label className="inline-block my-2 text-[1.2rem] text-gray-400">
+                    Upload a photo
+                  </label>
                   <div className="flex items-center justify-center w-full">
                     <label
                       className="flex flex-col w-full h-32 border-4 border-white
@@ -251,7 +271,7 @@ function EditActivity() {
                           />
                         </svg>
                         <p
-                          className="pt-1 text-sm tracking-wider
+                          className="pt-1 text-sm tracking-wider text-[1rem]
                       text-purple-400 group-hover:text-purple-900"
                         >
                           Attach a file
@@ -269,23 +289,23 @@ function EditActivity() {
                   </div>
                 </div>
               ) : (
-                <div className="flex justify-center">
+                <div className="flex justify-center mb-4">
                   <img src={URL.createObjectURL(file)} alt="activity pic" className="h-[150px]" />
                 </div>
               )}
             </div>
           </div>
-          <div className="hidden semi-lg:flex justify-between gap-8 ">
+          <div className="semi-lg:flex justify-between gap-8 mt-4">
             <button
               type="button"
-              className="w-full border-2 border-purple-500 h-[60px] rounded-[10px] text-white text-xl font-semibold drop-shadow-2xl flex-1"
+              className="w-full text-[1.5rem] border-2 border-purple-500 h-[60px] text-white text-xl font-semibold drop-shadow-2xl flex-1"
               onClick={onCancel}
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="btn-primary self-center flex-1"
+              className="btn-primary tect-[1.5rem] self-center flex-1"
               onClick={handleOnClick}
             >
               Save
