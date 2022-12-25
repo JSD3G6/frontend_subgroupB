@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/JSD3G6/frontend_subgroupB/tree/4012_testdeploy/static/css/main.703051dc.css",
+    "main.js": "/JSD3G6/frontend_subgroupB/tree/4012_testdeploy/static/js/main.fc4e6e92.js",
+    "static/media/header-purple.png": "/JSD3G6/frontend_subgroupB/tree/4012_testdeploy/static/media/header-purple.d7898d64a5f875074dac.png",
+    "static/media/Background-Reg.jpg": "/JSD3G6/frontend_subgroupB/tree/4012_testdeploy/static/media/Background-Reg.82439b535ba9e8ed9bf0.jpg",
+    "static/media/header.jpg": "/JSD3G6/frontend_subgroupB/tree/4012_testdeploy/static/media/header.efef44d5383065ad55b0.jpg",
+    "static/media/pt1.png": "/JSD3G6/frontend_subgroupB/tree/4012_testdeploy/static/media/pt1.45330d55cd2b95b7b6e7.png",
+    "static/media/bg-1.png": "/JSD3G6/frontend_subgroupB/tree/4012_testdeploy/static/media/bg-1.0d526bbfd2c78b30a70b.png",
+    "static/media/section.jpg": "/JSD3G6/frontend_subgroupB/tree/4012_testdeploy/static/media/section.570db043d04ba816d61a.jpg",
+    "static/media/train3.jpg": "/JSD3G6/frontend_subgroupB/tree/4012_testdeploy/static/media/train3.e11f15492c639ed48be9.jpg",
+    "static/media/train2.jpg": "/JSD3G6/frontend_subgroupB/tree/4012_testdeploy/static/media/train2.a89cb9135ca006333ece.jpg",
+    "static/media/pt3.jpg": "/JSD3G6/frontend_subgroupB/tree/4012_testdeploy/static/media/pt3.753c66fd5bd4529187e2.jpg",
+    "static/media/pt2.jpg": "/JSD3G6/frontend_subgroupB/tree/4012_testdeploy/static/media/pt2.92a024cb30b534b6c393.jpg",
+    "static/media/pt.jpg": "/JSD3G6/frontend_subgroupB/tree/4012_testdeploy/static/media/pt.e8ad7d1f7035407387f1.jpg",
+    "static/media/train.jpg": "/JSD3G6/frontend_subgroupB/tree/4012_testdeploy/static/media/train.4d8d44da853763008b04.jpg",
+    "static/media/p4.jpg": "/JSD3G6/frontend_subgroupB/tree/4012_testdeploy/static/media/p4.6ecc57ad164ed7551d93.jpg",
+    "static/media/login-logo.png": "/JSD3G6/frontend_subgroupB/tree/4012_testdeploy/static/media/login-logo.57a69ccfedc4dd4a2a5b.png",
+    "static/media/edit.png": "/JSD3G6/frontend_subgroupB/tree/4012_testdeploy/static/media/edit.6aaf85b00a6b1a5094da.png",
+    "static/media/Logo.png": "/JSD3G6/frontend_subgroupB/tree/4012_testdeploy/static/media/Logo.8277aa3d6d06ffc813cc.png",
+    "index.html": "/JSD3G6/frontend_subgroupB/tree/4012_testdeploy/index.html",
+    "main.703051dc.css.map": "/JSD3G6/frontend_subgroupB/tree/4012_testdeploy/static/css/main.703051dc.css.map",
+    "main.fc4e6e92.js.map": "/JSD3G6/frontend_subgroupB/tree/4012_testdeploy/static/js/main.fc4e6e92.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.703051dc.css",
+    "static/js/main.fc4e6e92.js"
+  ]
+}
