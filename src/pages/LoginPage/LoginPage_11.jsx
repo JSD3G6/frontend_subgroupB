@@ -35,9 +35,9 @@ function LoginPage() {
     // Validate FrontEnd
     const { error } = formSchema.validate({ email, password });
     if (error) {
-      error.details.map((item) => alert(item.message));
+      // error.details.map((item) => alert(item.message));
       // alert('Please enter a valid email address and password');
-      // console.error(error.details);
+      console.log(error);
     }
 
     try {
@@ -66,13 +66,13 @@ function LoginPage() {
   };
   return (
     <div className="flex justify-center items-center" style={backgroundStyle}>
-      <div className="w-[60%] min-w-[360px] lg:max-w-[921px] h-[780px] bg-gray-primary   px-[10%] semi-lg:px-[100px] flex flex-col">
+      <div className="w-[60%] min-w-[360px] lg:max-w-[921px] h-[780px] lg:max-h-full bg-gray-primary   px-[10%] semi-lg:px-[100px] flex flex-col">
         {/* Profile Image */}
         <div className="mx-auto text-center pt-8">
           <div className="flex mb-1 mx-auto">
             <img src={LoginLogo} alt="login-logo" className="w-[130px] mx-auto" />
           </div>
-          <h3 className="font-thin text-[40px] text-white">EliteMove</h3>
+          <h3 className="font-thin text-[40px] text-slate-100">EliteMove</h3>
         </div>
         {/* Desktop : Email & Password */}
         <form
@@ -80,7 +80,7 @@ function LoginPage() {
           onSubmit={submitLogin}
         >
           <div className="flex-1 flex flex-col">
-            <label className="mt-[1rem] mb-[0.25rem] text-[1.2rem]">Email</label>
+            <label className="mt-[1rem] mb-[0.25rem] text-[1.2rem] text-slate-100">Email</label>
             <input
               type="text"
               // placeholder="Enter your Email"
@@ -91,7 +91,7 @@ function LoginPage() {
             />
           </div>
           <div className="flex-1 flex flex-col">
-            <label className="mt-[1rem] mb-[0.25rem] text-[1.2rem]">Password</label>
+            <label className="mt-[1rem] mb-[0.25rem] text-[1.2rem] text-slate-100">Password</label>
             <input
               type="password"
               // placeholder="Password"
