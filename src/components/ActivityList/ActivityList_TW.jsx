@@ -39,7 +39,7 @@ function ActivityList() {
       </div>
       <div className="hidden 2xl:grid 2xl:grid-cols-12 2xl:gap-4 2xl:px-4">
         {/* LEFT */}
-        <div className="2xl:col-start-1 2xl:col-end-4 fixed left-4 top-[80px] w-[350px]">
+        <div className="2xl:col-start-1 2xl:col-end-4  left-4 top-[80px] w-[350px]">
           <div className=" ">
             <ProfileSummary />
           </div>
@@ -55,7 +55,7 @@ function ActivityList() {
           </div>
         </div>
 
-        <div className="2xl:col-start-10 2xl:col-end-13 fixed right-4 top-[80px] min-w-[450px]">
+        <div className="2xl:col-start-10 2xl:col-end-13 top-[80px] min-w-[450px] ml-[-160px]">
           <div className="">
             <Statistics />
           </div>
